@@ -615,6 +615,7 @@ body {
           <li data-i18n="terms_s3_li2"></li>
           <li data-i18n="terms_s3_li3"></li>
           <li data-i18n="terms_s3_li4"></li>
+          <li data-i18n="terms_s3_li5"></li>
         </ul>
       </div>
       <div class="doc-section">
@@ -655,6 +656,14 @@ body {
         <h3 data-i18n="terms_s7_title"></h3>
         <p data-i18n="terms_s7_body"></p>
       </div>
+      <div class="doc-section">
+        <h3 data-i18n="terms_s8_title"></h3>
+        <p data-i18n="terms_s8_body"></p>
+      </div>
+      <div class="doc-section">
+        <h3 data-i18n="terms_s9_title"></h3>
+        <p data-i18n="terms_s9_body"></p>
+      </div>
     </div>
 
     <!-- 개인정보처리방침 -->
@@ -671,7 +680,10 @@ body {
           <li data-i18n="privacy_s1_li2"></li>
           <li data-i18n="privacy_s1_li3"></li>
           <li data-i18n="privacy_s1_li4"></li>
+          <li data-i18n="privacy_s1_li5"></li>
+          <li data-i18n="privacy_s1_li6"></li>
         </ul>
+        <p style="font-size:13px;color:var(--text-muted);margin-top:10px;" data-i18n="privacy_s1_legal_basis"></p>
       </div>
       <div class="doc-section">
         <h3 data-i18n="privacy_s2_title"></h3>
@@ -680,6 +692,8 @@ body {
           <li data-i18n="privacy_s2_li1"></li>
           <li data-i18n="privacy_s2_li2"></li>
           <li data-i18n="privacy_s2_li3"></li>
+          <li data-i18n="privacy_s2_li4"></li>
+          <li data-i18n="privacy_s2_li5"></li>
         </ul>
       </div>
       <div class="doc-section">
@@ -698,6 +712,22 @@ body {
         <h3 data-i18n="privacy_s6_title"></h3>
         <p data-i18n="privacy_s6_body"></p>
         <p>📧 <a href="mailto:privacy@icecatgames.net" style="color:var(--gold);">privacy@icecatgames.net</a></p>
+      </div>
+      <div class="doc-section">
+        <h3 data-i18n="privacy_s7_title"></h3>
+        <p data-i18n="privacy_s7_body"></p>
+      </div>
+      <div class="doc-section">
+        <h3 data-i18n="privacy_s8_title"></h3>
+        <p data-i18n="privacy_s8_body"></p>
+      </div>
+      <div class="doc-section">
+        <h3 data-i18n="privacy_s9_title"></h3>
+        <p data-i18n="privacy_s9_body"></p>
+      </div>
+      <div class="doc-section">
+        <h3 data-i18n="privacy_s10_title"></h3>
+        <p data-i18n="privacy_s10_body"></p>
       </div>
     </div>
 
@@ -774,13 +804,14 @@ const i18n = {
     terms_s1_title: '제1조 (목적)',
     terms_s1_body: '본 약관은 IceCat Games Inc.(이하 "회사")가 제공하는 모바일 게임 서비스(이하 "서비스")의 이용 조건 및 절차, 회사와 이용자의 권리·의무 및 책임사항 등을 규정함을 목적으로 합니다.',
     terms_s2_title: '제2조 (약관의 효력 및 변경)',
-    terms_s2_body: '본 약관은 서비스를 이용하고자 하는 모든 이용자에게 적용됩니다. 회사는 관련 법령을 위반하지 않는 범위에서 약관을 변경할 수 있으며, 변경 시 서비스 내 공지를 통해 고지합니다.',
+    terms_s2_body: '본 약관은 서비스를 이용하고자 하는 모든 이용자에게 적용됩니다. 회사는 관련 법령을 위반하지 않는 범위에서 약관을 변경할 수 있으며, 중요한 변경 사항은 시행일 최소 30일 전에 서비스 내 공지 또는 이메일을 통해 사전 고지합니다. 변경 고지 후에도 계속 서비스를 이용하는 경우 변경된 약관에 동의한 것으로 간주됩니다.',
     terms_s3_title: '제3조 (이용자의 의무)',
     terms_s3_body: '이용자는 다음 행위를 하여서는 안 됩니다:',
     terms_s3_li1: '타인의 계정 도용 및 허위 정보 등록',
     terms_s3_li2: '게임 내 핵·버그 악용 등 비정상적인 방법을 통한 게임 이용',
     terms_s3_li3: '다른 이용자에 대한 욕설, 비방, 성희롱 등 불건전한 행위',
     terms_s3_li4: '회사의 사전 동의 없이 서비스를 영리 목적으로 이용하는 행위',
+    terms_s3_li5: '만 18세 미만 미성년자는 부모 또는 법정대리인의 동의를 받아 서비스를 이용해야 하며, 만 13세 미만은 서비스 이용이 제한될 수 있습니다.',
     terms_s4_title: '제4조 (서비스의 제공 및 변경)',
     terms_s4_body: '회사는 서비스를 365일 24시간 제공하는 것을 원칙으로 하나, 정기점검·시스템 장애 등의 경우 서비스를 일시 중단할 수 있습니다.',
     terms_s5_title: '제5조 (유료서비스 및 환불 정책)',
@@ -801,7 +832,11 @@ const i18n = {
     terms_s6_title: '제6조 (지식재산권)',
     terms_s6_body: '서비스 내 모든 콘텐츠(캐릭터, 스토리, UI 등)에 대한 지식재산권은 회사에 귀속됩니다. 이용자는 회사의 명시적 동의 없이 이를 복제·배포·변형할 수 없습니다.',
     terms_s7_title: '제7조 (준거법 및 관할)',
-    terms_s7_body: '본 약관은 필리핀 공화국(Republic of the Philippines)의 법률(Consumer Act of the Philippines 포함)에 따라 해석 및 적용됩니다.',
+    terms_s7_body: '본 약관은 필리핀 공화국(Republic of the Philippines)의 법률(Consumer Act of the Philippines, RA 7394 및 Electronic Commerce Act, RA 8792 포함)에 따라 해석 및 적용됩니다.',
+    terms_s8_title: '제8조 (계정 삭제 및 서비스 탈퇴)',
+    terms_s8_body: '이용자는 언제든지 게임 내 설정 > 계정 삭제 기능을 통해 탈퇴를 요청할 수 있습니다. 탈퇴 요청 후 30일 이내에 관련 개인정보가 파기되며, 관련 법령에 따라 보존이 필요한 정보는 해당 기간 경과 후 파기됩니다. 구글 플레이 정책에 따라 계정 삭제 시 잔여 유료 아이템에 대한 환불은 별도로 고객센터에 문의하시기 바랍니다.',
+    terms_s9_title: '제9조 (분쟁 해결)',
+    terms_s9_body: '본 약관과 관련한 분쟁은 먼저 당사자 간 협의를 통해 해결을 시도합니다. 협의가 이루어지지 않을 경우, 필리핀 소비자보호법(RA 7394) 및 전자상거래법(RA 8792)에 따라 Department of Trade and Industry(DTI) 또는 필리핀 관할 법원을 통해 해결합니다.',
 
     privacy_title: '개인정보 처리방침',
     privacy_subtitle: '회사는 이용자의 개인정보를 소중히 보호합니다.',
@@ -811,19 +846,32 @@ const i18n = {
     privacy_s1_li2: '선택: 이름, 이메일 주소 (계정 연동 시)',
     privacy_s1_li3: '결제 정보: 구매 내역 (카드 번호 등 금융정보는 수집하지 않음)',
     privacy_s1_li4: '자동 수집: IP 주소, 서비스 이용 기록, 접속 로그',
+    privacy_s1_li5: '광고 식별자: 광고 ID(ADID) 또는 IDFA (맞춤 광고 및 분석 목적, 이용자 동의 후 수집)',
+    privacy_s1_li6: '제3자 SDK를 통한 수집: Firebase Analytics(Google), Google Play 결제 SDK, Supabase 등 — 각 SDK의 개인정보처리방침이 별도로 적용됩니다.',
+    privacy_s1_legal_basis: '※ 처리 법적 근거: 이용자의 동의(RA 10173 제12조), 서비스 계약 이행, 법적 의무 준수, 정당한 이해관계에 따라 개인정보를 처리합니다.',
     privacy_s2_title: '2. 개인정보의 이용 목적',
     privacy_s2_body: '수집한 개인정보는 다음 목적에 한하여 이용됩니다:',
     privacy_s2_li1: '서비스 제공 및 운영, 계정 관리',
     privacy_s2_li2: '부정 이용 방지 및 서비스 보안 유지',
     privacy_s2_li3: '고객 문의 응대 및 공지사항 전달',
+    privacy_s2_li4: '맞춤 광고 및 서비스 개선 (이용자 동의 후 수행)',
+    privacy_s2_li5: '관계 법령 준수 및 권리 보호',
     privacy_s3_title: '3. 개인정보의 보관 기간',
-    privacy_s3_body: '개인정보는 수집 및 이용 목적이 달성된 후 지체 없이 파기합니다. 단, 관련 법령에 의해 보존이 필요한 경우 해당 법령에 따릅니다.',
+    privacy_s3_body: '개인정보는 수집·이용 목적 달성 후 지체 없이 파기합니다. 보관 기간은 다음과 같습니다: ① 계정 및 게임 이용 정보: 탈퇴 요청 후 30일 이내 ② 결제·거래 기록: 관련 법령에 따라 최대 5년 ③ 고객 문의 내역: 처리 완료 후 3년 ④ 접속 로그: 수집 후 1년. 관련 법령에 의해 보존이 필요한 경우 해당 기간 경과 후 파기합니다.',
     privacy_s4_title: '4. 개인정보의 제3자 제공',
-    privacy_s4_body: '회사는 이용자의 동의 없이 개인정보를 제3자에게 제공하지 않습니다. 다만, 법령의 규정에 의한 경우 또는 이용자의 사전 동의가 있는 경우에는 예외로 합니다.',
+    privacy_s4_body: '회사는 이용자의 사전 동의 없이 개인정보를 제3자에게 제공하지 않습니다. 다만 다음의 경우는 예외입니다: ① 법령의 규정에 따른 경우 ② Google LLC (Google Play 결제 처리) ③ Firebase/Google LLC (서비스 분석·개선) ④ Supabase Inc. (랭킹 데이터 저장). 제공은 서비스 제공에 필수적인 범위로 제한되며, 제공 목적 외 이용을 금합니다.',
     privacy_s5_title: '5. 이용자의 권리',
-    privacy_s5_body: '이용자는 언제든지 자신의 개인정보에 대해 열람, 수정, 삭제 및 처리 정지를 요청할 수 있습니다. 요청은 고객센터 이메일을 통해 접수해 주세요.',
-    privacy_s6_title: '6. 개인정보 보호책임자',
-    privacy_s6_body: '개인정보 관련 문의는 아래로 연락해 주세요:',
+    privacy_s5_body: '이용자는 개인정보보호법(RA 10173)에 따라 다음의 권리를 행사할 수 있습니다: ① 열람권 ② 수정권 ③ 삭제권 (법령상 보존 의무가 있는 경우 제외) ④ 처리 정지권 ⑤ 데이터 이동권 (이식 가능한 형태로 제공 요청) ⑥ 이의제기권 (자동화된 처리 결과에 대한 이의 제기). 요청은 support@icecatgames.net으로 접수해 주세요. 또한 이용자는 개인정보 침해 관련 국가개인정보위원회(National Privacy Commission, www.privacy.gov.ph)에 민원을 제기할 권리가 있습니다.',
+    privacy_s6_title: '6. 개인정보 보호책임자 (DPO)',
+    privacy_s6_body: '개인정보 관련 문의 및 권리 행사 요청은 아래로 연락해 주세요:',
+    privacy_s7_title: '7. 개인정보 침해사고 대응',
+    privacy_s7_body: '개인정보 침해사고(데이터 유출 등) 발생 시, 회사는 RA 10173 및 NPC Circular 16-03에 따라 사건 인지 후 72시간 이내에 국가개인정보위원회(NPC)에 신고하고, 영향을 받는 이용자에게 5영업일 이내에 통지합니다. 통지 내용에는 침해 경위, 유출 정보 유형, 취한 조치 및 문의 연락처가 포함됩니다.',
+    privacy_s8_title: '8. 국외 개인정보 이전',
+    privacy_s8_body: '회사의 서비스는 대한민국(개발사 소재지), 미국(Google Firebase, Supabase 서버) 등에서 처리될 수 있습니다. 해외 이전 시 RA 10173 및 NPC 가이드라인에 따라 적절한 보호 조치를 적용합니다.',
+    privacy_s9_title: '9. 아동·청소년 개인정보 보호',
+    privacy_s9_body: '본 서비스는 만 13세 이상을 대상으로 합니다. 만 18세 미만 이용자는 부모 또는 법정대리인의 동의가 필요합니다. 만 13세 미만 아동으로부터 고의로 개인정보를 수집하지 않으며, 이러한 사실이 확인되는 경우 즉시 삭제 조치합니다.',
+    privacy_s10_title: '10. 계정 및 데이터 삭제 요청',
+    privacy_s10_body: '이용자는 게임 내 설정 > 계정 삭제 메뉴를 통해 계정 및 관련 개인정보 삭제를 요청할 수 있습니다. 삭제 요청 처리 기간은 영업일 기준 최대 30일이며, 법령상 보존 의무가 있는 정보는 제외됩니다.',
   },
 
   en: {
@@ -871,13 +919,14 @@ const i18n = {
     terms_s1_title: 'Article 1 – Purpose',
     terms_s1_body: 'These Terms of Service govern the conditions and procedures for using the mobile game service (the "Service") provided by IceCat Games Inc. (the "Company"), and define the rights, obligations, and responsibilities of the Company and users.',
     terms_s2_title: 'Article 2 – Validity and Amendment',
-    terms_s2_body: 'These Terms apply to all users who wish to use the Service. The Company may amend these Terms within the scope permitted by applicable laws and will notify users of any changes via in-service announcements.',
+    terms_s2_body: 'These Terms apply to all users who wish to use the Service. The Company may amend these Terms within the scope permitted by applicable laws. For material changes, at least 30 days\' advance notice will be provided via in-app announcements or email prior to the effective date. Continued use of the Service after such notice constitutes acceptance of the updated Terms.',
     terms_s3_title: 'Article 3 – User Obligations',
     terms_s3_body: 'Users must not engage in the following activities:',
     terms_s3_li1: 'Impersonating others or registering false information',
     terms_s3_li2: 'Using hacks, exploiting bugs, or any other unauthorized means to gain an advantage',
     terms_s3_li3: 'Harassing, defaming, or engaging in sexual harassment toward other users',
     terms_s3_li4: 'Using the Service for commercial purposes without prior written consent from the Company',
+    terms_s3_li5: 'Users under the age of 18 must obtain parental or legal guardian consent before using the Service. Access may be restricted for users under 13 years of age.',
     terms_s4_title: 'Article 4 – Service Availability',
     terms_s4_body: 'The Company aims to provide the Service 24/7/365. However, the Service may be temporarily suspended for scheduled maintenance, system failures, or other operational reasons.',
     terms_s5_title: 'Article 5 – Paid Services & Refund Policy',
@@ -898,7 +947,11 @@ const i18n = {
     terms_s6_title: 'Article 6 – Intellectual Property',
     terms_s6_body: 'All intellectual property rights in the Service content (characters, storylines, UI, etc.) belong to the Company. Users may not reproduce, distribute, or modify such content without the Company\'s explicit written consent.',
     terms_s7_title: 'Article 7 – Governing Law & Jurisdiction',
-    terms_s7_body: 'These Terms shall be governed by and construed in accordance with the laws of the Republic of the Philippines, including the Consumer Act of the Philippines.',
+    terms_s7_body: 'These Terms shall be governed by and construed in accordance with the laws of the Republic of the Philippines, including the Consumer Act of the Philippines (RA 7394) and the Electronic Commerce Act (RA 8792).',
+    terms_s8_title: 'Article 8 – Account Deletion & Service Withdrawal',
+    terms_s8_body: 'Users may request account deletion at any time through the in-app Settings > Delete Account feature. Personal data associated with the account will be deleted within 30 days of the request, except for data that must be retained under applicable law. For any unused paid items remaining at the time of deletion, please contact customer support separately in accordance with Google Play policies.',
+    terms_s9_title: 'Article 9 – Dispute Resolution',
+    terms_s9_body: 'Any disputes relating to these Terms will first be resolved through good-faith negotiation between the parties. If resolution cannot be reached, disputes shall be handled in accordance with the Consumer Act of the Philippines (RA 7394) and the Electronic Commerce Act (RA 8792), through the Department of Trade and Industry (DTI) or the competent courts of the Republic of the Philippines.',
 
     privacy_title: 'Privacy Policy',
     privacy_subtitle: 'We are committed to protecting your personal information.',
@@ -908,19 +961,32 @@ const i18n = {
     privacy_s1_li2: 'Optional: Name, email address (when linking an account)',
     privacy_s1_li3: 'Payment: Purchase history (we do not store card numbers or financial data)',
     privacy_s1_li4: 'Automatic: IP address, service usage logs, access records',
+    privacy_s1_li5: 'Advertising Identifiers: Advertising ID (ADID) or IDFA (for personalized ads and analytics, collected with user consent)',
+    privacy_s1_li6: 'Data collected via third-party SDKs: Firebase Analytics (Google), Google Play Billing SDK, Supabase, etc. — each SDK\'s own privacy policy applies separately.',
+    privacy_s1_legal_basis: '※ Legal Basis for Processing: We process personal data based on user consent (RA 10173, Section 12), contractual necessity, legal obligation, or legitimate interest, as applicable.',
     privacy_s2_title: '2. How We Use Your Information',
     privacy_s2_body: 'Collected information is used solely for the following purposes:',
     privacy_s2_li1: 'Providing and operating the Service, managing user accounts',
     privacy_s2_li2: 'Preventing fraud and maintaining service security',
     privacy_s2_li3: 'Responding to customer inquiries and delivering notices',
+    privacy_s2_li4: 'Personalized advertising and service improvement (with user consent)',
+    privacy_s2_li5: 'Compliance with applicable laws and protection of legal rights',
     privacy_s3_title: '3. Data Retention',
-    privacy_s3_body: 'Personal information is deleted promptly once the purpose of collection and use has been fulfilled. Exceptions apply where retention is required by applicable law.',
+    privacy_s3_body: 'Personal information is deleted promptly once the purpose of collection has been fulfilled. Specific retention periods: ① Account and gameplay data: within 30 days of account deletion request ② Payment and transaction records: up to 5 years as required by applicable law ③ Customer support records: 3 years after resolution ④ Access logs: 1 year from collection. Data subject to legal retention obligations will be deleted after the required period.',
     privacy_s4_title: '4. Sharing with Third Parties',
-    privacy_s4_body: 'We do not provide your personal information to third parties without your consent, except as required by law or with your prior agreement.',
+    privacy_s4_body: 'We do not share your personal information with third parties without your prior consent, except in the following cases: ① As required by applicable law ② Google LLC — for Google Play payment processing ③ Firebase (Google LLC) — for service analytics and improvement ④ Supabase Inc. — for rankings and backend data storage. Sharing is limited to what is strictly necessary for service provision, and shared data may not be used beyond the stated purpose.',
     privacy_s5_title: '5. Your Rights',
-    privacy_s5_body: 'You may request to access, modify, delete, or restrict the processing of your personal information at any time. Please submit your request via our support email.',
-    privacy_s6_title: '6. Privacy Officer',
-    privacy_s6_body: 'For privacy-related inquiries, please contact:',
+    privacy_s5_body: 'Under the Data Privacy Act (RA 10173), you have the following rights: ① Right to Access ② Right to Rectification ③ Right to Erasure (subject to legal retention requirements) ④ Right to Restriction of Processing ⑤ Right to Data Portability ⑥ Right to Object to automated processing decisions. To exercise your rights, please contact us at support@icecatgames.net. You also have the right to file a complaint with the National Privacy Commission (NPC) at www.privacy.gov.ph.',
+    privacy_s6_title: '6. Data Protection Officer (DPO)',
+    privacy_s6_body: 'For privacy-related inquiries and rights requests, please contact:',
+    privacy_s7_title: '7. Data Breach Response',
+    privacy_s7_body: 'In the event of a personal data breach (e.g., unauthorized access or disclosure), the Company will notify the National Privacy Commission (NPC) within 72 hours of discovery and inform affected users within 5 business days, in accordance with RA 10173 and NPC Circular 16-03. Notifications will include the nature of the breach, types of data affected, remedial actions taken, and contact information for further inquiries.',
+    privacy_s8_title: '8. Cross-Border Data Transfer',
+    privacy_s8_body: 'Personal data may be processed in the Republic of Korea (company headquarters), the United States (Google Firebase, Supabase servers), and other jurisdictions as operationally necessary. All cross-border transfers are conducted with appropriate safeguards in compliance with RA 10173 and NPC guidelines.',
+    privacy_s9_title: '9. Children\'s Privacy',
+    privacy_s9_body: 'This Service is intended for users aged 13 and above. Users under 18 require parental or legal guardian consent. We do not knowingly collect personal information from children under 13. If we become aware that such data has been collected, we will take immediate steps to delete it.',
+    privacy_s10_title: '10. Account & Data Deletion Request',
+    privacy_s10_body: 'Users may request deletion of their account and associated personal data through the in-app Settings > Delete Account menu. Requests will be processed within 30 business days. Data subject to legal retention requirements will be excluded from deletion.',
   },
 
   ph: {
@@ -968,13 +1034,14 @@ const i18n = {
     terms_s1_title: 'Artikulo 1 – Layunin',
     terms_s1_body: 'Ang mga Tuntunin ng Serbisyo na ito ay namamahala sa mga kondisyon ng paggamit ng serbisyo ng mobile game na ibinibigay ng IceCat Games Inc. (ang "Kumpanya"), at tinutukoy ang mga karapatan, obligasyon, at responsibilidad ng Kumpanya at mga gumagamit.',
     terms_s2_title: 'Artikulo 2 – Bisa at Pagbabago',
-    terms_s2_body: 'Ang mga tuntuning ito ay nalalapat sa lahat ng mga gumagamit. Maaaring baguhin ng Kumpanya ang mga tuntuning ito ayon sa naaangkop na batas at aabisuhan ang mga gumagamit sa pamamagitan ng mga anunsyo sa serbisyo.',
+    terms_s2_body: 'Ang mga tuntuning ito ay nalalapat sa lahat ng mga gumagamit. Maaaring baguhin ng Kumpanya ang mga tuntuning ito ayon sa naaangkop na batas. Para sa mga mahahalagang pagbabago, magbibigay ng hindi bababa sa 30 araw na paunang abiso sa pamamagitan ng mga anunsyo sa serbisyo o email bago ang petsa ng bisa. Ang patuloy na paggamit ng Serbisyo pagkatapos ng naturang abiso ay itinuturing na pagtanggap sa binagong Mga Tuntunin.',
     terms_s3_title: 'Artikulo 3 – Mga Obligasyon ng Gumagamit',
     terms_s3_body: 'Hindi dapat gawin ng mga gumagamit ang mga sumusunod:',
     terms_s3_li1: 'Pagpapanggap sa iba o pagrerehistro ng maling impormasyon',
     terms_s3_li2: 'Paggamit ng mga hack, pagsasamantala sa mga bug, o anumang hindi awtorisadong paraan',
     terms_s3_li3: 'Pang-aabuso, panlalait, o sekswal na panliligalig sa ibang mga gumagamit',
     terms_s3_li4: 'Paggamit ng Serbisyo para sa mga komersyal na layunin nang walang pahintulot',
+    terms_s3_li5: 'Ang mga gumagamit na wala pang 18 taong gulang ay dapat makakuha ng pahintulot ng magulang o legal na tagapag-alaga bago gamitin ang Serbisyo. Ang access ay maaaring paghigpitan para sa mga gumagamit na wala pang 13 taong gulang.',
     terms_s4_title: 'Artikulo 4 – Availability ng Serbisyo',
     terms_s4_body: 'Naglalayong magbigay ang Kumpanya ng Serbisyo 24/7, ngunit maaaring pansamantalang suspindihin para sa nakatakdang pagpapanatili, pagpalya ng sistema, o iba pang operasyonal na dahilan.',
     terms_s5_title: 'Artikulo 5 – Mga Bayad na Serbisyo at Patakaran sa Refund',
@@ -995,7 +1062,11 @@ const i18n = {
     terms_s6_title: 'Artikulo 6 – Intelektwal na Ari-arian',
     terms_s6_body: 'Lahat ng karapatang intelektwal sa nilalaman ng Serbisyo (mga karakter, kuwento, UI, atbp.) ay pag-aari ng Kumpanya. Ang mga gumagamit ay hindi maaaring kopyahin, ipamahagi, o baguhin ang naturang nilalaman nang walang malinaw na nakasulat na pahintulot ng Kumpanya.',
     terms_s7_title: 'Artikulo 7 – Namamahalang Batas',
-    terms_s7_body: 'Ang mga tuntuning ito ay pinamamahalaan at binibigyang-kahulugan alinsunod sa mga batas ng Republika ng Pilipinas, kabilang ang Consumer Act of the Philippines.',
+    terms_s7_body: 'Ang mga tuntuning ito ay pinamamahalaan at binibigyang-kahulugan alinsunod sa mga batas ng Republika ng Pilipinas, kabilang ang Consumer Act of the Philippines (RA 7394) at ang Electronic Commerce Act (RA 8792).',
+    terms_s8_title: 'Artikulo 8 – Pagtanggal ng Account at Pag-alis sa Serbisyo',
+    terms_s8_body: 'Maaaring humiling ang mga gumagamit ng pagtanggal ng account anumang oras sa pamamagitan ng feature ng Mga Setting > Tanggalin ang Account sa loob ng laro. Ang personal na data ay matatanggal sa loob ng 30 araw mula sa kahilingan, maliban sa data na dapat panatilihin sa ilalim ng naaangkop na batas. Para sa anumang hindi nagamit na bayad na mga item, mangyaring makipag-ugnayan sa customer support nang hiwalay.',
+    terms_s9_title: 'Artikulo 9 – Resolusyon ng Alitan',
+    terms_s9_body: 'Ang anumang alitan na may kaugnayan sa mga Tuntuning ito ay unang ilulutas sa pamamagitan ng mabuting-loob na negosasyon. Kung hindi malutas, ang mga alitan ay hahawakan alinsunod sa Consumer Act of the Philippines (RA 7394) at Electronic Commerce Act (RA 8792), sa pamamagitan ng Department of Trade and Industry (DTI) o mga hukuman ng Republika ng Pilipinas.',
 
     privacy_title: 'Patakaran sa Privacy',
     privacy_subtitle: 'Kami ay nakatuon sa pagprotekta ng iyong personal na impormasyon.',
@@ -1005,19 +1076,32 @@ const i18n = {
     privacy_s1_li2: 'Opsyonal: Pangalan, email address (kapag nag-link ng account)',
     privacy_s1_li3: 'Pagbabayad: Kasaysayan ng pagbili (hindi namin iniimbak ang mga numero ng card o pinansiyal na data)',
     privacy_s1_li4: 'Awtomatiko: IP address, mga log ng paggamit ng serbisyo, mga rekord ng pag-access',
+    privacy_s1_li5: 'Mga Advertising Identifier: Advertising ID (ADID) o IDFA (para sa personalized na mga ad at analytics, kinokolekta sa pahintulot ng gumagamit)',
+    privacy_s1_li6: 'Data na nakolekta sa pamamagitan ng mga third-party SDK: Firebase Analytics (Google), Google Play Billing SDK, Supabase, atbp. — nalalapat nang hiwalay ang bawat patakaran sa privacy ng SDK.',
+    privacy_s1_legal_basis: '※ Legal na Batayan para sa Pagproseso: Pinoproseso namin ang personal na data batay sa pahintulot ng gumagamit (RA 10173, Seksyon 12), pangangailangan ng kontrata, legal na obligasyon, o lehitimong interes, kung naaangkop.',
     privacy_s2_title: '2. Paano Namin Ginagamit ang Iyong Impormasyon',
     privacy_s2_body: 'Ang nakolektang impormasyon ay ginagamit para sa mga sumusunod na layunin lamang:',
     privacy_s2_li1: 'Pagbibigay at pag-operate ng Serbisyo, pamamahala ng account',
     privacy_s2_li2: 'Pag-iwas sa pandaraya at pagpapanatili ng seguridad ng serbisyo',
     privacy_s2_li3: 'Pagtugon sa mga katanungan ng customer at paghahatid ng mga abiso',
+    privacy_s2_li4: 'Personalized na advertising at pagpapabuti ng serbisyo (sa pahintulot ng gumagamit)',
+    privacy_s2_li5: 'Pagsunod sa mga naaangkop na batas at pagprotekta ng mga legal na karapatan',
     privacy_s3_title: '3. Pagpapanatili ng Data',
-    privacy_s3_body: 'Ang personal na impormasyon ay tatanggalin kaagad pagkatapos matupad ang layunin ng koleksyon. Ang mga eksepsiyon ay nalalapat kung saan ang pagpapanatili ay kinakailangan ng naaangkop na batas.',
+    privacy_s3_body: 'Ang personal na impormasyon ay tatanggalin kaagad pagkatapos matupad ang layunin ng koleksyon. Mga tiyak na panahon ng pagpapanatili: ① Data ng account at gameplay: 30 araw pagkatapos ng kahilingan sa pagtanggal ng account ② Mga rekord ng pagbabayad at transaksyon: hanggang 5 taon ayon sa naaangkop na batas ③ Mga rekord ng customer support: 3 taon pagkatapos ng resolusyon ④ Mga access log: 1 taon mula sa koleksyon. Ang data na napapailalim sa mga legal na obligasyon sa pagpapanatili ay matatanggal pagkatapos ng kinakailangang panahon.',
     privacy_s4_title: '4. Pagbabahagi sa Mga Third Party',
-    privacy_s4_body: 'Hindi namin ibinibigay ang iyong personal na impormasyon sa mga third party nang walang iyong pahintulot, maliban kung kinakailangan ng batas o sa iyong paunang kasunduan.',
+    privacy_s4_body: 'Hindi namin ibinabahagi ang iyong personal na impormasyon sa mga third party nang walang iyong paunang pahintulot, maliban sa mga sumusunod: ① Ayon sa naaangkop na batas ② Google LLC — para sa pagproseso ng bayad sa Google Play ③ Firebase (Google LLC) — para sa analytics at pagpapabuti ng serbisyo ④ Supabase Inc. — para sa pag-iimbak ng datos ng ranggo. Ang pagbabahagi ay limitado sa kung ano ang mahigpit na kinakailangan para sa pagbibigay ng serbisyo.',
     privacy_s5_title: '5. Iyong mga Karapatan',
-    privacy_s5_body: 'Maaari kang humiling na ma-access, mabago, matanggal, o mapaghigpitan ang pagproseso ng iyong personal na impormasyon anumang oras. Mangyaring isumite ang iyong kahilingan sa pamamagitan ng aming support email.',
-    privacy_s6_title: '6. Opisyal ng Privacy',
-    privacy_s6_body: 'Para sa mga katanungang may kaugnayan sa privacy, makipag-ugnayan sa:',
+    privacy_s5_body: 'Sa ilalim ng Data Privacy Act (RA 10173), mayroon kang mga sumusunod na karapatan: ① Karapatang Mag-access ② Karapatang Itama ③ Karapatang Burahin (napapailalim sa mga legal na obligasyon sa pagpapanatili) ④ Karapatang Paghigpitan ang Pagproseso ⑤ Karapatang sa Portability ng Data ⑥ Karapatang Tumutol sa mga desisyon ng automated na pagproseso. Para gamitin ang iyong mga karapatan, makipag-ugnayan sa support@icecatgames.net. Mayroon ka ring karapatang maghain ng reklamo sa National Privacy Commission (NPC) sa www.privacy.gov.ph.',
+    privacy_s6_title: '6. Data Protection Officer (DPO)',
+    privacy_s6_body: 'Para sa mga katanungang may kaugnayan sa privacy at mga kahilingan sa karapatan, makipag-ugnayan sa:',
+    privacy_s7_title: '7. Pagtugon sa Paglabag sa Data',
+    privacy_s7_body: 'Sa kaganapan ng paglabag sa personal na data, aabisuhan ng Kumpanya ang National Privacy Commission (NPC) sa loob ng 72 oras mula sa pagkakadiskubre, at aabisuhan ang mga apektadong gumagamit sa loob ng 5 araw ng negosyo, alinsunod sa RA 10173 at NPC Circular 16-03. Ang mga abiso ay maglalaman ng likas ng paglabag, mga uri ng naapektuhang data, mga hakbang na ginawa, at impormasyon sa pakikipag-ugnayan.',
+    privacy_s8_title: '8. Paglipat ng Data sa Ibang Bansa',
+    privacy_s8_body: 'Ang personal na data ay maaaring iproseso sa Republika ng Korea (punong tanggapan ng kumpanya), Estados Unidos (Google Firebase, Supabase servers), at iba pang hurisdiksyon kung kinakailangan. Ang lahat ng cross-border na paglipat ay isinasagawa na may angkop na mga pananggalang alinsunod sa RA 10173 at mga alituntunin ng NPC.',
+    privacy_s9_title: '9. Privacy ng mga Bata',
+    privacy_s9_body: 'Ang Serbisyong ito ay para sa mga gumagamit na 13 taong gulang pataas. Ang mga gumagamit na wala pang 18 taong gulang ay nangangailangan ng pahintulot ng magulang o legal na tagapag-alaga. Hindi kami sinadyang nangongolekta ng personal na impormasyon mula sa mga batang wala pang 13 taong gulang. Kung malaman namin na nakolekta ang naturang data, agad kaming magsasagawa ng mga hakbang upang tanggalin ito.',
+    privacy_s10_title: '10. Kahilingan sa Pagtanggal ng Account at Data',
+    privacy_s10_body: 'Maaaring humiling ang mga gumagamit ng pagtanggal ng kanilang account at nauugnay na personal na data sa pamamagitan ng menu na Mga Setting > Tanggalin ang Account sa loob ng laro. Ang mga kahilingan ay ipoproseso sa loob ng 30 araw ng negosyo. Ang data na napapailalim sa mga legal na obligasyon sa pagpapanatili ay ibubukod mula sa pagtanggal.',
   },
 };
 
