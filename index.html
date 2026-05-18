@@ -367,6 +367,7 @@ body {
 .badge-notice { background: rgba(160,100,220,0.2); color: #c9a0f5; border: 1px solid rgba(160,100,220,0.4); }
 .badge-launch { background: rgba(255,140,0,0.2); color: #ffc86a; border: 1px solid rgba(255,140,0,0.5); }
 .badge-maintenance { background: rgba(220,80,80,0.2); color: #ff9a9a; border: 1px solid rgba(220,80,80,0.45); }
+.badge-policy { background: rgba(190,60,60,0.22); color: #ffb3b3; border: 1px solid rgba(190,60,60,0.5); }
 
 .notice-meta { flex: 1; }
 
@@ -572,6 +573,29 @@ body {
           <div style="font-size:48px; margin-bottom:12px;">📭</div>
           <div style="font-size:16px; font-weight:600; margin-bottom:6px;">등록된 공지사항이 없습니다</div>
           <div style="font-size:13px;">새로운 공지사항이 등록되면 이곳에 표시됩니다</div>
+        </div>
+
+        <!-- 공지 7: 운영 정책 안내 -->
+        <div class="notice-item">
+          <div class="notice-header" onclick="toggleNotice(this.parentElement)">
+            <span class="notice-badge badge-policy" data-i18n="badge_policy"></span>
+            <div class="notice-meta">
+              <div class="notice-title" data-i18n="notice7_title"></div>
+              <div class="notice-date">2026.05.18</div>
+            </div>
+            <span class="notice-arrow">▼</span>
+          </div>
+          <div class="notice-body">
+            <p data-i18n="notice7_body1"></p>
+            <p data-i18n="notice7_body2"></p>
+            <ul>
+              <li data-i18n="notice7_li1"></li>
+              <li data-i18n="notice7_li2"></li>
+              <li data-i18n="notice7_li3"></li>
+            </ul>
+            <p data-i18n="notice7_body3"></p>
+            <p data-i18n="notice7_body4"></p>
+          </div>
         </div>
 
         <!-- 공지 6: 서버 점검 안내 -->
@@ -921,6 +945,15 @@ const i18n = {
     badge_notice: 'NOTICE',
     badge_launch: 'LAUNCH',
     badge_maintenance: '점검',
+    badge_policy: '정책',
+    notice7_title: '[운영 정책 안내]',
+    notice7_body1: '비정상 결제, 데이터 변조, 클라이언트 조작 등 게임 경제 및 랭킹 시스템에 부정적인 영향을 주는 행위에 대해 적극적인 모니터링을 진행하고 있습니다.',
+    notice7_body2: '해당 행위가 적발될 경우, 별도의 사전 경고 없이 아래의 조치가 적용될 수 있습니다.',
+    notice7_li1: '랭킹 기록 삭제',
+    notice7_li2: '부정하게 획득한 인게임 재화 및 아이템 회수',
+    notice7_li3: '계정 영구 이용 정지',
+    notice7_body3: '현재 소프트 런칭 기간 동안 모든 플레이어가 공정한 게임 환경을 누릴 수 있도록 보안 검증 및 대응 체계를 강화하고 있습니다.',
+    notice7_body4: '감사합니다.',
     notice6_title: '[점검] 서버 점검 안내 (5/12)',
     notice6_greeting: '안녕하세요, 모험가님! 🎉',
     notice6_body1: '서비스 안정성 향상을 위하여 아래와 같이 20분간 점검이 진행됩니다. 점검 시간 동안에는 게임 접속이 일시적으로 제한될 수 있는 점 양해 부탁드립니다.',
@@ -1086,6 +1119,15 @@ const i18n = {
     badge_notice: 'NOTICE',
     badge_launch: 'LAUNCH',
     badge_maintenance: 'MAINTENANCE',
+    badge_policy: 'POLICY',
+    notice7_title: '[Operations Policy Notice]',
+    notice7_body1: 'We are actively monitoring activities that negatively affect the game\'s economy and ranking systems, including unauthorized payments, data manipulation, and client tampering.',
+    notice7_body2: 'If such activities are detected, the following actions may be taken without prior warning:',
+    notice7_li1: 'Removal of ranking records',
+    notice7_li2: 'Removal of illegitimately obtained in-game currency and items',
+    notice7_li3: 'Permanent account suspension',
+    notice7_body3: 'During the current soft launch period, we are strengthening our security verification and response systems to maintain a fair gaming environment for all players.',
+    notice7_body4: 'Thank you.',
     notice6_title: '[Maintenance] Scheduled Server Maintenance (5/12)',
     notice6_greeting: 'Hello, Adventurer! 🎉',
     notice6_body1: 'To improve service stability, a scheduled 20-minute maintenance will be carried out as shown below. Game access may be temporarily restricted during this period — thank you for your understanding.',
@@ -1229,6 +1271,15 @@ const i18n = {
     badge_notice: 'NOTICE',
     badge_launch: 'LAUNCH',
     badge_maintenance: 'MAINTENANCE',
+    badge_policy: 'POLICY',
+    notice7_title: '[Abiso sa Patakaran sa Operasyon]',
+    notice7_body1: 'Aktibo naming binabantayan ang mga aktibidad na negatibong nakakaapekto sa ekonomiya at sistema ng ranking ng laro, kabilang ang hindi awtorisadong pagbabayad, pagmamanipula ng data, at pag-tamper sa client.',
+    notice7_body2: 'Kung matukoy ang ganitong mga aktibidad, maaaring isagawa ang mga sumusunod na hakbang nang walang paunang babala:',
+    notice7_li1: 'Pagtanggal ng mga ranking record',
+    notice7_li2: 'Pagtanggal ng mga hindi lehitimong nakuhang in-game currency at item',
+    notice7_li3: 'Permanenteng pag-suspinde ng account',
+    notice7_body3: 'Sa kasalukuyang panahon ng soft launch, pinapalakas namin ang aming mga sistema ng security verification at response upang mapanatili ang patas na kapaligiran sa paglalaro para sa lahat ng manlalaro.',
+    notice7_body4: 'Maraming salamat.',
     notice6_title: '[Maintenance] Nakatakdang Maintenance ng Server (5/12)',
     notice6_greeting: 'Kumusta, Manlalaro! 🎉',
     notice6_body1: 'Para mapabuti ang katatagan ng serbisyo, magsasagawa kami ng 20-minutong maintenance sa ibaba. Maaaring pansamantalang ma-restrict ang pag-access sa laro sa panahong ito — salamat sa inyong pang-unawa.',
