@@ -575,6 +575,37 @@ body {
           <div style="font-size:13px;">새로운 공지사항이 등록되면 이곳에 표시됩니다</div>
         </div>
 
+        <!-- 공지 8: 서버 점검 안내 (5/19) -->
+        <div class="notice-item">
+          <div class="notice-header" onclick="toggleNotice(this.parentElement)">
+            <span class="notice-badge badge-maintenance" data-i18n="badge_maintenance"></span>
+            <div class="notice-meta">
+              <div class="notice-title" data-i18n="notice8_title"></div>
+              <div class="notice-date">2026.05.19</div>
+            </div>
+            <span class="notice-arrow">▼</span>
+          </div>
+          <div class="notice-body">
+            <p data-i18n="notice8_greeting"></p>
+            <p data-i18n="notice8_body1"></p>
+            <ul>
+              <li>
+                <span data-i18n="notice8_li1"></span>
+                <ul>
+                  <li data-i18n="notice8_li2"></li>
+                </ul>
+              </li>
+              <li>
+                <span data-i18n="notice8_li3"></span>
+                <ul>
+                  <li data-i18n="notice8_li4"></li>
+                </ul>
+              </li>
+            </ul>
+            <p data-i18n="notice8_body2"></p>
+          </div>
+        </div>
+
         <!-- 공지 7: 운영 정책 안내 -->
         <div class="notice-item">
           <div class="notice-header" onclick="toggleNotice(this.parentElement)">
@@ -946,6 +977,14 @@ const i18n = {
     badge_launch: 'LAUNCH',
     badge_maintenance: '점검',
     badge_policy: '정책',
+    notice8_title: '[점검] 서버 점검 안내 (5/19)',
+    notice8_greeting: '안녕하세요, 모험가님! 🎉',
+    notice8_body1: '보다 안정적인 게임 환경을 제공해 드리기 위해 아래와 같이 서버 점검이 진행됩니다. 점검 시간 동안에는 게임 접속이 일시적으로 제한될 수 있는 점 양해 부탁드립니다.',
+    notice8_li1: '점검 시간 (UTC): 5/19 03:00 ~ 03:30',
+    notice8_li2: '필리핀 (PHT, UTC+8): 5/19 11:00 ~ 11:30',
+    notice8_li3: '점검 내용',
+    notice8_li4: '서버 안정화 작업',
+    notice8_body2: '앞으로도 모든 모험가님께 최고의 모험 경험을 선사할 수 있도록 최선을 다하겠습니다. 모험가님들의 너른 양해와 응원에 감사드립니다. 🌊',
     notice7_title: '[운영 정책 안내]',
     notice7_body1: '비정상 결제, 데이터 변조, 클라이언트 조작 등 게임 경제 및 랭킹 시스템에 부정적인 영향을 주는 행위에 대해 적극적인 모니터링을 진행하고 있습니다.',
     notice7_body2: '해당 행위가 적발될 경우, 별도의 사전 경고 없이 아래의 조치가 적용될 수 있습니다.',
@@ -1120,6 +1159,14 @@ const i18n = {
     badge_launch: 'LAUNCH',
     badge_maintenance: 'MAINTENANCE',
     badge_policy: 'POLICY',
+    notice8_title: '[Maintenance] Server Maintenance Notice (5/19)',
+    notice8_greeting: 'Hello, Adventurers! 🎉',
+    notice8_body1: 'To provide a more stable gameplay experience, server maintenance will be conducted as scheduled below. During the maintenance period, access to the game may be temporarily unavailable. We kindly ask for your understanding.',
+    notice8_li1: 'UTC: 5/19 03:00 ~ 03:30',
+    notice8_li2: 'Philippines (PHT, UTC+8): 5/19 11:00 ~ 11:30',
+    notice8_li3: 'Maintenance Details',
+    notice8_li4: 'Server Stability Improvements',
+    notice8_body2: 'We will continue to do our best to provide the best possible adventure experience for all players. Thank you for your patience and support! 🌊',
     notice7_title: '[Operations Policy Notice]',
     notice7_body1: 'We are actively monitoring activities that negatively affect the game\'s economy and ranking systems, including unauthorized payments, data manipulation, and client tampering.',
     notice7_body2: 'If such activities are detected, the following actions may be taken without prior warning:',
@@ -1272,6 +1319,14 @@ const i18n = {
     badge_launch: 'LAUNCH',
     badge_maintenance: 'MAINTENANCE',
     badge_policy: 'POLICY',
+    notice8_title: '[Maintenance] Abiso sa Server Maintenance (5/19)',
+    notice8_greeting: 'Kumusta, mga Manlalaro! 🎉',
+    notice8_body1: 'Upang makapagbigay ng mas matatag at maayos na karanasan sa paglalaro, magsasagawa kami ng server maintenance ayon sa iskedyul sa ibaba. Sa panahong ito, maaaring pansamantalang hindi ma-access ang laro. Maraming salamat sa inyong pang-unawa.',
+    notice8_li1: 'UTC: 5/19 03:00 ~ 03:30',
+    notice8_li2: 'Pilipinas (PHT, UTC+8): 5/19 11:00 ~ 11:30',
+    notice8_li3: 'Detalye ng Maintenance',
+    notice8_li4: 'Pagpapabuti ng Server Stability',
+    notice8_body2: 'Patuloy kaming magsusumikap upang maibigay ang pinakamahusay na karanasan sa paglalaro para sa lahat ng manlalaro. Maraming salamat sa inyong suporta at pasensya! 🌊',
     notice7_title: '[Abiso sa Patakaran sa Operasyon]',
     notice7_body1: 'Aktibo naming binabantayan ang mga aktibidad na negatibong nakakaapekto sa ekonomiya at sistema ng ranking ng laro, kabilang ang hindi awtorisadong pagbabayad, pagmamanipula ng data, at pag-tamper sa client.',
     notice7_body2: 'Kung matukoy ang ganitong mga aktibidad, maaaring isagawa ang mga sumusunod na hakbang nang walang paunang babala:',
