@@ -403,9 +403,8 @@ body {
 .notice-body p {
   font-size: 13.5px;
   color: var(--text-body);
-  line-height: 1.85;
-  margin-top: 14px;
-  margin-bottom: 8px;
+  line-height: 1.9;
+  margin: 12px 0;
 }
 
 .notice-body ul {
@@ -574,6 +573,41 @@ body {
           <div style="font-size:48px; margin-bottom:12px;">📭</div>
           <div style="font-size:16px; font-weight:600; margin-bottom:6px;">등록된 공지사항이 없습니다</div>
           <div style="font-size:13px;">새로운 공지사항이 등록되면 이곳에 표시됩니다</div>
+        </div>
+
+        <!-- 공지 10: 임시 서버 점검 안내 (5/22) -->
+        <div class="notice-item">
+          <div class="notice-header" onclick="toggleNotice(this.parentElement)">
+            <span class="notice-badge badge-maintenance" data-i18n="badge_maintenance"></span>
+            <div class="notice-meta">
+              <div class="notice-title" data-i18n="notice10_title"></div>
+              <div class="notice-date">2026.05.22</div>
+            </div>
+            <span class="notice-arrow">▼</span>
+          </div>
+          <div class="notice-body">
+            <p data-i18n="notice10_greeting"></p>
+            <p data-i18n="notice10_body1"></p>
+            <ul>
+              <li>
+                <span data-i18n="notice10_li1"></span>
+                <ul>
+                  <li data-i18n="notice10_li2"></li>
+                  <li data-i18n="notice10_li3"></li>
+                </ul>
+              </li>
+              <li>
+                <span data-i18n="notice10_li4"></span>
+                <ul>
+                  <li data-i18n="notice10_li5"></li>
+                  <li data-i18n="notice10_li6"></li>
+                  <li data-i18n-html="notice10_li7"></li>
+                </ul>
+              </li>
+            </ul>
+            <p data-i18n="notice10_body2"></p>
+            <p data-i18n="notice10_body4"></p>
+          </div>
         </div>
 
         <!-- 공지 9: 임시 서버 점검 안내 (5/19) - 추가공지 -->
@@ -1024,6 +1058,18 @@ const i18n = {
     badge_launch: 'LAUNCH',
     badge_maintenance: '점검',
     badge_policy: '정책',
+    notice10_title: '[점검] 임시 서버 점검 안내 (5/22)',
+    notice10_greeting: '안녕하세요, 구원자님! 🎉',
+    notice10_body1: '인게임 결제 관련 문제를 해결하기 위해 아래와 같이 임시 서버 점검이 진행될 예정입니다. 점검 시간 동안에는 게임 접속이 일시적으로 제한될 수 있는 점 너른 양해 부탁드립니다.',
+    notice10_li1: '점검 시간',
+    notice10_li2: 'UTC: 5/22 06:00 ~ 06:30',
+    notice10_li3: '필리핀 (PHT, UTC+8): 5/22 14:00 ~ 14:30',
+    notice10_li4: '점검 내용',
+    notice10_li5: '결제 오류 수정',
+    notice10_li6: '서버 안정화',
+    notice10_li7: '<strong>미지급된 상품</strong> 보상이 순차적으로 지급될 예정입니다.',
+    notice10_body2: '이용에 불편을 드린 점 진심으로 사과드립니다.',
+    notice10_body4: '앞으로 더욱 안정적이고 즐거운 게임 환경을 제공할 수 있도록 최선을 다하겠습니다. 🌊',
     notice9_title: '[점검] 임시 서버 점검 안내 (5/19)',
     notice9_greeting: '안녕하세요, 구원자님! 🎉',
     notice9_body1: '인게임 결제 관련 문제를 해결하기 위해 아래와 같이 임시 서버 점검이 진행될 예정입니다. 점검 시간 동안에는 게임 접속이 일시적으로 제한될 수 있는 점 너른 양해 부탁드립니다.',
@@ -1219,6 +1265,18 @@ const i18n = {
     badge_launch: 'LAUNCH',
     badge_maintenance: 'MAINTENANCE',
     badge_policy: 'POLICY',
+    notice10_title: '[Maintenance] Temporary Maintenance Notice (5/22)',
+    notice10_greeting: 'Hello, Adventurers! 🎉',
+    notice10_body1: 'To fix an issue affecting in-game payments, temporary maintenance will take place as scheduled below. During the maintenance period, access to the game may be temporarily unavailable. We kindly ask for your understanding.',
+    notice10_li1: 'Maintenance Schedule',
+    notice10_li2: 'UTC: 5/22 06:00 ~ 06:30',
+    notice10_li3: 'Philippines (PHT, UTC+8): 5/22 14:00 ~ 14:30',
+    notice10_li4: 'Maintenance Details',
+    notice10_li5: 'Fix for the payment issue',
+    notice10_li6: 'Server stabilization',
+    notice10_li7: 'Compensation for <strong>undelivered items</strong> will be distributed sequentially.',
+    notice10_body2: 'We sincerely apologize for the inconvenience caused.',
+    notice10_body4: 'We will continue to do our best to provide a more stable and enjoyable gameplay experience. Thank you for your patience and support! 🌊',
     notice9_title: '[Maintenance] Temporary Maintenance Notice (5/19)',
     notice9_greeting: 'Hello, Adventurers! 🎉',
     notice9_body1: 'To fix an issue affecting in-game payments, temporary maintenance will be conducted as scheduled below. During the maintenance period, access to the game may be temporarily unavailable. We kindly ask for your understanding.',
@@ -1392,6 +1450,18 @@ const i18n = {
     badge_launch: 'LAUNCH',
     badge_maintenance: 'MAINTENANCE',
     badge_policy: 'POLICY',
+    notice10_title: '[Maintenance] Paunawa ng Temporary Maintenance (5/22)',
+    notice10_greeting: 'Kumusta, mga Manlalaro! 🎉',
+    notice10_body1: 'Upang ayusin ang isyung nakaaapekto sa in-game payments, magsasagawa kami ng maintenance ayon sa iskedyul sa ibaba. Sa panahong ito, maaaring pansamantalang hindi ma-access ang laro. Maraming salamat sa inyong pang-unawa.',
+    notice10_li1: 'Iskedyul ng Maintenance',
+    notice10_li2: 'UTC: 5/22 06:00 ~ 06:30',
+    notice10_li3: 'Pilipinas (PHT, UTC+8): 5/22 14:00 ~ 14:30',
+    notice10_li4: 'Detalye ng Maintenance',
+    notice10_li5: 'Pag-aayos ng isyu sa pagbabayad',
+    notice10_li6: 'Server stabilization',
+    notice10_li7: 'Ang compensation para sa <strong>mga item na hindi naipadala</strong> ay ipapamahagi nang sunod-sunod.',
+    notice10_body2: 'Humihingi kami ng paumanhin sa abalang naidulot.',
+    notice10_body4: 'Patuloy kaming magsusumikap upang makapagbigay ng mas matatag at mas masayang karanasan sa paglalaro. Maraming salamat sa inyong suporta! 🌊',
     notice9_title: '[Maintenance] Paunawa ng Temporary Maintenance (5/19)',
     notice9_greeting: 'Kumusta, mga Manlalaro! 🎉',
     notice9_body1: 'Upang ayusin ang isyung nakaaapekto sa in-game payments, magsasagawa kami ng temporary maintenance ayon sa iskedyul sa ibaba. Sa panahong ito, maaaring pansamantalang hindi ma-access ang laro. Maraming salamat sa inyong pang-unawa.',
@@ -1548,6 +1618,10 @@ function applyLang(lang) {
   document.querySelectorAll('[data-i18n]').forEach(function(el) {
     var key = el.getAttribute('data-i18n');
     if (data[key] !== undefined) el.textContent = data[key];
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+    var key = el.getAttribute('data-i18n-html');
+    if (data[key] !== undefined) el.innerHTML = data[key];
   });
 }
 
