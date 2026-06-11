@@ -588,6 +588,7 @@ body {
           <div class="notice-body">
             <p data-i18n="notice12_greeting"></p>
             <p data-i18n-html="notice12_body1"></p>
+            <p data-i18n-html="notice12_ext" style="color:#ff6b6b; font-weight:bold;"></p>
             <ul>
               <li>
                 <strong data-i18n="notice12_li1"></strong>
@@ -599,7 +600,7 @@ body {
               <li>
                 <strong data-i18n="notice12_li4"></strong>
                 <ul>
-                  <li data-i18n="notice12_li5"></li>
+                  <li data-i18n-html="notice12_li5"></li>
                   <li data-i18n="notice12_li6"></li>
                 </ul>
               </li>
@@ -1151,14 +1152,15 @@ const i18n = {
     badge_launch: 'LAUNCH',
     badge_maintenance: '점검',
     badge_policy: '정책',
-    notice12_title: '[점검] 서버 점검 안내 (6/11)',
+    notice12_title: '[점검][연장] 서버 점검 안내 (6/11)',
     notice12_greeting: '안녕하세요, 구원자님! 🎉',
+    notice12_ext: '※ 현재 진행 중인 서버 점검이 연장되어, 점검 종료 일정을 추가로 안내 드립니다.<br>이용에 불편을 드려 진심으로 죄송합니다.',
     notice12_body1: '1.6.9 버전 업데이트를 위해 아래와 같이 서버 점검이 진행될 예정입니다.<br>점검 시간 동안에는 게임 접속이 일시적으로 제한될 수 있는 점 너른 양해 부탁드립니다.',
     notice12_li1: '점검 시간',
-    notice12_li2: 'UTC: 6/11 02:00 ~ <s>03:00 (1시간)</s> → 06:00 (4시간)',
-    notice12_li3: '필리핀 (PHT, UTC+8): 6/11 10:00 ~ <s>11:00 (1시간)</s> → 14:00 (4시간)',
+    notice12_li2: 'UTC: 6/11 02:00 ~ <s>03:00 (1시간)</s> → 09:00 (7시간)',
+    notice12_li3: '필리핀 (PHT, UTC+8): 6/11 10:00 ~ <s>11:00 (1시간)</s> → 17:00 (7시간)',
     notice12_li4: '점검 보상',
-    notice12_li5: '보석: 500',
+    notice12_li5: '보석: 500 + <span style="color:#39ff14">500 (추가)</span>',
     notice12_li6: '고급 기도문: 10',
     notice12_li7: '점검 내용',
     notice12_li8: '인게임 용어 수정',
@@ -1393,14 +1395,15 @@ const i18n = {
     badge_launch: 'LAUNCH',
     badge_maintenance: 'MAINTENANCE',
     badge_policy: 'POLICY',
-    notice12_title: '[Maintenance] Server Maintenance Notice (6/11)',
+    notice12_title: '[Maintenance][Extended] Server Maintenance Notice (6/11)',
     notice12_greeting: 'Hello, Adventurers! 🎉',
+    notice12_ext: '※ The ongoing update server maintenance has been extended, so we are providing an additional notice regarding the revised maintenance end time.<br>We sincerely apologize for any inconvenience caused.',
     notice12_body1: 'We will be conducting server maintenance for the v1.6.9 update according to the schedule below.<br>During the maintenance period, access to the game may be temporarily unavailable. We kindly ask for your understanding.',
     notice12_li1: 'Maintenance Schedule',
-    notice12_li2: 'UTC: 6/11 02:00 ~ <s>03:00 (1 hour)</s> → 06:00 (4 hours)',
-    notice12_li3: 'Philippines (PHT, UTC+8): 6/11 10:00 ~ <s>11:00 (1 hour)</s> → 14:00 (4 hours)',
+    notice12_li2: 'UTC: 6/11 02:00 ~ <s>03:00 (1 hour)</s> → 09:00 (7 hours)',
+    notice12_li3: 'Philippines (PHT, UTC+8): 6/11 10:00 ~ <s>11:00 (1 hour)</s> → 17:00 (7 hours)',
     notice12_li4: 'Maintenance Rewards',
-    notice12_li5: 'Gems: 500',
+    notice12_li5: 'Gems: 500 + <span style="color:#39ff14">500 (additional)</span>',
     notice12_li6: 'Premium Prayers ×10',
     notice12_li7: 'Maintenance Details',
     notice12_li8: 'In-game terminology updates',
@@ -1613,14 +1616,15 @@ const i18n = {
     badge_launch: 'LAUNCH',
     badge_maintenance: 'MAINTENANCE',
     badge_policy: 'POLICY',
-    notice12_title: '[Maintenance] Abiso sa Server Maintenance (6/11)',
+    notice12_title: '[Maintenance][Extended] Abiso sa Server Maintenance (6/11)',
     notice12_greeting: 'Kumusta, mga Manlalaro! 🎉',
+    notice12_ext: '※ Pinahaba ang kasalukuyang server maintenance para sa update, kaya nagbibigay kami ng karagdagang abiso tungkol sa binagong oras ng pagtatapos ng maintenance.<br>Humihingi kami ng paumanhin sa anumang abala.',
     notice12_body1: 'Magsasagawa kami ng server maintenance para sa update na v1.6.9 ayon sa iskedyul sa ibaba.<br>Sa panahon ng maintenance, maaaring pansamantalang hindi ma-access ang laro. Maraming salamat sa inyong pang-unawa.',
     notice12_li1: 'Iskedyul ng Maintenance',
-    notice12_li2: 'UTC: 6/11 02:00 ~ <s>03:00 (1 oras)</s> → 06:00 (4 oras)',
-    notice12_li3: 'Pilipinas (PHT, UTC+8): 6/11 10:00 ~ <s>11:00 (1 oras)</s> → 14:00 (4 oras)',
+    notice12_li2: 'UTC: 6/11 02:00 ~ <s>03:00 (1 oras)</s> → 09:00 (7 oras)',
+    notice12_li3: 'Pilipinas (PHT, UTC+8): 6/11 10:00 ~ <s>11:00 (1 oras)</s> → 17:00 (7 oras)',
     notice12_li4: 'Mga Reward sa Maintenance',
-    notice12_li5: 'Gems: 500',
+    notice12_li5: 'Gems: 500 + <span style="color:#39ff14">500 (additional)</span>',
     notice12_li6: 'Premium Prayers ×10',
     notice12_li7: 'Detalye ng Maintenance',
     notice12_li8: 'Mga update sa in-game terminology',
