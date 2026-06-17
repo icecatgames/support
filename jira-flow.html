@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AquaSurvival 지라 이슈 관리 플로우</title>
+<style>
+  :root{
+    --epic:#a061ff;   --epic-bg:#f1eaff;
+    --main:#2f6fed;   --main-bg:#e7f0ff;
+    --sub:#19b36b;    --sub-bg:#e4f7ee;
+    --ver:#ff8a3d;    --ver-bg:#fff0e6;
+    --wait:#9aa3af;   --prog:#2f6fed;   --merge:#2f6fed;
+    --qa:#2f6fed;     --done:#1f8f4d;   --drop:#1f8f4d;
+    --ink:#1d2430;    --muted:#5b6573;  --line:#dfe4ea;  --bg:#f6f8fb;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;font-family:"Segoe UI","Malgun Gothic","Apple SD Gothic Neo",sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.6;
+  }
+  .wrap{max-width:1000px;margin:0 auto;padding:48px 24px 80px}
+  header.top{margin-bottom:8px}
+  h1{font-size:30px;margin:0 0 6px;letter-spacing:-.5px}
+  .sub-title{color:var(--muted);margin:0 0 36px;font-size:15px}
+  h2{font-size:21px;margin:48px 0 16px;padding-bottom:8px;border-bottom:2px solid var(--line);scroll-margin-top:16px}
+  h3{font-size:16px;margin:22px 0 10px}
+  p{margin:8px 0}
+  .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 24px;
+        box-shadow:0 1px 2px rgba(20,30,50,.04)}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  @media(max-width:780px){.grid3{grid-template-columns:1fr}}
+
+  /* 목차 */
+  nav.toc{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 22px;margin-bottom:8px;
+          box-shadow:0 1px 2px rgba(20,30,50,.04)}
+  nav.toc b{font-size:13px;color:var(--muted);display:block;margin-bottom:10px;letter-spacing:.3px}
+  nav.toc ol{margin:0;padding-left:20px;columns:2;column-gap:32px;font-size:14px}
+  @media(max-width:600px){nav.toc ol{columns:1}}
+  nav.toc li{margin:4px 0}
+  nav.toc a{color:var(--ink);text-decoration:none}
+  nav.toc a:hover{color:var(--main);text-decoration:underline}
+  h2 a.anchor{color:inherit;text-decoration:none}
+
+  /* 이슈 타입 카드 */
+  .type{border-radius:14px;padding:18px 20px;border:1px solid var(--line);background:#fff}
+  .type .tag{display:inline-flex;align-items:center;gap:7px;font-weight:700;font-size:14px;
+             padding:4px 12px;border-radius:999px;color:#fff;margin-bottom:10px}
+  .type.epic .tag{background:var(--epic)}
+  .type.main .tag{background:var(--main)}
+  .type.sub  .tag{background:var(--sub)}
+  .type.epic{background:var(--epic-bg)}
+  .type.main{background:var(--main-bg)}
+  .type.sub {background:var(--sub-bg)}
+  .type .desc{font-size:14px;color:var(--muted);margin:0}
+  .type .gitmap{margin-top:12px;font-size:12.5px;color:var(--ink);background:rgba(255,255,255,.7);
+                border-radius:8px;padding:7px 10px;border:1px dashed rgba(0,0,0,.12)}
+  .type .gitmap b{font-weight:700}
+
+  /* 계층 트리 */
+  .tree{display:flex;flex-direction:column;gap:8px;font-size:14px}
+  .node{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:8px;
+        font-weight:600;color:#fff;width:max-content}
+  .node.epic{background:var(--epic)}
+  .node.main{background:var(--main)}
+  .node.sub {background:var(--sub)}
+  .lvl1{margin-left:0}
+  .lvl2{margin-left:34px}
+  .lvl3{margin-left:68px}
+  .connect{color:var(--muted);font-size:13px;margin-left:8px}
+
+  /* 상태 플로우 */
+  .flow{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:6px 0 4px}
+  .st{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:8px;
+      font-size:13.5px;font-weight:700;color:#fff;white-space:nowrap}
+  .st.wait{background:var(--wait)}
+  .st.prog{background:var(--prog)}
+  .st.merge{background:var(--merge)}
+  .st.qa{background:var(--qa)}
+  .st.done{background:#fff;color:var(--done);border:1.5px solid var(--done)}
+  .st.drop{background:var(--done);color:#fff}
+  .trans{display:inline-flex;flex-direction:column;align-items:center;color:var(--muted);font-size:11.5px}
+  .trans .lab{background:#eef1f6;border:1px solid var(--line);border-radius:999px;padding:2px 9px;white-space:nowrap}
+  .trans .ar{font-size:14px;line-height:1}
+  .arrow{color:var(--muted);font-weight:700;font-size:16px}
+  .branch{color:var(--muted);font-size:12.5px;margin:8px 0 0 2px}
+  .anybox{margin-top:12px;background:#f7f4ff;border:1px solid #e3d9ff;border-radius:10px;
+          padding:11px 15px;font-size:13px;color:#4a3a7a}
+  .anybox b{color:#6a4fd0}
+
+  /* 릴리즈 테이블 */
+  table.rel{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:6px}
+  table.rel th,table.rel td{border:1px solid var(--line);padding:8px 12px;text-align:left}
+  table.rel th{background:#f0f3f8;font-weight:700}
+  .badge{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:5px;
+         background:#3a3f4a;color:#cfd6e0;letter-spacing:.3px}
+  .pbar{height:9px;border-radius:5px;background:#e4e8ee;overflow:hidden;display:flex;min-width:120px}
+  .pbar .g{background:var(--sub)}
+  .pbar .b{background:var(--main)}
+
+  /* 라이프사이클 단계 */
+  ol.life{list-style:none;counter-reset:step;padding:0;margin:8px 0 0}
+  ol.life>li{counter-increment:step;position:relative;padding:14px 16px 14px 56px;margin-bottom:10px;
+             background:#fff;border:1px solid var(--line);border-radius:12px}
+  ol.life>li::before{content:counter(step);position:absolute;left:14px;top:14px;width:28px;height:28px;
+             background:var(--ink);color:#fff;border-radius:50%;display:flex;align-items:center;
+             justify-content:center;font-weight:700;font-size:14px}
+  ol.life>li b{font-size:15px}
+  ol.life>li .det{color:var(--muted);font-size:13.5px;margin-top:3px}
+
+  .legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:14px;font-size:13px;color:var(--muted)}
+  .legend span{display:inline-flex;align-items:center;gap:6px}
+  .dot{width:11px;height:11px;border-radius:3px;display:inline-block}
+
+  table.glo{width:100%;border-collapse:collapse;font-size:14px;margin-top:6px}
+  table.glo th,table.glo td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+  table.glo th{background:#f0f3f8;font-weight:700;width:120px}
+  .note{background:#fff8e6;border:1px solid #f0d98a;border-radius:10px;padding:12px 16px;
+        font-size:13.5px;color:#6b5300;margin-top:14px}
+  .note b{color:#8a6d00}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <h1>AquaSurvival 지라 이슈 관리 플로우</h1>
+    <p class="sub-title">스페이스: AquaSurvival (AS) · 에픽 / 메인 / 서브 3단계 이슈 구조와 릴리즈 패치까지의 작업 흐름 <span style="color:#9aa3af">| 신입 교육용</span></p>
+  </header>
+
+  <!-- 목차 -->
+  <nav class="toc">
+    <b>목차</b>
+    <ol>
+      <li><a href="#s1">한눈에 보기</a></li>
+      <li><a href="#s2">설계 목적 — 역할별 최소 단위</a></li>
+      <li><a href="#s3">이슈 계층 구조</a></li>
+      <li><a href="#s4">이슈 타입별 워크플로우</a></li>
+      <li><a href="#s5">버전 = 지라 릴리즈 단위</a></li>
+      <li><a href="#s6">릴리즈 패치까지의 전체 흐름</a></li>
+      <li><a href="#s7">실전 운영 팁</a></li>
+      <li><a href="#s8">용어 정리 (부록)</a></li>
+    </ol>
+  </nav>
+
+  <!-- 1. 한눈에 보기 -->
+  <h2 id="s1"><a class="anchor" href="#s1">1. 한눈에 보기</a></h2>
+  <div class="card">
+    <p>업무 유형은 <b>에픽 이슈 → 메인 이슈 → 서브 이슈</b> 3단계로 계층화됩니다.
+       각 단위는 git 및 릴리즈 흐름과 다음과 같이 대응됩니다.</p>
+    <div class="grid3" style="margin-top:16px">
+      <div class="type epic">
+        <span class="tag">⚡ 에픽 이슈</span>
+        <p class="desc"><b>1번의 패치로 끝나지 않는</b> 큰 작업 묶음을 관리하는 단위.
+           여러 버전(릴리즈)에 걸쳐 진행됩니다.</p>
+        <div class="gitmap">대응: <b>여러 패치에 걸친 기능 묶음</b></div>
+      </div>
+      <div class="type main">
+        <span class="tag">☑ 메인 이슈</span>
+        <p class="desc">하나의 버전에 <b>병합할 브랜치</b> 단위. 서브 이슈들의 묶음입니다.</p>
+        <div class="gitmap">대응: <b>브랜치 (병합 단위)</b></div>
+      </div>
+      <div class="type sub">
+        <span class="tag">＋ 서브 이슈</span>
+        <p class="desc">실제 <b>작업 단위</b>. 가장 작은 일감으로, 실제 손이 가는 작업입니다.</p>
+        <div class="gitmap">대응: <b>커밋 (commit)</b></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. 설계 목적 -->
+  <h2 id="s2"><a class="anchor" href="#s2">2. 설계 목적 — 역할별 최소 단위</a></h2>
+  <div class="card">
+    <p>이 워크플로우는 <b>각 역할이 자기 단위만 보고 일할 수 있도록</b> 최소 단위로 쪼갠 결과입니다.
+       모든 판단 근거가 지라 안에 있어 <b>지라가 단일 소스(single source)</b> 역할을 합니다.
+       <span style="color:var(--muted)">신입이라면 <b>"내가 어느 역할인지"</b>부터 확인하세요 — 대부분의 작업자는 <b>서브 이슈</b>만 다룹니다.</span></p>
+    <div class="grid3" style="margin-top:16px">
+      <div class="type main">
+        <span class="tag" style="background:#3a3f4a">🛠 빌드매니저</span>
+        <p class="desc"><b>지라만 보고</b> 일합니다. 메인 병합 · 릴리즈 구성 · QA 트리거 ·
+           라이브 패치 판단을 이슈 상태/링크만으로 진행.</p>
+      </div>
+      <div class="type sub">
+        <span class="tag" style="background:#3a3f4a">👤 작업자</span>
+        <p class="desc"><b>서브 이슈 위주</b>로만 작업. 자기 일감(commit 단위)을
+           대기→진행→완료로 처리하면 끝, 릴리즈 흐름은 신경 쓸 필요 없음.</p>
+      </div>
+      <div class="type epic">
+        <span class="tag" style="background:#3a3f4a">🔍 QA</span>
+        <p class="desc"><b>QA만</b> 합니다. 릴리즈 단위로 들어온 빌드를 통합 검증하고,
+           실패분은 신규 이슈로 발행(링크)하면 끝.</p>
+      </div>
+    </div>
+    <div class="note" style="background:#eaf3ff;border-color:#aacbf2;color:#1c4a85">
+      <b>왜 forward-only + 이슈 링크인가 —</b> 일감을 뒤로 되돌리지 않고 항상 완료/취소로 닫은 뒤
+      후속을 신규 이슈로 분리·링크하면, 각 역할은 <b>"열려 있는 자기 일감"</b>만 보면 됩니다.
+      되돌아오는 일감이 없으니 상태가 단순해지고, 링크로 히스토리는 그대로 보존됩니다.
+      <span style="color:#5a6473">(forward-only·이슈 링크의 구체적 동작은 4~6장에서 다룹니다.)</span>
+    </div>
+  </div>
+
+  <!-- 3. 계층 구조 -->
+  <h2 id="s3"><a class="anchor" href="#s3">3. 이슈 계층 구조</a></h2>
+  <div class="card">
+    <p>에픽 아래에 여러 메인이, 각 메인 아래에 여러 서브가 매달립니다.</p>
+    <div class="tree" style="margin-top:14px">
+      <div class="lvl1"><span class="node epic">⚡ 에픽</span><span class="connect">— 여러 패치에 걸친 작업 묶음</span></div>
+      <div class="lvl2"><span class="node main">☑ 메인 A</span><span class="connect">— 버전에 병합할 브랜치</span></div>
+      <div class="lvl3"><span class="node sub">＋ 서브 1</span><span class="connect">— commit</span></div>
+      <div class="lvl3"><span class="node sub">＋ 서브 2</span><span class="connect">— commit</span></div>
+      <div class="lvl2"><span class="node main">☑ 메인 B</span><span class="connect">— 버전에 병합할 브랜치</span></div>
+      <div class="lvl3"><span class="node sub">＋ 서브 3</span><span class="connect">— commit</span></div>
+      <div class="lvl3"><span class="node sub">＋ 서브 4</span><span class="connect">— commit</span></div>
+    </div>
+  </div>
+
+  <!-- 4. 상태 플로우 -->
+  <h2 id="s4"><a class="anchor" href="#s4">4. 이슈 타입별 워크플로우</a></h2>
+
+  <div class="card">
+    <h3 style="color:var(--sub)">서브 이슈 — 작업 단위 (commit)</h3>
+    <div class="flow">
+      <span class="st wait">대기</span>
+      <span class="trans"><span class="lab">업무개시</span><span class="ar">→</span></span>
+      <span class="st prog">진행</span>
+      <span class="trans"><span class="lab">작업 완료</span><span class="ar">→</span></span>
+      <span class="st done">완료</span>
+    </div>
+    <p class="branch">진행하던 작업을 이번 버전에 넣지 않기로 하면 <b>취소(미반영)</b>로 빠집니다.</p>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <h3 style="color:var(--main)">메인 이슈 — 병합 브랜치 단위</h3>
+    <div class="flow">
+      <span class="st wait">대기</span>
+      <span class="trans"><span class="lab">업무개시</span><span class="ar">→</span></span>
+      <span class="st prog">진행</span>
+      <span class="trans"><span class="lab">모든 서브 일감 완료</span><span class="ar">→</span></span>
+      <span class="st merge">병합</span>
+      <span class="trans"><span class="lab">apk 테스트</span><span class="ar">→</span></span>
+      <span class="st qa">QA</span>
+      <span class="trans"><span class="lab">통과</span><span class="ar">→</span></span>
+      <span class="st done">완료</span>
+    </div>
+    <p class="branch">
+      하위 서브가 <b>모두 종결(완료 또는 취소)</b>되면 체크 후 병합 → <b>병합</b> 상태.
+      병합된 메인들이 모여 릴리즈를 이루면 <b>apk 테스트 → QA</b>를 거쳐 <b>완료</b>됩니다.
+      <br><span style="color:#7a6aa8">※ 릴리즈 범주에서는 <b>완료·취소 모두 "종결"</b>로 보아 게이트를 통과시킵니다.</span>
+    </p>
+    <div class="anybox">
+      <b>QA 결과와 무관하게 일감은 앞으로만 진행(forward-only)</b> — 실패해도 뒤로 돌아가지 않습니다.
+      QA 실패분도 <b>완료</b>로 종결하고, 후속 작업은 <b>신규 이슈로 발행</b>해
+      <b>같은 버전 또는 다음 버전</b>에 타겟팅합니다. 최악의 경우 종결과 함께 <b>롤백</b>.
+      <div style="margin-top:6px;color:#6a4fd0">
+        ※ <b>완료 = "이 일감의 수명이 끝남"</b>이지 "검증 통과"가 아닙니다.
+        <b>취소(미반영)</b>는 애초에 이번 버전에 넣지 않은 경우로 의미가 다릅니다.
+      </div>
+      <div style="margin-top:6px;color:#6a4fd0">
+        ※ 종료·취소된 일감과 그 후속 신규 일감은 <b>이슈 링크로 연결</b>해
+        <b>히스토리를 끊기지 않게</b> 이어갑니다.
+      </div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <span><i class="dot" style="background:var(--wait)"></i>대기</span>
+    <span><i class="dot" style="background:var(--prog)"></i>진행</span>
+    <span><i class="dot" style="background:var(--merge)"></i>병합</span>
+    <span><i class="dot" style="background:var(--qa)"></i>QA</span>
+    <span><i class="dot" style="border:1.5px solid var(--done);background:#fff"></i>완료</span>
+    <span><i class="dot" style="background:var(--done)"></i>취소(미반영)</span>
+  </div>
+
+  <!-- 5. 릴리즈(버전) -->
+  <h2 id="s5"><a class="anchor" href="#s5">5. 버전 = 지라 릴리즈 단위</a></h2>
+  <div class="card">
+    <p>병합된 메인들이 모여 하나의 <b>릴리즈(버전)</b>를 구성합니다.
+       <b>각 릴리즈는 1번의 점검에 반영되는 패치 단위</b>이며, 지라 <b>릴리즈</b> 탭에서 버전별로 관리됩니다.</p>
+    <table class="rel">
+      <tr><th>Release</th><th>Status</th><th>Progress</th><th>Release date</th><th>비고</th></tr>
+      <tr><td>1.6.10_live</td><td><span class="badge">UNRELEASED</span></td>
+          <td><div class="pbar"></div></td><td>—</td><td>라이브 확인 전용 (선택적)</td></tr>
+      <tr><td>1.6.10</td><td><span class="badge">UNRELEASED</span></td>
+          <td><div class="pbar"><span class="b" style="width:55%"></span></div></td><td>2026-06-25</td><td>작업 중</td></tr>
+      <tr><td>1.6.9</td><td><span class="badge">UNRELEASED</span></td>
+          <td><div class="pbar"><span class="g" style="width:97%"></span></div></td><td>2026-06-11</td><td>거의 완료</td></tr>
+      <tr><td>버전 미지정</td><td><span class="badge">UNRELEASED</span></td>
+          <td><div class="pbar"><span class="g" style="width:30%"></span><span class="b" style="width:15%"></span></div></td><td>2099-12-31</td><td>버전 미배정 일감</td></tr>
+    </table>
+    <p class="branch">진행률 막대: <span style="color:var(--sub);font-weight:700">초록=완료</span> ·
+      <span style="color:var(--main);font-weight:700">파랑=진행</span> · 회색=잔여</p>
+    <div class="note">
+      <b>통합 QA (forward-only) —</b> 릴리즈 단위 병합이 끝나면 <b>그 버전에서 통합 QA</b>를 진행합니다.
+      <b>실패하더라도 해당 일감은 그대로 완료 종결</b>하고(뒤로 돌리지 않음),
+      후속은 <b>신규 지라를 발행</b>해 <b>같은 버전 또는 다음 버전</b>에 타겟팅합니다.
+      최악의 경우 종결과 함께 <b>롤백</b>합니다.
+    </div>
+    <div class="note" style="background:#eaf3ff;border-color:#aacbf2;color:#1c4a85;margin-top:10px">
+      <b>_live 접미 릴리즈 —</b> 점검 전 QA로는 끝낼 수 없고 <b>라이브에서만 확인해야 종료되는 이슈</b>
+      (특정 타이밍 발생, 로그·모니터링 검증 등)를 모으는 별도 버전입니다.
+      해당 이슈가 없는 버전에는 <b>생기지 않을 수도 있습니다</b>(선택적).
+    </div>
+  </div>
+
+  <!-- 6. 전체 라이프사이클 -->
+  <h2 id="s6"><a class="anchor" href="#s6">6. 릴리즈 패치까지의 전체 흐름</a></h2>
+  <div class="card">
+    <ol class="life">
+      <li>
+        <b>서브 작업 진행 &amp; 완료</b>
+        <div class="det">각 서브 일감(commit 단위)을 <span style="color:var(--sub);font-weight:700">대기 → 진행 → 완료</span>로 처리. 빠지는 작업은 취소(미반영).</div>
+      </li>
+      <li>
+        <b>메인 단위 병합</b>
+        <div class="det">한 메인의 <b>모든 서브가 종결(완료 또는 취소)</b>되면 체크 후 병합 → 메인이 <span style="color:var(--merge);font-weight:700">병합</span> 상태로.</div>
+      </li>
+      <li>
+        <b>릴리즈(버전) 구성</b>
+        <div class="det">병합된 메인들이 모여 하나의 <span style="color:var(--ver);font-weight:700">릴리즈</span>를 구성. 이번 점검에 반영될 단위입니다.</div>
+      </li>
+      <li>
+        <b>apk 테스트 → 통합 QA</b>
+        <div class="det">릴리즈 단위로 apk 테스트 후 <span style="color:var(--qa);font-weight:700">통합 QA</span> 진행.
+          실패분도 <b>완료로 종결</b>하고 <b>신규 이슈를 발행</b>해 같은/다음 버전에 타겟팅(최악의 경우 롤백).</div>
+      </li>
+      <li>
+        <b>완료 &amp; 라이브 패치</b>
+        <div class="det">QA 통과 시 메인은 <span style="color:var(--done);font-weight:700">완료</span> → 해당 릴리즈를 <b>점검 시 라이브에 패치</b>(예: 1.6.10 → 1.6.10_live).</div>
+      </li>
+    </ol>
+    <div class="note">
+      <b>참고 —</b> 에픽은 1번의 패치로 끝나지 않는 작업을 묶는 상위 단위이므로,
+      위 1~5단계(릴리즈 단위 사이클)가 여러 번 반복되며 그 진행 상황을 추적합니다.
+    </div>
+  </div>
+
+  <!-- 7. 실전 팁 -->
+  <h2 id="s7"><a class="anchor" href="#s7">7. 실전 운영 팁</a></h2>
+  <div class="card">
+    <div class="note" style="background:#e4f7ee;border-color:#9adcbb;color:#0f5a35;margin-top:0">
+      <b>① 히스토리 코멘트는 메인 일감에 남긴다</b><br>
+      서브에서 진행한 <b>브랜치명</b> 등은 <b>메인 일감 코멘트</b>로 모읍니다.
+      그래야 빌드매니저가 메인 하나만 봐도 문맥이 서고, ver 넣기 전
+      <b>작업물을 모아 유니티 에디터로 목표 달성을 확인한 뒤</b> 병합을 넣을 수 있습니다.
+      <span style="color:#0a7a44">(서브 = 작업 진행 / 메인 = 히스토리·검증·병합 판단의 기준점)</span>
+    </div>
+    <div class="note" style="background:#fff3e8;border-color:#f0c193;color:#7a4a16;margin-top:12px">
+      <b>② QA 실패 = 항상 신규 이슈는 아니다 (강제하지 말 것)</b><br>
+      실패분은 <b>완료로 종결</b>하되, 후속 이슈 발행은 <b>케이스마다 판단</b>합니다.
+      바로 고칠 수도, <b>일정상 다음 버전으로 미룰 수도</b> 있기 때문에
+      "무조건 이슈 생성"으로 강제하면 오히려 부정확해집니다.
+      대신 <b>후속 이슈가 생길 때만 이슈 링크</b>로 히스토리를 잇습니다.
+    </div>
+    <div class="note" style="background:#eef0f4;border-color:#cfd5de;color:#3a4250;margin-top:12px">
+      <b>③ (참고) Smart Commit — 미래 자동화 옵션</b><br>
+      커밋 메시지에 남기는 <b>지라 URL</b>은 일감 바로가기 <b>하이퍼링크</b>용이지만,
+      그 URL 안에는 <b>이슈 키</b>(예: <code>AS-123</code>)가 들어 있습니다.
+      repo↔지라 <b>연동을 걸고 키 파싱만 정리</b>하면, 커밋이 해당 일감에 자동 링크되고
+      <code>#comment</code> 명령으로 커밋 내용을 코멘트로 남길 수도 있습니다.
+      <span style="color:#5a6473">※ 단, 자동 코멘트는 <b>커밋 author 이메일 = 지라 계정 이메일</b> 매칭이 필요하고,
+      연동은 <b>지라 인스턴스마다 1회</b> 설정해야 합니다. (현 단계에선 미적용)</span>
+    </div>
+    <div class="note" style="background:#eef0f4;border-color:#cfd5de;color:#3a4250;margin-top:12px">
+      <b>④ 서브 → 메인 상태 자동 전환 — 우선 "진행"만 적용</b><br>
+      지라 <b>자동화 규칙(Automation)</b>으로
+      <b>서브 이슈 중 1개라도 "진행"으로 바뀌면 메인 이슈를 "진행"으로</b> 전환하는 것만 우선 겁니다.
+      <span style="color:#5a6473">※ 서브는 <b>중간에 추가될 수 있어</b> "모든 서브 종결 → 메인 병합" 같은 자동화는
+      깨지기 쉬우므로 적용하지 않습니다. "하나라도 진행 → 메인 진행"은 그런 영향 없이 안전합니다.
+      (병합·QA 등 사람 게이트가 있는 전환은 수동 유지)</span>
+    </div>
+  </div>
+
+  <!-- 8. 용어 정리 (부록) -->
+  <h2 id="s8"><a class="anchor" href="#s8">8. 용어 정리 (부록)</a></h2>
+  <div class="card">
+    <table class="glo">
+      <tr><th>에픽 이슈</th><td>1번의 패치로 완료되지 않는, 여러 버전에 걸친 작업 묶음 단위.</td></tr>
+      <tr><th>메인 이슈</th><td>하나의 버전에 병합할 브랜치 단위. 서브들의 묶음.</td></tr>
+      <tr><th>서브 이슈</th><td>실제 작업 단위(= commit). 가장 작은 일감.</td></tr>
+      <tr><th>릴리즈(버전)</th><td>병합된 메인들의 집합. 1번의 점검에 반영되는 패치 단위(지라 릴리즈로 관리).</td></tr>
+      <tr><th>통합 QA</th><td>릴리즈 전체를 묶어 진행하는 QA. 결과에 따라 롤백·추가 이슈 반영.</td></tr>
+      <tr><th>점검</th><td>릴리즈를 라이브에 반영(패치)하는 시점.</td></tr>
+      <tr><th>완료</th><td>일감의 수명이 끝난 종결 상태. <b>"검증 통과"가 아님</b> — QA 실패분도 완료로 닫고 후속은 신규 이슈로 분리.</td></tr>
+      <tr><th>취소(미반영)</th><td>애초에 이번 버전에 넣지 않기로 한 서브/메인의 종결 분기. 완료와 의미가 다름.</td></tr>
+      <tr><th>종결</th><td>릴리즈 범주에서 <b>완료 또는 취소</b> 상태. 상위 게이트(병합·에픽 완료)는 종결 기준으로 판단.</td></tr>
+      <tr><th>이슈 링크</th><td>종료·취소된 일감과 후속 신규 일감을 연결해 히스토리를 잇는 장치.</td></tr>
+    </table>
+  </div>
+
+</div>
+</body>
+</html>
