@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>아쿠아서바이벌 고객센터</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
   --gold: #c9a84c;
@@ -26,7 +26,7 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-  font-family: 'Noto Sans KR', 'Noto Sans', sans-serif;
+  font-family: 'Noto Sans KR', 'Noto Sans Thai', 'Noto Sans', sans-serif;
   font-size: 15px;
   line-height: 1.8;
   color: var(--text-body);
@@ -328,6 +328,27 @@ body {
   font-size: 14px;
 }
 
+/* Regional addendum */
+.addendum-head {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 15px; font-weight: 700; color: var(--text-strong);
+  background: var(--navy-card);
+  border: 1px solid rgba(201,168,76,0.28);
+  border-radius: 10px; padding: 13px 16px; margin-bottom: 10px;
+}
+.addendum-note {
+  font-size: 13px; color: var(--text-muted); line-height: 1.8;
+  border-left: 3px solid var(--gold);
+  background: rgba(201,168,76,0.06);
+  border-radius: 6px; padding: 11px 14px; margin-bottom: 28px;
+}
+.addendum-note b { color: var(--gold-light); }
+.addendum-todo {
+  font-size: 12.5px; color: #f0d98a; line-height: 1.7;
+  border: 1px dashed rgba(240,217,138,0.45);
+  border-radius: 8px; padding: 9px 13px; margin-top: 10px;
+}
+
 /* ── NOTICE ── */
 .notice-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 40px; }
 
@@ -547,6 +568,10 @@ body {
       <span class="lang-flag">🇵🇭</span>
       <span class="lang-name">Filipino</span>
     </div>
+    <div class="lang-item" onclick="setLang('th')">
+      <span class="lang-flag">🇹🇭</span>
+      <span class="lang-name">ไทย</span>
+    </div>
   </div>
 </div>
 
@@ -559,6 +584,7 @@ body {
     <div class="nav-tab" onclick="switchPage('support', this)" data-i18n="tab_support"></div>
     <div class="nav-tab" onclick="switchPage('terms', this)" data-i18n="tab_terms"></div>
     <div class="nav-tab" onclick="switchPage('privacy', this)" data-i18n="tab_privacy"></div>
+    <div class="nav-tab" onclick="switchPage('regional', this)" data-i18n="tab_regional"></div>
   </div>
 
   <!-- Content -->
@@ -1322,6 +1348,52 @@ body {
       </div>
     </div>
 
+    <!-- 국가별 부칙 -->
+    <div class="page-section" id="page-regional">
+      <div class="page-title" data-i18n="regional_title"></div>
+      <div class="page-subtitle" data-i18n="regional_subtitle"></div>
+      <div class="addendum-head"><span data-i18n="regional_country"></span></div>
+      <div class="addendum-note" data-i18n-html="regional_note"></div>
+
+      <div class="doc-section">
+        <h3 data-i18n="regional_law_title"></h3>
+        <p data-i18n="regional_law_body"></p>
+      </div>
+      <div class="doc-section">
+        <h3 data-i18n="regional_regulator_title"></h3>
+        <p data-i18n="regional_regulator_body"></p>
+      </div>
+      <div class="doc-section">
+        <h3 data-i18n="regional_basis_title"></h3>
+        <p data-i18n="regional_basis_body"></p>
+      </div>
+      <div class="doc-section">
+        <h3 data-i18n="regional_minor_title"></h3>
+        <p data-i18n="regional_minor_body"></p>
+      </div>
+      <div class="doc-section">
+        <h3 data-i18n="regional_transfer_title"></h3>
+        <p data-i18n="regional_transfer_body"></p>
+      </div>
+      <div class="doc-section">
+        <h3 data-i18n="regional_breach_title"></h3>
+        <p data-i18n="regional_breach_body"></p>
+      </div>
+      <div class="doc-section">
+        <h3 data-i18n="regional_rep_title"></h3>
+        <p data-i18n="regional_rep_body"></p>
+        <div class="addendum-todo" data-i18n="regional_rep_todo"></div>
+      </div>
+      <div class="doc-section">
+        <h3 data-i18n="regional_rights_title"></h3>
+        <p data-i18n="regional_rights_body"></p>
+      </div>
+      <div class="doc-section">
+        <h3 data-i18n="regional_dispute_title"></h3>
+        <p data-i18n="regional_dispute_body"></p>
+      </div>
+    </div>
+
   </div><!-- /content -->
 </div><!-- /main -->
 
@@ -1335,6 +1407,7 @@ const i18n = {
     tab_support: '고객센터',
     tab_terms: '서비스 이용약관',
     tab_privacy: '개인정보 처리방침',
+    tab_regional: '국가별 부칙',
 
     community_title: '커뮤니티',
     community_subtitle: '아쿠아서바이벌의 공식 채널에서 최신 소식과 함께 다른 구원자들을 만나보세요.',
@@ -1579,11 +1652,11 @@ const i18n = {
     terms_s3_li2: '게임 내 핵·버그 악용 등 비정상적인 방법을 통한 게임 이용',
     terms_s3_li3: '다른 이용자에 대한 욕설, 비방, 성희롱 등 불건전한 행위',
     terms_s3_li4: '회사의 사전 동의 없이 서비스를 영리 목적으로 이용하는 행위',
-    terms_s3_li5: '만 18세 미만 미성년자는 부모 또는 법정대리인의 동의를 받아 서비스를 이용해야 하며, 만 13세 미만은 서비스 이용이 제한될 수 있습니다.',
+    terms_s3_li5: '미성년자는 거주국 법령 및 「국가별 부칙」이 정한 연령·보호자(법정대리인) 동의 요건을 준수해야 합니다. (기본 기준: 만 18세 미만은 보호자 동의, 만 13세 미만은 이용 제한)',
     terms_s4_title: '제4조 (서비스의 제공 및 변경)',
     terms_s4_body: '회사는 서비스를 365일 24시간 제공하는 것을 원칙으로 하나, 정기점검·시스템 장애 등의 경우 서비스를 일시 중단할 수 있습니다.',
     terms_s5_title: '제5조 (유료서비스 및 환불 정책)',
-    terms_s5_body: '본 게임은 필리핀(Philippines)에서 서비스되며, 인앱결제는 Google Play 정책을 우선 적용합니다. 소비자 보호를 위해 Consumer Act of the Philippines에 따라 공정한 환불 정책을 운영합니다.',
+    terms_s5_body: '인앱결제는 각 앱 마켓(Google Play, Apple App Store 등)의 정책이 우선 적용됩니다. 회사는 이에 더하여 이용자 거주국의 강행 소비자보호법이 보장하는 청약철회·환불 권리를 보장합니다. 국가별 소비자분쟁·환불 창구는 「국가별 부칙」을 참조하세요.',
     terms_s5_refund_ok_title: '✅ 환불 가능 사유',
     terms_s5_ok_li1: '구매 후 48시간 이내 미사용 아이템 (Google Play 정책 우선 적용)',
     terms_s5_ok_li2: '결제 오류 또는 중복 결제',
@@ -1600,11 +1673,11 @@ const i18n = {
     terms_s6_title: '제6조 (지식재산권)',
     terms_s6_body: '서비스 내 모든 콘텐츠(캐릭터, 스토리, UI 등)에 대한 지식재산권은 회사에 귀속됩니다. 이용자는 회사의 명시적 동의 없이 이를 복제·배포·변형할 수 없습니다.',
     terms_s7_title: '제7조 (준거법 및 관할)',
-    terms_s7_body: '본 약관은 필리핀 공화국(Republic of the Philippines)의 법률(Consumer Act of the Philippines, RA 7394 및 Electronic Commerce Act, RA 8792 포함)에 따라 해석 및 적용됩니다.',
+    terms_s7_body: '본 약관은 대한민국 법률에 따라 해석·적용됩니다. 다만 이용자가 소비자인 경우, 거주국의 강행 소비자보호 법령이 보장하는 권리를 박탈하지 아니하며, 이용자는 자신의 거주국 법원에도 소를 제기할 수 있습니다. 국가별 감독기구·분쟁창구는 「국가별 부칙」을 참조하세요.',
     terms_s8_title: '제8조 (계정 삭제 및 서비스 탈퇴)',
     terms_s8_body: '이용자는 언제든지 게임 내 설정 > 계정 삭제 기능을 통해 탈퇴를 요청할 수 있습니다. 탈퇴 요청 후 30일 이내에 관련 개인정보가 파기되며, 관련 법령에 따라 보존이 필요한 정보는 해당 기간 경과 후 파기됩니다. 구글 플레이 정책에 따라 계정 삭제 시 잔여 유료 아이템에 대한 환불은 별도로 고객센터에 문의하시기 바랍니다.',
     terms_s9_title: '제9조 (분쟁 해결)',
-    terms_s9_body: '본 약관과 관련한 분쟁은 먼저 당사자 간 협의를 통해 해결을 시도합니다. 협의가 이루어지지 않을 경우, 필리핀 소비자보호법(RA 7394) 및 전자상거래법(RA 8792)에 따라 Department of Trade and Industry(DTI) 또는 필리핀 관할 법원을 통해 해결합니다.',
+    terms_s9_body: '본 약관과 관련한 분쟁은 먼저 당사자 간 협의 및 고객센터를 통해 해결을 시도합니다. 협의가 이루어지지 않을 경우, 이용자 거주국의 강행 소비자보호 법령 및 관할 분쟁창구에 따라 해결하며, 구체적인 국가별 창구는 「국가별 부칙」에 명시합니다.',
 
     privacy_title: '개인정보 처리방침',
     privacy_subtitle: '회사는 이용자의 개인정보를 소중히 보호합니다.',
@@ -1616,7 +1689,7 @@ const i18n = {
     privacy_s1_li4: '자동 수집: IP 주소, 서비스 이용 기록, 접속 로그',
     privacy_s1_li5: '광고 식별자: 광고 ID(ADID) 또는 IDFA (맞춤 광고 및 분석 목적, 이용자 동의 후 수집)',
     privacy_s1_li6: '제3자 SDK를 통한 수집: Firebase Analytics(Google), Google Play 결제 SDK, Supabase 등 — 각 SDK의 개인정보처리방침이 별도로 적용됩니다.',
-    privacy_s1_legal_basis: '※ 처리 법적 근거: 이용자의 동의(RA 10173 제12조), 서비스 계약 이행, 법적 의무 준수, 정당한 이해관계에 따라 개인정보를 처리합니다.',
+    privacy_s1_legal_basis: '※ 처리의 법적 근거: 회사는 이용자의 동의, 서비스 계약의 이행, 법령상 의무 준수, 정당한 이익에 근거하여 개인정보를 처리합니다. 국가별 구체적 근거·감독기구는 「국가별 부칙」에 따릅니다.',
     privacy_s2_title: '2. 개인정보의 이용 목적',
     privacy_s2_body: '수집한 개인정보는 다음 목적에 한하여 이용됩니다:',
     privacy_s2_li1: '서비스 제공 및 운영, 계정 관리',
@@ -1629,17 +1702,41 @@ const i18n = {
     privacy_s4_title: '4. 개인정보의 제3자 제공',
     privacy_s4_body: '회사는 이용자의 사전 동의 없이 개인정보를 제3자에게 제공하지 않습니다. 다만 다음의 경우는 예외입니다: ① 법령의 규정에 따른 경우 ② Google LLC (Google Play 결제 처리) ③ Firebase/Google LLC (서비스 분석·개선) ④ Supabase Inc. (랭킹 데이터 저장) ⑤ IPinfo Inc. (IP 주소 기반 국가 정보 조회 — IP address data powered by IPinfo, https://ipinfo.io). 제공은 서비스 제공에 필수적인 범위로 제한되며, 제공 목적 외 이용을 금합니다.',
     privacy_s5_title: '5. 이용자의 권리',
-    privacy_s5_body: '이용자는 개인정보보호법(RA 10173)에 따라 다음의 권리를 행사할 수 있습니다: ① 열람권 ② 수정권 ③ 삭제권 (법령상 보존 의무가 있는 경우 제외) ④ 처리 정지권 ⑤ 데이터 이동권 (이식 가능한 형태로 제공 요청) ⑥ 이의제기권 (자동화된 처리 결과에 대한 이의 제기). 요청은 aqua-support@icecatgames.net으로 접수해 주세요. 또한 이용자는 개인정보 침해 관련 국가개인정보위원회(National Privacy Commission, www.privacy.gov.ph)에 민원을 제기할 권리가 있습니다.',
+    privacy_s5_body: '이용자는 관련 개인정보 보호법에 따라 다음의 권리를 행사할 수 있습니다: ① 열람권 ② 정정권 ③ 삭제권 (법령상 보존 의무가 있는 경우 제외) ④ 처리 정지권 ⑤ 데이터 이동권 (이식 가능한 형태로 제공 요청) ⑥ 이의제기권 (자동화된 처리 결과에 대한 이의 제기). 요청은 aqua-privacy@icecatgames.net으로 접수해 주세요. 또한 이용자는 거주국 개인정보 감독기구에 민원을 제기할 권리가 있으며, 국가별 감독기구는 「국가별 부칙」을 참조하세요.',
     privacy_s6_title: '6. 개인정보 보호책임자 (DPO)',
     privacy_s6_body: '개인정보 관련 문의 및 권리 행사 요청은 아래로 연락해 주세요:',
     privacy_s7_title: '7. 개인정보 침해사고 대응',
-    privacy_s7_body: '개인정보 침해사고(데이터 유출 등) 발생 시, 회사는 RA 10173 및 NPC Circular 16-03에 따라 사건 인지 후 72시간 이내에 국가개인정보위원회(NPC)에 신고하고, 영향을 받는 이용자에게 5영업일 이내에 통지합니다. 통지 내용에는 침해 경위, 유출 정보 유형, 취한 조치 및 문의 연락처가 포함됩니다.',
+    privacy_s7_body: '개인정보 침해사고(데이터 유출 등) 발생 시, 회사는 각 거주국 법령이 정한 기한·방식에 따라 감독기구에 신고하고 영향을 받는 이용자에게 통지합니다. 통지 내용에는 침해 경위, 유출 정보 유형, 취한 조치 및 문의 연락처가 포함됩니다. 국가별 신고 기한·창구는 「국가별 부칙」을 참조하세요.',
     privacy_s8_title: '8. 국외 개인정보 이전',
-    privacy_s8_body: '회사의 서비스는 대한민국(개발사 소재지), 미국(Google Firebase, Supabase 서버) 등에서 처리될 수 있습니다. 해외 이전 시 RA 10173 및 NPC 가이드라인에 따라 적절한 보호 조치를 적용합니다.',
+    privacy_s8_body: '회사의 서비스 운영을 위해 개인정보가 대한민국(개발사 소재지), 미국(Google Firebase, Supabase 서버) 등에서 처리될 수 있습니다. 국외 이전 시 각 거주국 법령이 요구하는 적절한 보호조치(표준계약조항 등)를 적용하며, 국가별 근거는 「국가별 부칙」을 참조하세요.',
     privacy_s9_title: '9. 아동·청소년 개인정보 보호',
-    privacy_s9_body: '본 서비스는 만 13세 이상을 대상으로 합니다. 만 18세 미만 이용자는 부모 또는 법정대리인의 동의가 필요합니다. 만 13세 미만 아동으로부터 고의로 개인정보를 수집하지 않으며, 이러한 사실이 확인되는 경우 즉시 삭제 조치합니다.',
+    privacy_s9_body: '본 서비스의 기본 최소 이용 연령은 만 13세이며, 거주국 법령이 더 높은 연령 또는 별도의 보호자 동의를 요구하는 경우 그 기준이 우선 적용됩니다(「국가별 부칙」 참조). 회사는 해당 연령 미만 아동의 개인정보를 고의로 수집하지 않으며, 이러한 사실이 확인되는 경우 즉시 삭제 조치합니다.',
     privacy_s10_title: '10. 계정 및 데이터 삭제 요청',
     privacy_s10_body: '이용자는 게임 내 설정 > 계정 삭제 메뉴를 통해 계정 및 관련 개인정보 삭제를 요청할 수 있습니다. 삭제 요청 처리 기간은 영업일 기준 최대 30일이며, 법령상 보존 의무가 있는 정보는 제외됩니다.',
+
+    regional_title: '국가별 부칙',
+    regional_subtitle: '이용자 거주국(선택 언어) 기준의 추가 법적 고지입니다. 공통 약관·개인정보처리방침과 함께 적용됩니다.',
+    regional_country: '🇰🇷 대한민국 · 개인정보 보호법(PIPA)',
+    regional_note: '선택한 <b>언어에 따라 이 부칙의 내용이 해당 지역 기준으로 전환</b>됩니다. 노출 언어와 적용 법·관할은 별개이며, 이용자의 실제 거주국 강행법령이 우선 적용됩니다.',
+    regional_law_title: '근거법',
+    regional_law_body: '개인정보 보호법(PIPA), 전자상거래 등에서의 소비자보호에 관한 법률, 정보통신망 이용촉진 및 정보보호 등에 관한 법률.',
+    regional_regulator_title: '감독기구',
+    regional_regulator_body: '개인정보보호위원회(PIPC, privacy.go.kr · 개인정보 침해신고 국번없이 182), 한국인터넷진흥원(KISA, 118).',
+    regional_basis_title: '처리의 법적 근거',
+    regional_basis_body: '정보주체의 동의, 계약의 이행, 법령상 의무 준수, 정당한 이익 등 개인정보 보호법이 정한 근거에 따릅니다.',
+    regional_minor_title: '미성년자 보호',
+    regional_minor_body: '만 14세 미만 아동의 개인정보 처리는 법정대리인의 동의가 필요합니다. 만 19세 미만 미성년자의 결제는 법정대리인의 동의가 없는 경우 관련 법령에 따라 취소될 수 있습니다.',
+    regional_transfer_title: '국외 이전',
+    regional_transfer_body: '개인정보가 미국(Google Firebase, Supabase 서버) 등으로 이전될 수 있으며, 개인정보 보호법 제28조의8 등에 따른 보호조치를 적용합니다.',
+    regional_breach_title: '침해 통지',
+    regional_breach_body: '유출 등 침해사고 인지 시 지체 없이 정보주체에게 통지하고, 법령상 요건 충족 시 개인정보보호위원회 및 KISA에 신고합니다(개인정보 보호법 제34조).',
+    regional_rep_title: '개인정보 보호책임자(DPO)·국내대리인',
+    regional_rep_body: '회사는 개인정보 보호책임자를 지정하여 개인정보 처리 관련 업무를 총괄합니다. 문의: aqua-privacy@icecatgames.net.',
+    regional_rep_todo: '※ 확정 필요(법무): 개인정보 보호책임자 성명·직위, 요건 해당 시 국내대리인 지정.',
+    regional_rights_title: '이용자 권리 및 구제',
+    regional_rights_body: '이용자는 열람·정정·삭제·처리정지·데이터 이동·이의제기 권리를 가지며, 개인정보 분쟁조정위원회(1833-6972) 및 개인정보보호위원회에 분쟁조정·민원을 신청할 수 있습니다.',
+    regional_dispute_title: '소비자 분쟁·환불 창구',
+    regional_dispute_body: '전자상거래법에 따른 청약철회권이 보장되며, 한국소비자원(kca.go.kr) 및 소비자분쟁조정위원회를 통한 분쟁 조정이 가능합니다.',
   },
 
   en: {
@@ -1649,6 +1746,7 @@ const i18n = {
     tab_support: 'Support',
     tab_terms: 'Terms of Service',
     tab_privacy: 'Privacy Policy',
+    tab_regional: 'Regional Addendum',
 
     community_title: 'Community',
     community_subtitle: 'Connect with other adventurers and stay up to date through our official channels.',
@@ -1871,11 +1969,11 @@ const i18n = {
     terms_s3_li2: 'Using hacks, exploiting bugs, or any other unauthorized means to gain an advantage',
     terms_s3_li3: 'Harassing, defaming, or engaging in sexual harassment toward other users',
     terms_s3_li4: 'Using the Service for commercial purposes without prior written consent from the Company',
-    terms_s3_li5: 'Users under the age of 18 must obtain parental or legal guardian consent before using the Service. Access may be restricted for users under 13 years of age.',
+    terms_s3_li5: 'Minors must comply with the age and guardian-consent requirements of their country of residence and the "Regional Addendum" (default: guardian consent for those under 18; access restricted for those under 13).',
     terms_s4_title: 'Article 4 – Service Availability',
     terms_s4_body: 'The Company aims to provide the Service 24/7/365. However, the Service may be temporarily suspended for scheduled maintenance, system failures, or other operational reasons.',
     terms_s5_title: 'Article 5 – Paid Services & Refund Policy',
-    terms_s5_body: 'This game is operated in the Philippines. In-app purchases are primarily governed by Google Play policies, in compliance with the Consumer Act of the Philippines to ensure fair and transparent transactions.',
+    terms_s5_body: 'In-app purchases are governed primarily by the applicable app store policy (Google Play, Apple App Store, etc.). In addition, the Company honors the withdrawal and refund rights granted by the mandatory consumer-protection law of your country of residence. For country-specific consumer/refund venues, see the "Regional Addendum".',
     terms_s5_refund_ok_title: '✅ Eligible for Refund',
     terms_s5_ok_li1: 'Within 48 hours of purchase, item unused (Google Play policy takes precedence)',
     terms_s5_ok_li2: 'Payment error or duplicate charge',
@@ -1892,11 +1990,11 @@ const i18n = {
     terms_s6_title: 'Article 6 – Intellectual Property',
     terms_s6_body: 'All intellectual property rights in the Service content (characters, storylines, UI, etc.) belong to the Company. Users may not reproduce, distribute, or modify such content without the Company\'s explicit written consent.',
     terms_s7_title: 'Article 7 – Governing Law & Jurisdiction',
-    terms_s7_body: 'These Terms shall be governed by and construed in accordance with the laws of the Republic of the Philippines, including the Consumer Act of the Philippines (RA 7394) and the Electronic Commerce Act (RA 8792).',
+    terms_s7_body: 'These Terms are governed by and construed in accordance with the laws of the Republic of Korea. However, if you are a consumer, nothing herein deprives you of the rights guaranteed by the mandatory consumer-protection law of your country of residence, and you may also bring claims before the courts of your residence. Country-specific regulators and venues are listed in the "Regional Addendum".',
     terms_s8_title: 'Article 8 – Account Deletion & Service Withdrawal',
     terms_s8_body: 'Users may request account deletion at any time through the in-app Settings > Delete Account feature. Personal data associated with the account will be deleted within 30 days of the request, except for data that must be retained under applicable law. For any unused paid items remaining at the time of deletion, please contact customer support separately in accordance with Google Play policies.',
     terms_s9_title: 'Article 9 – Dispute Resolution',
-    terms_s9_body: 'Any disputes relating to these Terms will first be resolved through good-faith negotiation between the parties. If resolution cannot be reached, disputes shall be handled in accordance with the Consumer Act of the Philippines (RA 7394) and the Electronic Commerce Act (RA 8792), through the Department of Trade and Industry (DTI) or the competent courts of the Republic of the Philippines.',
+    terms_s9_body: 'Any disputes relating to these Terms will first be addressed through good-faith negotiation and customer support. If unresolved, disputes are handled under the mandatory consumer-protection law and competent venue of your country of residence; specific country venues are set out in the "Regional Addendum".',
 
     privacy_title: 'Privacy Policy',
     privacy_subtitle: 'We are committed to protecting your personal information.',
@@ -1908,7 +2006,7 @@ const i18n = {
     privacy_s1_li4: 'Automatic: IP address, service usage logs, access records',
     privacy_s1_li5: 'Advertising Identifiers: Advertising ID (ADID) or IDFA (for personalized ads and analytics, collected with user consent)',
     privacy_s1_li6: 'Data collected via third-party SDKs: Firebase Analytics (Google), Google Play Billing SDK, Supabase, etc. — each SDK\'s own privacy policy applies separately.',
-    privacy_s1_legal_basis: '※ Legal Basis for Processing: We process personal data based on user consent (RA 10173, Section 12), contractual necessity, legal obligation, or legitimate interest, as applicable.',
+    privacy_s1_legal_basis: '※ Legal Basis for Processing: We process personal data based on your consent, performance of a contract, legal obligation, and legitimate interests. Country-specific bases and supervisory authorities are set out in the "Regional Addendum".',
     privacy_s2_title: '2. How We Use Your Information',
     privacy_s2_body: 'Collected information is used solely for the following purposes:',
     privacy_s2_li1: 'Providing and operating the Service, managing user accounts',
@@ -1921,17 +2019,41 @@ const i18n = {
     privacy_s4_title: '4. Sharing with Third Parties',
     privacy_s4_body: 'We do not share your personal information with third parties without your prior consent, except in the following cases: ① As required by applicable law ② Google LLC — for Google Play payment processing ③ Firebase (Google LLC) — for service analytics and improvement ④ Supabase Inc. — for rankings and backend data storage ⑤ IPinfo Inc. — for IP-based country lookup (IP address data powered by IPinfo, https://ipinfo.io). Sharing is limited to what is strictly necessary for service provision, and shared data may not be used beyond the stated purpose.',
     privacy_s5_title: '5. Your Rights',
-    privacy_s5_body: 'Under the Data Privacy Act (RA 10173), you have the following rights: ① Right to Access ② Right to Rectification ③ Right to Erasure (subject to legal retention requirements) ④ Right to Restriction of Processing ⑤ Right to Data Portability ⑥ Right to Object to automated processing decisions. To exercise your rights, please contact us at aqua-support@icecatgames.net. You also have the right to file a complaint with the National Privacy Commission (NPC) at www.privacy.gov.ph.',
+    privacy_s5_body: 'Under applicable data protection law, you have the following rights: ① Right to Access ② Right to Rectification ③ Right to Erasure (subject to legal retention requirements) ④ Right to Restriction of Processing ⑤ Right to Data Portability ⑥ Right to Object to automated processing decisions. To exercise your rights, please contact us at aqua-privacy@icecatgames.net. You also have the right to complain to the data protection authority of your country of residence; see the "Regional Addendum" for the relevant authority.',
     privacy_s6_title: '6. Data Protection Officer (DPO)',
     privacy_s6_body: 'For privacy-related inquiries and rights requests, please contact:',
     privacy_s7_title: '7. Data Breach Response',
-    privacy_s7_body: 'In the event of a personal data breach (e.g., unauthorized access or disclosure), the Company will notify the National Privacy Commission (NPC) within 72 hours of discovery and inform affected users within 5 business days, in accordance with RA 10173 and NPC Circular 16-03. Notifications will include the nature of the breach, types of data affected, remedial actions taken, and contact information for further inquiries.',
+    privacy_s7_body: 'In the event of a personal data breach, the Company notifies the competent authority and affected users within the timeline and manner required by the law of each country of residence. Notifications include the nature of the breach, the types of data affected, remedial actions taken, and contact information. Country-specific timelines and channels are set out in the "Regional Addendum".',
     privacy_s8_title: '8. Cross-Border Data Transfer',
-    privacy_s8_body: 'Personal data may be processed in the Republic of Korea (company headquarters), the United States (Google Firebase, Supabase servers), and other jurisdictions as operationally necessary. All cross-border transfers are conducted with appropriate safeguards in compliance with RA 10173 and NPC guidelines.',
+    privacy_s8_body: 'To operate the Service, personal data may be processed in the Republic of Korea (headquarters), the United States (Google Firebase, Supabase servers), and other jurisdictions as necessary. Cross-border transfers use appropriate safeguards (e.g., standard contractual clauses) as required by each country\'s law; see the "Regional Addendum".',
     privacy_s9_title: '9. Children\'s Privacy',
-    privacy_s9_body: 'This Service is intended for users aged 13 and above. Users under 18 require parental or legal guardian consent. We do not knowingly collect personal information from children under 13. If we become aware that such data has been collected, we will take immediate steps to delete it.',
+    privacy_s9_body: 'The default minimum age for this Service is 13. Where your country of residence requires a higher age or specific guardian consent, that standard prevails (see the "Regional Addendum"). We do not knowingly collect personal information from children below the applicable age, and will delete it immediately upon discovery.',
     privacy_s10_title: '10. Account & Data Deletion Request',
     privacy_s10_body: 'Users may request deletion of their account and associated personal data through the in-app Settings > Delete Account menu. Requests will be processed within 30 business days. Data subject to legal retention requirements will be excluded from deletion.',
+
+    regional_title: 'Regional Addendum',
+    regional_subtitle: 'Additional legal notices for your country of residence (selected language). These apply together with the common Terms and Privacy Policy.',
+    regional_country: '🌐 International (English) — applies by your country of residence',
+    regional_note: 'The content of this addendum <b>switches to your region based on the selected language</b>. The display language and the applicable law/jurisdiction are separate; the mandatory law of your actual country of residence prevails.',
+    regional_law_title: 'Applicable Law',
+    regional_law_body: 'Governed by the laws of the Republic of Korea, while the mandatory consumer-protection laws of your country of residence are preserved. Region-specific regimes — Korea (PIPA), Thailand (PDPA), Philippines (RA 10173), EU/UK (GDPR), US/California (CCPA/CPRA) — apply based on where you reside.',
+    regional_regulator_title: 'Supervisory Authority',
+    regional_regulator_body: 'The data protection and consumer authority of your country of residence (e.g., Korea PIPC, Thailand PDPC, Philippines NPC, EU/EEA & UK Data Protection Authorities, California Attorney General / CPPA).',
+    regional_basis_title: 'Legal Basis for Processing',
+    regional_basis_body: 'Consent, performance of a contract, legal obligation, and legitimate interests, as applicable under your local law.',
+    regional_minor_title: 'Minors',
+    regional_minor_body: 'Default minimum age 13. Where your country requires a higher age or specific guardian consent (e.g., 14 in Korea, the GDPR digital-consent age of 13–16, or COPPA for under-13 in the US), that standard prevails.',
+    regional_transfer_title: 'Cross-Border Transfer',
+    regional_transfer_body: 'Data may be processed in Korea (HQ) and the United States (Google Firebase, Supabase) with appropriate safeguards such as standard contractual clauses or adequacy mechanisms required by your local law.',
+    regional_breach_title: 'Breach Notification',
+    regional_breach_body: 'We notify the competent authority and affected users within the timeline required by your local law (e.g., 72 hours under GDPR, PDPA, or NPC rules where applicable).',
+    regional_rep_title: 'Data Protection Officer & Local Representatives',
+    regional_rep_body: 'We maintain a Data Protection Officer for privacy matters at aqua-privacy@icecatgames.net. Where required, we appoint local representatives (e.g., an EU/UK Article 27 representative, or a Thailand §37(5) representative).',
+    regional_rep_todo: '※ To be finalized (Legal): DPO name/title and per-country local representatives.',
+    regional_rights_title: 'Your Rights & Remedies',
+    regional_rights_body: 'Access, rectify, erase, restrict, port, and object (including to automated decisions), and complain to your local regulator. EU/EEA & UK residents have full GDPR rights; California residents have CCPA/CPRA rights, including "Do Not Sell or Share".',
+    regional_dispute_title: 'Consumer Disputes & Refunds',
+    regional_dispute_body: 'Disputes are first addressed via good-faith negotiation and customer support. You may also rely on the mandatory consumer-protection law and courts of your country of residence.',
   },
 
   ph: {
@@ -1941,6 +2063,7 @@ const i18n = {
     tab_support: 'Suporta',
     tab_terms: 'Mga Tuntunin ng Serbisyo',
     tab_privacy: 'Patakaran sa Privacy',
+    tab_regional: 'Karagdagan kada Rehiyon',
 
     community_title: 'Komunidad',
     community_subtitle: 'Makipag-ugnayan sa iba pang manlalaro at manatiling updated sa aming mga opisyal na channel.',
@@ -2163,11 +2286,11 @@ const i18n = {
     terms_s3_li2: 'Paggamit ng mga hack, pagsasamantala sa mga bug, o anumang hindi awtorisadong paraan',
     terms_s3_li3: 'Pang-aabuso, panlalait, o sekswal na panliligalig sa ibang mga gumagamit',
     terms_s3_li4: 'Paggamit ng Serbisyo para sa mga komersyal na layunin nang walang pahintulot',
-    terms_s3_li5: 'Ang mga gumagamit na wala pang 18 taong gulang ay dapat makakuha ng pahintulot ng magulang o legal na tagapag-alaga bago gamitin ang Serbisyo. Ang access ay maaaring paghigpitan para sa mga gumagamit na wala pang 13 taong gulang.',
+    terms_s3_li5: 'Ang mga menor de edad ay dapat sumunod sa mga kinakailangan sa edad at pahintulot ng magulang/tagapangalaga ng kanilang bansa at ng "Karagdagan kada Rehiyon" (default: pahintulot ng magulang para sa wala pang 18; pinaghihigpitan ang wala pang 13).',
     terms_s4_title: 'Artikulo 4 – Availability ng Serbisyo',
     terms_s4_body: 'Naglalayong magbigay ang Kumpanya ng Serbisyo 24/7, ngunit maaaring pansamantalang suspindihin para sa nakatakdang pagpapanatili, pagpalya ng sistema, o iba pang operasyonal na dahilan.',
     terms_s5_title: 'Artikulo 5 – Mga Bayad na Serbisyo at Patakaran sa Refund',
-    terms_s5_body: 'Ang larong ito ay pinatatakbo sa Pilipinas. Ang mga in-app na pagbili ay pangunahing pinamamahalaan ng mga patakaran ng Google Play, alinsunod sa Consumer Act of the Philippines para sa patas at transparent na mga transaksyon.',
+    terms_s5_body: 'Ang mga in-app purchase ay pangunahing pinamamahalaan ng patakaran ng app store (Google Play, Apple App Store, atbp.). Bilang karagdagan, iginagalang ng Kumpanya ang mga karapatan sa withdrawal at refund na ibinibigay ng sapilitang batas sa proteksyon ng mamimili ng iyong bansang tinitirhan. Para sa mga channel ng refund/alitan kada bansa, tingnan ang "Karagdagan kada Rehiyon".',
     terms_s5_refund_ok_title: '✅ Karapat-dapat sa Refund',
     terms_s5_ok_li1: 'Sa loob ng 48 oras mula sa pagbili, hindi pa ginamit ang item (nangunguna ang patakaran ng Google Play)',
     terms_s5_ok_li2: 'Error sa pagbabayad o duplicate na singil',
@@ -2184,11 +2307,11 @@ const i18n = {
     terms_s6_title: 'Artikulo 6 – Intelektwal na Ari-arian',
     terms_s6_body: 'Lahat ng karapatang intelektwal sa nilalaman ng Serbisyo (mga karakter, kuwento, UI, atbp.) ay pag-aari ng Kumpanya. Ang mga gumagamit ay hindi maaaring kopyahin, ipamahagi, o baguhin ang naturang nilalaman nang walang malinaw na nakasulat na pahintulot ng Kumpanya.',
     terms_s7_title: 'Artikulo 7 – Namamahalang Batas',
-    terms_s7_body: 'Ang mga tuntuning ito ay pinamamahalaan at binibigyang-kahulugan alinsunod sa mga batas ng Republika ng Pilipinas, kabilang ang Consumer Act of the Philippines (RA 7394) at ang Electronic Commerce Act (RA 8792).',
+    terms_s7_body: 'Ang mga Tuntuning ito ay pinamamahalaan at binibigyang-kahulugan alinsunod sa mga batas ng Republika ng Korea. Gayunpaman, kung ikaw ay mamimili, walang anuman dito ang mag-aalis sa iyong mga karapatan sa ilalim ng sapilitang batas sa proteksyon ng mamimili ng iyong bansang tinitirhan, at maaari ka ring maghain ng reklamo sa mga hukuman ng iyong tinitirhan. Ang mga regulator at hukuman kada bansa ay nakalista sa "Karagdagan kada Rehiyon".',
     terms_s8_title: 'Artikulo 8 – Pagtanggal ng Account at Pag-alis sa Serbisyo',
     terms_s8_body: 'Maaaring humiling ang mga gumagamit ng pagtanggal ng account anumang oras sa pamamagitan ng feature ng Mga Setting > Tanggalin ang Account sa loob ng laro. Ang personal na data ay matatanggal sa loob ng 30 araw mula sa kahilingan, maliban sa data na dapat panatilihin sa ilalim ng naaangkop na batas. Para sa anumang hindi nagamit na bayad na mga item, mangyaring makipag-ugnayan sa customer support nang hiwalay.',
     terms_s9_title: 'Artikulo 9 – Resolusyon ng Alitan',
-    terms_s9_body: 'Ang anumang alitan na may kaugnayan sa mga Tuntuning ito ay unang ilulutas sa pamamagitan ng mabuting-loob na negosasyon. Kung hindi malutas, ang mga alitan ay hahawakan alinsunod sa Consumer Act of the Philippines (RA 7394) at Electronic Commerce Act (RA 8792), sa pamamagitan ng Department of Trade and Industry (DTI) o mga hukuman ng Republika ng Pilipinas.',
+    terms_s9_body: 'Ang anumang alitan na may kaugnayan sa mga Tuntuning ito ay unang lulutasin sa pamamagitan ng mabuting-loob na negosasyon at customer support. Kung hindi malutas, ang mga alitan ay hahawakan alinsunod sa sapilitang batas sa proteksyon ng mamimili at nararapat na hukuman ng iyong bansang tinitirhan; ang mga tiyak na channel kada bansa ay nasa "Karagdagan kada Rehiyon".',
 
     privacy_title: 'Patakaran sa Privacy',
     privacy_subtitle: 'Kami ay nakatuon sa pagprotekta ng iyong personal na impormasyon.',
@@ -2200,7 +2323,7 @@ const i18n = {
     privacy_s1_li4: 'Awtomatiko: IP address, mga log ng paggamit ng serbisyo, mga rekord ng pag-access',
     privacy_s1_li5: 'Mga Advertising Identifier: Advertising ID (ADID) o IDFA (para sa personalized na mga ad at analytics, kinokolekta sa pahintulot ng gumagamit)',
     privacy_s1_li6: 'Data na nakolekta sa pamamagitan ng mga third-party SDK: Firebase Analytics (Google), Google Play Billing SDK, Supabase, atbp. — nalalapat nang hiwalay ang bawat patakaran sa privacy ng SDK.',
-    privacy_s1_legal_basis: '※ Legal na Batayan para sa Pagproseso: Pinoproseso namin ang personal na data batay sa pahintulot ng gumagamit (RA 10173, Seksyon 12), pangangailangan ng kontrata, legal na obligasyon, o lehitimong interes, kung naaangkop.',
+    privacy_s1_legal_basis: '※ Legal na Batayan para sa Pagproseso: Pinoproseso namin ang personal na data batay sa iyong pahintulot, pagtupad sa kontrata, legal na obligasyon, at lehitimong interes. Ang tiyak na batayan at awtoridad kada bansa ay nasa "Karagdagan kada Rehiyon".',
     privacy_s2_title: '2. Paano Namin Ginagamit ang Iyong Impormasyon',
     privacy_s2_body: 'Ang nakolektang impormasyon ay ginagamit para sa mga sumusunod na layunin lamang:',
     privacy_s2_li1: 'Pagbibigay at pag-operate ng Serbisyo, pamamahala ng account',
@@ -2213,27 +2336,404 @@ const i18n = {
     privacy_s4_title: '4. Pagbabahagi sa Mga Third Party',
     privacy_s4_body: 'Hindi namin ibinabahagi ang iyong personal na impormasyon sa mga third party nang walang iyong paunang pahintulot, maliban sa mga sumusunod: ① Ayon sa naaangkop na batas ② Google LLC — para sa pagproseso ng bayad sa Google Play ③ Firebase (Google LLC) — para sa analytics at pagpapabuti ng serbisyo ④ Supabase Inc. — para sa pag-iimbak ng datos ng ranggo ⑤ IPinfo Inc. — para sa paghahanap ng bansa batay sa IP (IP address data powered by IPinfo, https://ipinfo.io). Ang pagbabahagi ay limitado sa kung ano ang mahigpit na kinakailangan para sa pagbibigay ng serbisyo.',
     privacy_s5_title: '5. Iyong mga Karapatan',
-    privacy_s5_body: 'Sa ilalim ng Data Privacy Act (RA 10173), mayroon kang mga sumusunod na karapatan: ① Karapatang Mag-access ② Karapatang Itama ③ Karapatang Burahin (napapailalim sa mga legal na obligasyon sa pagpapanatili) ④ Karapatang Paghigpitan ang Pagproseso ⑤ Karapatang sa Portability ng Data ⑥ Karapatang Tumutol sa mga desisyon ng automated na pagproseso. Para gamitin ang iyong mga karapatan, makipag-ugnayan sa aqua-support@icecatgames.net. Mayroon ka ring karapatang maghain ng reklamo sa National Privacy Commission (NPC) sa www.privacy.gov.ph.',
+    privacy_s5_body: 'Sa ilalim ng naaangkop na batas sa privacy, mayroon kang mga sumusunod na karapatan: ① Karapatang Mag-access ② Karapatang Itama ③ Karapatang Burahin (napapailalim sa mga legal na obligasyon sa pagpapanatili) ④ Karapatang Paghigpitan ang Pagproseso ⑤ Karapatang sa Portability ng Data ⑥ Karapatang Tumutol sa mga desisyon ng automated na pagproseso. Para gamitin ang iyong mga karapatan, makipag-ugnayan sa aqua-privacy@icecatgames.net. May karapatan ka ring magreklamo sa awtoridad sa proteksyon ng data ng iyong bansa; tingnan ang "Karagdagan kada Rehiyon".',
     privacy_s6_title: '6. Data Protection Officer (DPO)',
     privacy_s6_body: 'Para sa mga katanungang may kaugnayan sa privacy at mga kahilingan sa karapatan, makipag-ugnayan sa:',
     privacy_s7_title: '7. Pagtugon sa Paglabag sa Data',
-    privacy_s7_body: 'Sa kaganapan ng paglabag sa personal na data, aabisuhan ng Kumpanya ang National Privacy Commission (NPC) sa loob ng 72 oras mula sa pagkakadiskubre, at aabisuhan ang mga apektadong gumagamit sa loob ng 5 araw ng negosyo, alinsunod sa RA 10173 at NPC Circular 16-03. Ang mga abiso ay maglalaman ng likas ng paglabag, mga uri ng naapektuhang data, mga hakbang na ginawa, at impormasyon sa pakikipag-ugnayan.',
+    privacy_s7_body: 'Sakaling magkaroon ng paglabag sa personal na data, aabisuhan ng Kumpanya ang nararapat na awtoridad at mga apektadong gumagamit sa loob ng panahon at paraang hinihingi ng batas ng bawat bansa. Kasama sa abiso ang kalikasan ng paglabag, mga uri ng naapektuhang data, mga hakbang na ginawa, at impormasyon sa pakikipag-ugnayan. Ang mga tiyak na timeline at channel kada bansa ay nasa "Karagdagan kada Rehiyon".',
     privacy_s8_title: '8. Paglipat ng Data sa Ibang Bansa',
-    privacy_s8_body: 'Ang personal na data ay maaaring iproseso sa Republika ng Korea (punong tanggapan ng kumpanya), Estados Unidos (Google Firebase, Supabase servers), at iba pang hurisdiksyon kung kinakailangan. Ang lahat ng cross-border na paglipat ay isinasagawa na may angkop na mga pananggalang alinsunod sa RA 10173 at mga alituntunin ng NPC.',
+    privacy_s8_body: 'Para mapatakbo ang Serbisyo, maaaring iproseso ang personal na data sa Republika ng Korea (punong tanggapan), Estados Unidos (Google Firebase, Supabase servers), at iba pang hurisdiksyon kung kinakailangan. Ang mga cross-border na paglipat ay may naaangkop na pananggalang (hal. standard contractual clauses) ayon sa batas ng bawat bansa; tingnan ang "Karagdagan kada Rehiyon".',
     privacy_s9_title: '9. Privacy ng mga Bata',
-    privacy_s9_body: 'Ang Serbisyong ito ay para sa mga gumagamit na 13 taong gulang pataas. Ang mga gumagamit na wala pang 18 taong gulang ay nangangailangan ng pahintulot ng magulang o legal na tagapag-alaga. Hindi kami sinadyang nangongolekta ng personal na impormasyon mula sa mga batang wala pang 13 taong gulang. Kung malaman namin na nakolekta ang naturang data, agad kaming magsasagawa ng mga hakbang upang tanggalin ito.',
+    privacy_s9_body: 'Ang default na pinakamababang edad para sa Serbisyong ito ay 13. Kung ang iyong bansa ay nangangailangan ng mas mataas na edad o tiyak na pahintulot ng magulang/tagapangalaga, ang pamantayang iyon ang mangingibabaw (tingnan ang "Karagdagan kada Rehiyon"). Hindi kami sinadyang nangongolekta ng data mula sa mga batang wala pa sa naaangkop na edad, at agad namin itong buburahin kapag natuklasan.',
     privacy_s10_title: '10. Kahilingan sa Pagtanggal ng Account at Data',
     privacy_s10_body: 'Maaaring humiling ang mga gumagamit ng pagtanggal ng kanilang account at nauugnay na personal na data sa pamamagitan ng menu na Mga Setting > Tanggalin ang Account sa loob ng laro. Ang mga kahilingan ay ipoproseso sa loob ng 30 araw ng negosyo. Ang data na napapailalim sa mga legal na obligasyon sa pagpapanatili ay ibubukod mula sa pagtanggal.',
+
+    regional_title: 'Karagdagan kada Rehiyon',
+    regional_subtitle: 'Karagdagang legal na abiso para sa iyong bansang tinitirhan (napiling wika). Kasabay itong ipinapatupad ng karaniwang Tuntunin at Patakaran sa Privacy.',
+    regional_country: '🇵🇭 Pilipinas · Data Privacy Act of 2012 (RA 10173)',
+    regional_note: 'Ang nilalaman ng karagdagang ito ay <b>nagbabago ayon sa iyong rehiyon batay sa napiling wika</b>. Magkaiba ang wikang ipinapakita at ang naaangkop na batas/hurisdiksyon; ang sapilitang batas ng iyong aktuwal na bansang tinitirhan ang mangingibabaw.',
+    regional_law_title: 'Naaangkop na Batas',
+    regional_law_body: 'Data Privacy Act of 2012 (RA 10173), Consumer Act of the Philippines (RA 7394), at Electronic Commerce Act (RA 8792).',
+    regional_regulator_title: 'Awtoridad sa Pangangasiwa',
+    regional_regulator_body: 'National Privacy Commission (NPC, privacy.gov.ph); para sa alitan ng mamimili, ang Department of Trade and Industry (DTI).',
+    regional_basis_title: 'Legal na Batayan sa Pagproseso',
+    regional_basis_body: 'Pahintulot, pagtupad sa kontrata, legal na obligasyon, at lehitimong interes ayon sa RA 10173.',
+    regional_minor_title: 'Proteksyon ng Menor de Edad',
+    regional_minor_body: 'Para sa edad 13 pataas; ang mga wala pang 18 ay nangangailangan ng pahintulot ng magulang o legal na tagapangalaga.',
+    regional_transfer_title: 'Paglipat sa Ibang Bansa',
+    regional_transfer_body: 'Ang data ay maaaring iproseso sa labas ng Pilipinas (Korea, Estados Unidos) na may naaangkop na pananggalang ayon sa RA 10173 at mga alituntunin ng NPC.',
+    regional_breach_title: 'Abiso sa Paglabag',
+    regional_breach_body: 'Aabisuhan ang NPC sa loob ng 72 oras mula sa pagkatuklas at ang mga apektadong gumagamit, alinsunod sa RA 10173 at NPC Circular 16-03.',
+    regional_rep_title: 'Data Protection Officer (DPO)',
+    regional_rep_body: 'Nagpapanatili kami ng Data Protection Officer para sa mga usapin sa privacy: aqua-privacy@icecatgames.net.',
+    regional_rep_todo: '※ Kailangang tapusin (Legal): pangalan/posisyon ng DPO at lokal na kinatawan kung kinakailangan.',
+    regional_rights_title: 'Mga Karapatan at Remedyo',
+    regional_rights_body: 'Access, pagwawasto, pagbura, paghihigpit, portability, at pagtutol (kabilang sa mga awtomatikong desisyon). May karapatan kang magreklamo sa National Privacy Commission (www.privacy.gov.ph).',
+    regional_dispute_title: 'Alitan ng Mamimili at Refund',
+    regional_dispute_body: 'Ang mga alitan ay unang lulutasin sa pamamagitan ng negosasyon at customer support. Maaari ka ring dumulog sa DTI o sa nararapat na hukuman ng Pilipinas (RA 7394, RA 8792).',
+  },
+
+  th: {
+    brand: '🌊 AquaSurvival',
+    tab_notice: 'ประกาศ',
+    tab_community: 'คอมมูนิตี้',
+    tab_support: 'ฝ่ายสนับสนุน',
+    tab_terms: 'ข้อกำหนดในการให้บริการ',
+    tab_privacy: 'นโยบายความเป็นส่วนตัว',
+    tab_regional: 'ภาคผนวกรายประเทศ',
+
+    community_title: 'คอมมูนิตี้',
+    community_subtitle: 'เชื่อมต่อกับนักผจญภัยท่านอื่น และติดตามข่าวสารล่าสุดผ่านช่องทางอย่างเป็นทางการของเรา',
+    community_discord_title: 'Discord',
+    community_discord_desc: 'เข้าร่วมเซิร์ฟเวอร์ Discord อย่างเป็นทางการของเรา',
+    community_youtube_title: 'YouTube',
+    community_youtube_desc: 'ติดตามช่อง YouTube อย่างเป็นทางการของเรา',
+    community_instagram_title: 'Instagram',
+    community_instagram_desc: 'ติดตามบัญชี Instagram อย่างเป็นทางการของเรา',
+    community_facebook_title: 'Facebook',
+    community_facebook_desc: 'เยี่ยมชมเพจ Facebook อย่างเป็นทางการของเรา',
+
+    notice_title: 'ประกาศ',
+    notice_subtitle: 'ติดตามข่าวสารและอัปเดตล่าสุดได้ที่นี่',
+    badge_update: 'อัปเดต',
+    badge_event: 'อีเวนต์',
+    badge_patch: 'แพตช์',
+    badge_notice: 'ประกาศ',
+    badge_launch: 'เปิดตัว',
+    badge_maintenance: 'ปิดปรับปรุง',
+    badge_policy: 'นโยบาย',
+    notice17_title: '[ประกาศ] ประกาศอัปเดตแอป v1.8.1 (7 ส.ค.)',
+    notice17_greeting: 'สวัสดีนักผจญภัยทุกท่าน! 🎉',
+    notice17_body1: 'เราจะปล่อยอัปเดต v1.8.1 เพื่อปรับปรุงความเสถียรของแอป<br>จะไม่มีการปิดปรับปรุงเซิร์ฟเวอร์ กรุณาอัปเดตแอปของท่านหลังจากเวลาที่ระบุด้านล่าง',
+    notice17_li1: 'กำหนดการอัปเดต',
+    notice17_li2: 'UTC: 7 สิงหาคม ตั้งแต่ 06:00 น. เป็นต้นไป',
+    notice17_li3: 'ฟิลิปปินส์ (PHT, UTC+8): 7 สิงหาคม ตั้งแต่ 14:00 น. เป็นต้นไป',
+    notice17_li4: 'รายละเอียดการอัปเดต',
+    notice17_li5: 'ปรับปรุงความเสถียรของแอป',
+    notice17_li6: 'ของรางวัลจากการอัปเดต',
+    notice17_li7: 'เพชร ×500',
+    notice17_li8: 'คัมภีร์อธิษฐานขั้นสูง ×10',
+    notice17_body2: 'เราจะพัฒนาต่อไป เพื่อมอบประสบการณ์การเล่นที่ลื่นไหลและสนุกยิ่งขึ้นให้แก่นักผจญภัยทุกท่าน',
+    notice17_body3: 'ขอบคุณสำหรับการรอคอยและการสนับสนุนอย่างต่อเนื่อง! 🌊',
+    notice16_title: '[ปิดปรับปรุง][ขยายเวลา] ประกาศปิดปรับปรุงเซิร์ฟเวอร์เพื่ออัปเดต v1.7.4 (23 ก.ค.)',
+    notice16_greeting: 'สวัสดีนักผจญภัยทุกท่าน! 🎉',
+    notice16_ext: '※ การปิดปรับปรุงเซิร์ฟเวอร์ที่กำลังดำเนินอยู่ได้ขยายเวลาออกไป กรุณาตรวจสอบเวลาสิ้นสุดใหม่ด้านล่าง<br>เราต้องขออภัยในความไม่สะดวกที่เกิดขึ้น',
+    notice16_body1: 'เราจะทำการปิดปรับปรุงเซิร์ฟเวอร์เพื่อนำอัปเดต v1.7.4 มาใช้<br>ท่านจะไม่สามารถเข้าเล่นเกมได้ในช่วงเวลาดังกล่าว ขออภัยในความไม่สะดวก และขอบคุณสำหรับความเข้าใจ',
+    notice16_li1: 'กำหนดการปิดปรับปรุง',
+    notice16_li2: 'UTC: 23 กรกฎาคม 02:00 ~ <s>03:30 น. (1 ชั่วโมง 30 นาที)</s> → 05:00 น. (3 ชั่วโมง)',
+    notice16_li3: 'ฟิลิปปินส์ (PHT, UTC+8): 23 กรกฎาคม 10:00 ~ <s>11:30 น. (1 ชั่วโมง 30 นาที)</s> → 13:00 น. (3 ชั่วโมง)',
+    notice16_li4: 'ของรางวัลจากการปิดปรับปรุง',
+    notice16_li5: 'เพชร ×500',
+    notice16_li6: 'คัมภีร์อธิษฐานขั้นสูง ×10',
+    notice16_li7: 'นักผจญภัยที่ทำการวิจัยหน่วยพิเศษเสร็จสิ้นก่อนเริ่มการปิดปรับปรุง จะได้รับของชดเชยเพิ่มเติมดังนี้:',
+    notice16_li8: 'ไอเทมเร่งการวิจัย 1 ชั่วโมง ×72',
+    notice16_li9: 'หีบสุ่มทรัพยากร Lv.6 ×100',
+    notice16_li10: 'รายละเอียดการอัปเดต',
+    notice16_li11: 'การอัปเกรดอาคาร การวิจัยที่อคาเดมี และการรักษากองทหารในโรงพยาบาล จะเสร็จสมบูรณ์โดยอัตโนมัติเมื่อหมดเวลา โดยไม่ต้องกดปุ่มเสร็จสิ้นอีกต่อไป',
+    notice16_li12: 'ลบการวิจัยหน่วยพิเศษและ UI ที่เกี่ยวข้องทั้งหมด',
+    notice16_li13: 'แก้ไขบั๊กและปรับปรุงประสิทธิภาพต่าง ๆ',
+    notice16_body2: 'เราจะพัฒนาต่อไป เพื่อมอบประสบการณ์การเล่นที่ลื่นไหลและสนุกยิ่งขึ้นให้แก่นักผจญภัยทุกท่าน',
+    notice16_body3: 'ขอบคุณสำหรับการรอคอยและการสนับสนุนอย่างต่อเนื่อง! 🌊',
+    notice15_title: '[ปิดปรับปรุง] ประกาศปิดปรับปรุงเซิร์ฟเวอร์เพื่ออัปเดต v1.6.10 (25 มิ.ย.)',
+    notice15_greeting: 'สวัสดีนักผจญภัยทุกท่าน! 🎉',
+    notice15_body1: 'เราจะทำการปิดปรับปรุงเซิร์ฟเวอร์เพื่ออัปเดต v1.6.10 ตามกำหนดการด้านล่าง<br>ในช่วงเวลาดังกล่าว ท่านอาจไม่สามารถเข้าเล่นเกมได้ชั่วคราว ขอบคุณสำหรับความเข้าใจ',
+    notice15_li1: 'กำหนดการปิดปรับปรุง',
+    notice15_li2: 'UTC: 25 มิ.ย. 02:00 ~ 03:00 น. (1 ชั่วโมง)',
+    notice15_li3: 'ฟิลิปปินส์ (PHT, UTC+8): 25 มิ.ย. 10:00 ~ 11:00 น. (1 ชั่วโมง)',
+    notice15_li4: 'ของรางวัลจากการปิดปรับปรุง',
+    notice15_li5: 'เพชร: 500',
+    notice15_li6: 'คัมภีร์อธิษฐานขั้นสูง ×10',
+    notice15_li7: 'รายละเอียดการปิดปรับปรุง',
+    notice15_li8: 'เพิ่มมินิเกมที่เล่นได้เมื่อเปิดเกม (ครั้งเดียวเท่านั้น)',
+    notice15_li9: 'ปรับคำแปลในเกมให้เป็นธรรมชาติยิ่งขึ้น',
+    notice15_li10: 'ปรับปรุงข้อความแนะนำการเชื่อมและย้ายบัญชี',
+    notice15_li11: 'แก้ไขบั๊กและปรับปรุงประสิทธิภาพ',
+    notice15_body2: 'เราจะทำอย่างสุดความสามารถต่อไป เพื่อมอบประสบการณ์การผจญภัยที่ดีที่สุดให้แก่นักผจญภัยทุกท่าน',
+    notice15_body3: 'ขอบคุณสำหรับการรอคอยและการสนับสนุน! 🌊',
+    notice14_title: '[ปิดปรับปรุง][เสร็จสิ้น] ประกาศย้อนข้อมูลกลับ (Rollback) และคำขออภัย (12 มิ.ย.)',
+    notice14_greeting: 'สวัสดีนักผจญภัยทุกท่าน',
+    notice14_body1: 'ก่อนอื่น เราต้องขออภัยอย่างสุดซึ้งสำหรับความไม่สะดวกอย่างมากที่เกิดจากความผิดพลาดในการดำเนินงานของเรา<br>หลังการปิดปรับปรุงตามกำหนดเมื่อวันที่ 11 มิถุนายน 2026 ได้เกิดปัญหาในกระบวนการแจกของรางวัล ทำให้ของรางวัลจากการปิดปรับปรุงถูกแจกอย่างผิดปกติ<br>เนื่องจากเหตุการณ์นี้ทำให้เราไม่สามารถมอบสภาพแวดล้อมการเล่นที่ยุติธรรมและสมดุลแก่นักผจญภัยทุกท่านได้ เราจึงจะย้อนข้อมูลเซิร์ฟเวอร์กลับไปยังเวลาเริ่มปิดปรับปรุงของวันที่ 11 มิถุนายน 2026 ตามรายละเอียดด้านล่าง',
+    notice14_li1: 'กำหนดการปิดปรับปรุง',
+    notice14_li2: 'UTC: 12 มิ.ย. 02:00 ~ <s>09:00 น. (7 ชั่วโมง)</s> → 03:50 น. (เปิดก่อนกำหนด)',
+    notice14_li3: 'ฟิลิปปินส์ (PHT, UTC+8): 12 มิ.ย. 10:00 ~ <s>17:00 น. (7 ชั่วโมง)</s> → 11:50 น. (เปิดก่อนกำหนด)',
+    notice14_li4: 'ของรางวัลจากการปิดปรับปรุง',
+    notice14_li5: '<span style="color:#39ff14">คัมภีร์อธิษฐานฮีโร่ระดับตำนาน ×1</span>',
+    notice14_li6: 'เพชร: 1,000',
+    notice14_li10: 'คัมภีร์อธิษฐานขั้นสูง ×10',
+    notice14_li7: 'รายละเอียดการปิดปรับปรุง',
+    notice14_li8: 'UTC: ย้อนข้อมูลกลับไปยังวันที่ 11 มิ.ย. เวลา 02:00 น.',
+    notice14_li9: 'ฟิลิปปินส์ (PHT, UTC+8): ย้อนข้อมูลกลับไปยังวันที่ 11 มิ.ย. เวลา 10:00 น.',
+    notice14_body2: 'เราจะวางมาตรการป้องกันเพื่อไม่ให้ความผิดพลาดเช่นนี้เกิดขึ้นอีก และจะทำอย่างสุดความสามารถเพื่อมอบสภาพแวดล้อมการเล่นที่สนุกยิ่งขึ้น',
+    notice14_body3: 'เราต้องขออภัยอย่างสุดซึ้ง 🌊',
+    notice13_title: '[ประกาศ] ปัญหาการเข้าสู่ระบบจากการเชื่อมบัญชี (11 มิ.ย.)',
+    notice13_greeting: 'สวัสดีนักผจญภัยทุกท่าน',
+    notice13_body1: 'เราต้องขออภัยในความไม่สะดวกที่เกิดขึ้น',
+    notice13_body2: 'หลังการปิดปรับปรุงตามกำหนดในวันนี้ เราพบปัญหาในกระบวนการเชื่อมบัญชี<br>เราได้ระบุสาเหตุและแก้ไขแล้ว แต่ผู้เล่นบางท่านอาจยังพบปัญหาเกี่ยวกับการเข้าสู่ระบบ<br>หากท่านไม่สามารถเข้าสู่ระบบด้วยบัญชีเดิมได้ กรุณาทำตามขั้นตอนด้านล่าง:',
+    notice13_li1: 'ลบแอป Aqua Survival เดิมออกจากอุปกรณ์ของท่าน',
+    notice13_li2: 'ติดตั้ง Aqua Survival ใหม่จากสโตร์',
+    notice13_li3: 'เปิดเกมและเลือก “เข้าสู่ระบบด้วย Google Play” เพื่อเข้าสู่ระบบด้วยบัญชีที่เชื่อมไว้ก่อนหน้านี้',
+    notice13_body4: 'เราต้องขออภัยในความไม่สะดวกอีกครั้ง และขอบคุณสำหรับความเข้าใจ 🌊',
+    notice12_title: '[ปิดปรับปรุง][ขยายเวลา] ประกาศปิดปรับปรุงเซิร์ฟเวอร์ (11 มิ.ย.)',
+    notice12_greeting: 'สวัสดีนักผจญภัยทุกท่าน! 🎉',
+    notice12_ext: '※ การปิดปรับปรุงเซิร์ฟเวอร์เพื่ออัปเดตที่กำลังดำเนินอยู่ได้ขยายเวลาออกไป จึงขอแจ้งเวลาสิ้นสุดใหม่เพิ่มเติม<br>เราต้องขออภัยในความไม่สะดวกที่เกิดขึ้น',
+    notice12_body1: 'เราจะทำการปิดปรับปรุงเซิร์ฟเวอร์เพื่ออัปเดต v1.6.9 ตามกำหนดการด้านล่าง<br>ในช่วงเวลาดังกล่าว ท่านอาจไม่สามารถเข้าเล่นเกมได้ชั่วคราว ขอบคุณสำหรับความเข้าใจ',
+    notice12_li1: 'กำหนดการปิดปรับปรุง',
+    notice12_li2: 'UTC: 11 มิ.ย. 02:00 ~ <s>03:00 น. (1 ชั่วโมง)</s> → 09:00 น. (7 ชั่วโมง)',
+    notice12_li3: 'ฟิลิปปินส์ (PHT, UTC+8): 11 มิ.ย. 10:00 ~ <s>11:00 น. (1 ชั่วโมง)</s> → 17:00 น. (7 ชั่วโมง)',
+    notice12_li4: 'ของรางวัลจากการปิดปรับปรุง',
+    notice12_li5: 'เพชร: 500 + <span style="color:#39ff14">500 (เพิ่มเติม)</span>',
+    notice12_li6: 'คัมภีร์อธิษฐานพรีเมียม ×10',
+    notice12_li7: 'รายละเอียดการปิดปรับปรุง',
+    notice12_li8: 'ปรับคำศัพท์ภายในเกม',
+    notice12_li9: 'เพิ่มฟังก์ชันแปลภาษาสำหรับแชท จดหมาย และอื่น ๆ',
+    notice12_li10: 'เพิ่มฟังก์ชันคอมมูนิตี้ Facebook',
+    notice12_li11: 'เพิ่มปุ่มลบตัวละคร',
+    notice12_li12: 'ปรับจำนวนตัวอักษรสูงสุดในการค้นหาลอร์ด',
+    notice12_li13: '12 ตัวอักษร → 13 ตัวอักษร',
+    notice12_li14: 'เปลี่ยนวิดีโอในหน้าดาวน์โหลดทรัพยากร',
+    notice12_li15: 'ปรับของรางวัลฮีโร่ที่ยังไม่เปิดให้บริการ',
+    notice12_li16: 'Hie → Kamaitachi',
+    notice12_li17: 'Helga → Ivan',
+    notice12_li18: 'Agnes → Freya',
+    notice12_li19: '※ นักผจญภัยที่ได้รับฮีโร่ที่ยังไม่เปิดให้บริการดังกล่าวไปแล้ว จะได้รับ <span style="color:#39ff14">หินเวทมนตร์ฮีโร่ 10 ชิ้น</span> ต่อฮีโร่ที่ถูกเปลี่ยนแต่ละตัว',
+    notice12_li20: 'ลบปุ่มเรื่องราวอาณาจักร',
+    notice12_li21: 'แก้ไขบั๊กและปรับปรุงประสิทธิภาพ',
+    notice12_body2: 'เราจะทำอย่างสุดความสามารถต่อไป เพื่อมอบประสบการณ์การผจญภัยที่ดีที่สุดให้แก่นักผจญภัยทุกท่าน',
+    notice12_body3: 'ขอบคุณสำหรับการรอคอยและการสนับสนุน! 🌊',
+    notice11_title: '[ประกาศ] ปัญหาการเชื่อมต่อเซิร์ฟเวอร์ได้รับการแก้ไขแล้ว และของชดเชย (5 มิ.ย.)',
+    notice11_greeting: 'สวัสดีนักผจญภัยทุกท่าน',
+    notice11_body1: 'เราขอแจ้งให้ทราบว่าปัญหาการเชื่อมต่อเซิร์ฟเวอร์ชั่วคราวได้รับการแก้ไขเรียบร้อยแล้ว ขณะนี้เกมกลับมาทำงานตามปกติ',
+    notice11_li1: 'รายละเอียดปัญหา',
+    notice11_li2: 'ปัญหาการเชื่อมต่อเซิร์ฟเวอร์',
+    notice11_li3: 'ของชดเชย',
+    notice11_li4: 'เพชร 200',
+    notice11_li5: '※ ของชดเชยจะถูกส่งมอบเมื่อท่านเข้าสู่ระบบ',
+    notice11_body2: 'เราต้องขออภัยในความไม่สะดวกที่เกิดขึ้น และจะทำอย่างสุดความสามารถต่อไปเพื่อมอบประสบการณ์การเล่นที่เสถียรและสนุกยิ่งขึ้น',
+    notice11_body3: 'ขอบคุณสำหรับการรอคอยและความเข้าใจ! 🌊',
+    notice10_title: '[ปิดปรับปรุง] ประกาศปิดปรับปรุงชั่วคราว (22 พ.ค.)',
+    notice10_greeting: 'สวัสดีนักผจญภัยทุกท่าน! 🎉',
+    notice10_body1: 'เพื่อแก้ไขปัญหาที่ส่งผลต่อการชำระเงินภายในเกม เราจะทำการปิดปรับปรุงชั่วคราวตามกำหนดการด้านล่าง ในช่วงเวลาดังกล่าว ท่านอาจไม่สามารถเข้าเล่นเกมได้ชั่วคราว ขอบคุณสำหรับความเข้าใจ',
+    notice10_li1: 'กำหนดการปิดปรับปรุง',
+    notice10_li2: 'UTC: 22 พ.ค. 06:00 ~ 06:30 น.',
+    notice10_li3: 'ฟิลิปปินส์ (PHT, UTC+8): 22 พ.ค. 14:00 ~ 14:30 น.',
+    notice10_li4: 'รายละเอียดการปิดปรับปรุง',
+    notice10_li5: 'แก้ไขปัญหาการชำระเงิน: ของชดเชยสำหรับ<strong>ไอเทมที่ยังไม่ได้รับ</strong>จะทยอยส่งมอบตามลำดับ',
+    notice10_li6: 'ปรับเสถียรภาพของเซิร์ฟเวอร์',
+    notice10_body2: 'เราต้องขออภัยในความไม่สะดวกที่เกิดขึ้น',
+    notice10_body4: 'เราจะทำอย่างสุดความสามารถต่อไป เพื่อมอบประสบการณ์การเล่นที่เสถียรและสนุกยิ่งขึ้น ขอบคุณสำหรับการรอคอยและการสนับสนุน! 🌊',
+    notice9_title: '[ปิดปรับปรุง] ประกาศปิดปรับปรุงชั่วคราว (19 พ.ค.)',
+    notice9_greeting: 'สวัสดีนักผจญภัยทุกท่าน! 🎉',
+    notice9_body1: 'เพื่อแก้ไขปัญหาที่ส่งผลต่อการชำระเงินภายในเกม เราจะทำการปิดปรับปรุงชั่วคราวตามกำหนดการด้านล่าง ในช่วงเวลาดังกล่าว ท่านอาจไม่สามารถเข้าเล่นเกมได้ชั่วคราว ขอบคุณสำหรับความเข้าใจ',
+    notice9_li1: 'กำหนดการปิดปรับปรุง',
+    notice9_li2: 'UTC: 19 พ.ค. 06:00 ~ 06:30 น.',
+    notice9_li3: 'ฟิลิปปินส์ (PHT, UTC+8): 19 พ.ค. 14:00 ~ 14:30 น.',
+    notice9_li4: 'รายละเอียดการปิดปรับปรุง',
+    notice9_li5: 'แก้ไขปัญหาการชำระเงิน',
+    notice9_li6: 'ปรับเสถียรภาพของเซิร์ฟเวอร์',
+    notice9_body2: 'เราต้องขออภัยในความไม่สะดวกที่เกิดขึ้น',
+    notice9_body3: 'เราจะทำอย่างสุดความสามารถต่อไป เพื่อมอบประสบการณ์การเล่นที่เสถียรและสนุกสนานแก่ผู้เล่นทุกท่าน ขอบคุณสำหรับการรอคอยและการสนับสนุน! 🌊',
+    notice8_title: '[ปิดปรับปรุง] ประกาศปิดปรับปรุงเซิร์ฟเวอร์ (19 พ.ค.)',
+    notice8_greeting: 'สวัสดีนักผจญภัยทุกท่าน! 🎉',
+    notice8_body1: 'เพื่อมอบประสบการณ์การเล่นที่เสถียรยิ่งขึ้น เราจะทำการปิดปรับปรุงเซิร์ฟเวอร์ตามกำหนดการด้านล่าง ในช่วงเวลาดังกล่าว ท่านอาจไม่สามารถเข้าเล่นเกมได้ชั่วคราว ขอบคุณสำหรับความเข้าใจ',
+    notice8_li1: 'UTC: 19 พ.ค. 03:00 ~ 03:30 น.',
+    notice8_li2: 'ฟิลิปปินส์ (PHT, UTC+8): 19 พ.ค. 11:00 ~ 11:30 น.',
+    notice8_li3: 'รายละเอียดการปิดปรับปรุง',
+    notice8_li4: 'ปรับปรุงเสถียรภาพของเซิร์ฟเวอร์',
+    notice8_body2: 'เราจะทำอย่างสุดความสามารถต่อไป เพื่อมอบประสบการณ์การผจญภัยที่ดีที่สุดแก่ผู้เล่นทุกท่าน ขอบคุณสำหรับการรอคอยและการสนับสนุน! 🌊',
+    notice7_title: '[ประกาศนโยบายการดำเนินงาน]',
+    notice7_body1: 'เราตรวจสอบอย่างต่อเนื่องต่อพฤติกรรมที่ส่งผลเสียต่อระบบเศรษฐกิจและระบบจัดอันดับของเกม รวมถึงการชำระเงินโดยไม่ได้รับอนุญาต การดัดแปลงข้อมูล และการแก้ไขไคลเอนต์',
+    notice7_body2: 'หากตรวจพบพฤติกรรมดังกล่าว เราอาจดำเนินการต่อไปนี้โดยไม่แจ้งเตือนล่วงหน้า:',
+    notice7_li1: 'ลบสถิติการจัดอันดับ',
+    notice7_li2: 'ลบสกุลเงินและไอเทมในเกมที่ได้มาโดยมิชอบ',
+    notice7_li3: 'ระงับบัญชีอย่างถาวร',
+    notice7_body3: 'ในช่วงซอฟต์ลอนช์นี้ เรากำลังเสริมความเข้มแข็งของระบบตรวจสอบและรับมือด้านความปลอดภัย เพื่อรักษาสภาพแวดล้อมการเล่นที่ยุติธรรมสำหรับผู้เล่นทุกท่าน',
+    notice7_body4: 'ขอบคุณครับ/ค่ะ',
+    notice6_title: '[ปิดปรับปรุง] ประกาศปิดปรับปรุงเซิร์ฟเวอร์ตามกำหนด (12 พ.ค.)',
+    notice6_greeting: 'สวัสดีนักผจญภัย! 🎉',
+    notice6_body1: 'เพื่อปรับปรุงเสถียรภาพของบริการ เราจะทำการปิดปรับปรุงตามกำหนดเป็นเวลา 20 นาที ตามรายละเอียดด้านล่าง ในช่วงเวลาดังกล่าวการเข้าเล่นเกมอาจถูกจำกัดชั่วคราว ขอบคุณสำหรับความเข้าใจ',
+    notice6_li1: 'ช่วงเวลาปิดปรับปรุง (UTC): 12 พ.ค. 09:00 ~ 09:20 น.',
+    notice6_li2: 'ฟิลิปปินส์ (PHT, UTC+8): 12 พ.ค. 17:00 ~ 17:20 น.',
+    notice6_li3: 'ขอบเขต',
+    notice6_li4: 'ปรับปรุงเสถียรภาพและแก้ไขบั๊กที่พบ',
+    notice6_body2: 'เราจะทำอย่างสุดความสามารถต่อไป เพื่อมอบประสบการณ์การเล่นที่ดีที่สุด ขอบคุณสำหรับการรอคอยและการสนับสนุนอย่างต่อเนื่อง 🌊',
+    notice5_title: '[ประกาศ] เปิดให้บริการอย่างเป็นทางการในฟิลิปปินส์! 🇵🇭',
+    notice5_greeting: 'สวัสดีนักผจญภัย! 🎉',
+    notice5_body1: 'Aqua Survival เปิดให้บริการอย่างเป็นทางการในฟิลิปปินส์แล้ว! เราขอขอบคุณผู้เล่นชาวฟิลิปปินส์ทุกท่านที่รอคอยช่วงเวลานี้ด้วยความอดทน เราตื่นเต้นอย่างยิ่งที่จะได้ออกผจญภัยและสำรวจท้องทะเลไปด้วยกันกับท่าน',
+    notice5_li1: 'อีเวนต์ฉลองเปิดให้บริการในฟิลิปปินส์กำลังจะมาถึง — รายละเอียดจะประกาศให้ทราบเร็ว ๆ นี้',
+    notice5_li2: 'รองรับการชำระเงินภายในประเทศผ่าน Google Play',
+    notice5_li3: 'รองรับหลายภาษา: เกาหลี · อังกฤษ · ฟิลิปปินส์',
+    notice5_body2: 'เรามุ่งมั่นที่จะมอบประสบการณ์การเล่นที่ดีที่สุดเท่าที่จะเป็นไปได้ ขอบคุณสำหรับการสนับสนุนและความกระตือรือร้นอย่างต่อเนื่อง แล้วพบกันกลางเกลียวคลื่น! 🌊',
+    notice4_title: '[ประกาศ] อัปเดตนโยบายความเป็นส่วนตัว',
+    notice4_body1: 'นโยบายความเป็นส่วนตัวของเราจะได้รับการอัปเดตโดยมีผลตั้งแต่วันที่ 12 พฤษภาคม 2026 การเปลี่ยนแปลงหลักมีดังนี้:',
+    notice4_li1: 'เพิ่ม “ตัวระบุเพื่อการโฆษณา (ADID/IDFA)” ในข้อมูลที่จัดเก็บ',
+    notice4_li2: 'ระบุระยะเวลาเก็บรักษาข้อมูลให้ชัดเจน (ลบภายใน 30 วันหลังการลบบัญชี)',
+    notice4_li3: 'ระบุรายละเอียดวัตถุประสงค์ของการเปิดเผยข้อมูลแก่บุคคลที่สามให้ชัดเจนยิ่งขึ้น',
+    notice4_body2: 'ท่านสามารถดูนโยบายฉบับอัปเดตได้ที่แท็บ “นโยบายความเป็นส่วนตัว” ด้านบน',
+
+    support_title: 'ฝ่ายสนับสนุนลูกค้า',
+    support_subtitle: 'พบปัญหาอยู่ใช่ไหม? เราพร้อมช่วยเหลือ ติดต่อเราได้ผ่านช่องทางด้านล่าง',
+    contact_email_title: 'ส่งอีเมลถึงเรา',
+    contact_email_desc: 'เราจะตอบกลับภายใน 24 ชั่วโมง',
+    contact_hours_title: 'เวลาทำการ',
+    contact_hours_desc: 'จันทร์–ศุกร์ 10:00–18:00 น. ตามเวลาเกาหลี (KST, UTC+9) ปิดทำการวันเสาร์–อาทิตย์และวันหยุดนักขัตฤกษ์',
+    contact_chat_title: 'ฝ่ายสนับสนุนในเกม',
+    contact_chat_desc: 'ไปที่ ตั้งค่า > ฝ่ายสนับสนุน ภายในเกม เพื่อส่งคำขอความช่วยเหลือได้โดยตรง',
+    contact_report_title: 'รายงานผู้เล่น',
+    contact_report_desc: 'ใช้ฟังก์ชันรายงานในเกมเพื่อรายงานพฤติกรรมที่ไม่เหมาะสมหรือคุกคาม',
+    faq_title: 'คำถามที่พบบ่อย',
+    faq_q1: 'ฉันสามารถกู้คืนบัญชีได้หรือไม่?',
+    faq_a1: 'การกู้คืนบัญชีขึ้นอยู่กับว่าท่านได้เชื่อมบัญชีโซเชียลหรืออีเมลไว้หรือไม่ กรุณาติดต่อเราทางอีเมล แล้วเราจะช่วยเหลืออย่างเต็มที่',
+    faq_q2: 'ฉันชำระเงินแล้วแต่ไม่ได้รับไอเทม',
+    faq_a2: 'ความล่าช้าของเซิร์ฟเวอร์อาจใช้เวลาถึง 24 ชั่วโมง หากพ้นระยะเวลาดังกล่าวแล้วยังไม่ได้รับไอเทม กรุณาติดต่อฝ่ายสนับสนุนพร้อมแนบหลักฐานการชำระเงิน',
+    faq_q3: 'เกมไม่เปิดบนอุปกรณ์ของฉัน',
+    faq_a3: 'กรุณาลองติดตั้งแอปใหม่หรือรีสตาร์ตอุปกรณ์ หากยังพบปัญหาอยู่ กรุณาติดต่อเราพร้อมแจ้งรุ่นอุปกรณ์และเวอร์ชัน OS',
+    faq_q4: 'ฉันจะขอคืนเงินได้อย่างไร?',
+    faq_a4: 'การคืนเงินภายใน 48 ชั่วโมงนับจากการซื้อสามารถดำเนินการผ่าน Google Play ได้ หลังจากนั้น การคืนเงินจะพิจารณาเฉพาะกรณีชำระเงินผิดพลาด ไม่ได้รับไอเทม หรือปัญหาทางเทคนิค กรุณาติดต่อ aqua-support@icecatgames.net',
+
+    terms_title: 'ข้อกำหนดในการให้บริการ',
+    terms_subtitle: 'กรุณาอ่านข้อกำหนดเหล่านี้อย่างละเอียดก่อนใช้บริการของเรา',
+    effective_date: 'มีผลบังคับใช้: 12 พฤษภาคม 2026',
+    terms_s1_title: 'ข้อ 1 – วัตถุประสงค์',
+    terms_s1_body: 'ข้อกำหนดในการให้บริการนี้กำหนดเงื่อนไขและขั้นตอนการใช้บริการเกมมือถือ (“บริการ”) ที่จัดให้โดย IceCat Games Inc. (“บริษัท”) รวมถึงกำหนดสิทธิ หน้าที่ และความรับผิดชอบของบริษัทและผู้ใช้',
+    terms_s2_title: 'ข้อ 2 – ผลบังคับใช้และการแก้ไข',
+    terms_s2_body: 'ข้อกำหนดนี้มีผลบังคับใช้กับผู้ใช้ทุกท่านที่ประสงค์จะใช้บริการ บริษัทอาจแก้ไขข้อกำหนดนี้ภายในขอบเขตที่กฎหมายที่เกี่ยวข้องอนุญาต กรณีมีการเปลี่ยนแปลงในสาระสำคัญ บริษัทจะแจ้งให้ทราบล่วงหน้าอย่างน้อย 30 วันก่อนวันมีผลบังคับใช้ ผ่านประกาศในแอปหรือทางอีเมล การใช้บริการต่อไปหลังได้รับแจ้งถือเป็นการยอมรับข้อกำหนดฉบับปรับปรุง',
+    terms_s3_title: 'ข้อ 3 – หน้าที่ของผู้ใช้',
+    terms_s3_body: 'ผู้ใช้ต้องไม่กระทำการดังต่อไปนี้:',
+    terms_s3_li1: 'แอบอ้างเป็นบุคคลอื่นหรือลงทะเบียนข้อมูลอันเป็นเท็จ',
+    terms_s3_li2: 'ใช้โปรแกรมโกง ใช้ประโยชน์จากบั๊ก หรือใช้วิธีการอื่นใดโดยไม่ได้รับอนุญาตเพื่อให้ได้เปรียบ',
+    terms_s3_li3: 'คุกคาม หมิ่นประมาท หรือล่วงละเมิดทางเพศต่อผู้ใช้ท่านอื่น',
+    terms_s3_li4: 'ใช้บริการเพื่อวัตถุประสงค์ทางการค้าโดยไม่ได้รับความยินยอมเป็นลายลักษณ์อักษรจากบริษัทล่วงหน้า',
+    terms_s3_li5: 'ผู้เยาว์ต้องปฏิบัติตามข้อกำหนดด้านอายุและความยินยอมของผู้ปกครอง (ผู้แทนโดยชอบธรรม) ตามกฎหมายของประเทศที่พำนักและ "ภาคผนวกรายประเทศ" (เกณฑ์เริ่มต้น: ผู้ที่อายุต่ำกว่า 18 ปีต้องได้รับความยินยอมจากผู้ปกครอง และจำกัดการใช้งานสำหรับผู้ที่อายุต่ำกว่า 13 ปี)',
+    terms_s4_title: 'ข้อ 4 – การให้บริการ',
+    terms_s4_body: 'บริษัทมุ่งให้บริการตลอด 24 ชั่วโมงทุกวันตลอดปี อย่างไรก็ตาม บริการอาจถูกระงับชั่วคราวเนื่องจากการปิดปรับปรุงตามกำหนด ความขัดข้องของระบบ หรือเหตุผลด้านการดำเนินงานอื่น ๆ',
+    terms_s5_title: 'ข้อ 5 – บริการแบบชำระเงินและนโยบายการคืนเงิน',
+    terms_s5_body: 'การซื้อภายในแอปอยู่ภายใต้นโยบายของแต่ละแอปสโตร์ (Google Play, Apple App Store ฯลฯ) เป็นลำดับแรก นอกจากนี้ บริษัทเคารพสิทธิในการยกเลิกและขอคืนเงินตามกฎหมายคุ้มครองผู้บริโภคภาคบังคับของประเทศที่ผู้ใช้พำนัก ช่องทางเรื่องการคืนเงิน/ข้อพิพาทของแต่ละประเทศ โปรดดู "ภาคผนวกรายประเทศ"',
+    terms_s5_refund_ok_title: '✅ กรณีที่ขอคืนเงินได้',
+    terms_s5_ok_li1: 'ภายใน 48 ชั่วโมงนับจากการซื้อ และยังไม่ได้ใช้ไอเทม (นโยบายของ Google Play มีผลเหนือกว่า)',
+    terms_s5_ok_li2: 'การชำระเงินผิดพลาดหรือถูกเรียกเก็บซ้ำ',
+    terms_s5_ok_li3: 'ไม่ได้รับไอเทมเนื่องจากข้อผิดพลาดของเซิร์ฟเวอร์หรือทางเทคนิค',
+    terms_s5_ok_li4: 'ไม่สามารถใช้บริการได้เนื่องจากข้อบกพร่องทางเทคนิคหรือบั๊ก',
+    terms_s5_refund_no_title: '❌ กรณีที่ขอคืนเงินไม่ได้',
+    terms_s5_no_li1: 'เปลี่ยนใจหรือไม่พึงพอใจเป็นการส่วนตัว',
+    terms_s5_no_li2: 'ไอเทมที่ใช้งานไปแล้ว',
+    terms_s5_no_li3: 'บัญชีถูกระงับหรือแบนเนื่องจากละเมิดนโยบาย',
+    terms_s5_cs_title: '⚠️ กรณีที่พิจารณาเป็นรายกรณีผ่านฝ่ายสนับสนุนลูกค้า',
+    terms_s5_cs_li1: 'การซื้อโดยไม่ได้ตั้งใจ: อาจคืนเงินเป็นข้อยกเว้นได้หนึ่งครั้ง',
+    terms_s5_cs_li2: 'การซื้อโดยผู้เยาว์: พิจารณาเป็นรายกรณีตามสถานการณ์',
+    terms_s5_contact: 'สำหรับคำขอคืนเงินทั้งหมด กรุณาติดต่อ aqua-support@icecatgames.net ระยะเวลาดำเนินการ: 2–3 วันทำการ',
+    terms_s6_title: 'ข้อ 6 – ทรัพย์สินทางปัญญา',
+    terms_s6_body: 'สิทธิในทรัพย์สินทางปัญญาทั้งหมดในเนื้อหาของบริการ (ตัวละคร เนื้อเรื่อง UI ฯลฯ) เป็นของบริษัท ผู้ใช้ไม่สามารถทำซ้ำ เผยแพร่ หรือดัดแปลงเนื้อหาดังกล่าวได้ หากไม่ได้รับความยินยอมเป็นลายลักษณ์อักษรอย่างชัดแจ้งจากบริษัท',
+    terms_s7_title: 'ข้อ 7 – กฎหมายที่ใช้บังคับและเขตอำนาจศาล',
+    terms_s7_body: 'ข้อกำหนดนี้อยู่ภายใต้บังคับและตีความตามกฎหมายแห่งสาธารณรัฐเกาหลี อย่างไรก็ตาม หากผู้ใช้เป็นผู้บริโภค ข้อกำหนดนี้จะไม่ลิดรอนสิทธิที่ได้รับตามกฎหมายคุ้มครองผู้บริโภคภาคบังคับของประเทศที่ผู้ใช้พำนัก และผู้ใช้สามารถฟ้องร้องต่อศาลในประเทศที่ตนพำนักได้ด้วย หน่วยงานกำกับดูแลและช่องทางระงับข้อพิพาทของแต่ละประเทศระบุไว้ใน "ภาคผนวกรายประเทศ"',
+    terms_s8_title: 'ข้อ 8 – การลบบัญชีและการยกเลิกใช้บริการ',
+    terms_s8_body: 'ผู้ใช้สามารถขอลบบัญชีได้ทุกเมื่อผ่านเมนู ตั้งค่า > ลบบัญชี ภายในแอป ข้อมูลส่วนบุคคลที่เกี่ยวข้องกับบัญชีจะถูกลบภายใน 30 วันนับจากวันที่ยื่นคำขอ ยกเว้นข้อมูลที่ต้องเก็บรักษาไว้ตามกฎหมายที่เกี่ยวข้อง สำหรับไอเทมแบบชำระเงินที่ยังไม่ได้ใช้ ณ เวลาที่ลบบัญชี กรุณาติดต่อฝ่ายสนับสนุนลูกค้าแยกต่างหากตามนโยบายของ Google Play',
+    terms_s9_title: 'ข้อ 9 – การระงับข้อพิพาท',
+    terms_s9_body: 'ข้อพิพาทใด ๆ ที่เกี่ยวข้องกับข้อกำหนดนี้จะได้รับการแก้ไขด้วยการเจรจาโดยสุจริตและผ่านฝ่ายบริการลูกค้าเป็นลำดับแรก หากไม่สามารถหาข้อยุติได้ ข้อพิพาทจะดำเนินการตามกฎหมายคุ้มครองผู้บริโภคภาคบังคับและเขตอำนาจของประเทศที่ผู้ใช้พำนัก โดยช่องทางเฉพาะของแต่ละประเทศระบุไว้ใน "ภาคผนวกรายประเทศ"',
+
+    privacy_title: 'นโยบายความเป็นส่วนตัว',
+    privacy_subtitle: 'เรามุ่งมั่นที่จะปกป้องข้อมูลส่วนบุคคลของท่าน',
+    privacy_s1_title: '1. ข้อมูลที่เราจัดเก็บ',
+    privacy_s1_body: 'เราจัดเก็บข้อมูลประเภทต่อไปนี้เพื่อให้บริการแก่ท่าน:',
+    privacy_s1_li1: 'ข้อมูลที่จำเป็น: รหัสอุปกรณ์ (Device ID) เวอร์ชัน OS ประวัติการใช้งานเกม',
+    privacy_s1_li2: 'ข้อมูลที่ให้โดยสมัครใจ: ชื่อ ที่อยู่อีเมล (เมื่อเชื่อมบัญชี)',
+    privacy_s1_li3: 'ข้อมูลการชำระเงิน: ประวัติการซื้อ (เราไม่จัดเก็บหมายเลขบัตรหรือข้อมูลทางการเงิน)',
+    privacy_s1_li4: 'ข้อมูลที่จัดเก็บอัตโนมัติ: ที่อยู่ IP บันทึกการใช้บริการ บันทึกการเข้าถึง',
+    privacy_s1_li5: 'ตัวระบุเพื่อการโฆษณา: Advertising ID (ADID) หรือ IDFA (สำหรับโฆษณาเฉพาะบุคคลและการวิเคราะห์ จัดเก็บเมื่อได้รับความยินยอมจากผู้ใช้)',
+    privacy_s1_li6: 'ข้อมูลที่จัดเก็บผ่าน SDK ของบุคคลที่สาม: Firebase Analytics (Google), Google Play Billing SDK, Supabase ฯลฯ — โดยนโยบายความเป็นส่วนตัวของแต่ละ SDK มีผลบังคับใช้แยกต่างหาก',
+    privacy_s1_legal_basis: '※ ฐานทางกฎหมายในการประมวลผล: เราประมวลผลข้อมูลส่วนบุคคลบนพื้นฐานของความยินยอมของผู้ใช้ การปฏิบัติตามสัญญา หน้าที่ตามกฎหมาย และประโยชน์โดยชอบด้วยกฎหมาย ฐานและหน่วยงานกำกับดูแลเฉพาะของแต่ละประเทศเป็นไปตาม "ภาคผนวกรายประเทศ"',
+    privacy_s2_title: '2. วิธีที่เราใช้ข้อมูลของท่าน',
+    privacy_s2_body: 'ข้อมูลที่จัดเก็บจะถูกใช้เพื่อวัตถุประสงค์ต่อไปนี้เท่านั้น:',
+    privacy_s2_li1: 'การให้บริการและดำเนินงานบริการ รวมถึงการจัดการบัญชีผู้ใช้',
+    privacy_s2_li2: 'การป้องกันการทุจริตและรักษาความปลอดภัยของบริการ',
+    privacy_s2_li3: 'การตอบข้อสอบถามของลูกค้าและการแจ้งประกาศต่าง ๆ',
+    privacy_s2_li4: 'การโฆษณาเฉพาะบุคคลและการปรับปรุงบริการ (เมื่อได้รับความยินยอมจากผู้ใช้)',
+    privacy_s2_li5: 'การปฏิบัติตามกฎหมายที่เกี่ยวข้องและการคุ้มครองสิทธิตามกฎหมาย',
+    privacy_s3_title: '3. ระยะเวลาเก็บรักษาข้อมูล',
+    privacy_s3_body: 'ข้อมูลส่วนบุคคลจะถูกลบทันทีเมื่อบรรลุวัตถุประสงค์ของการจัดเก็บแล้ว ระยะเวลาเก็บรักษาเฉพาะกรณี: ① ข้อมูลบัญชีและข้อมูลการเล่นเกม: ภายใน 30 วันนับจากคำขอลบบัญชี ② บันทึกการชำระเงินและธุรกรรม: สูงสุด 5 ปีตามที่กฎหมายที่เกี่ยวข้องกำหนด ③ บันทึกการติดต่อฝ่ายสนับสนุนลูกค้า: 3 ปีหลังจากเรื่องยุติ ④ บันทึกการเข้าถึง: 1 ปีนับจากวันที่จัดเก็บ ข้อมูลที่อยู่ภายใต้หน้าที่เก็บรักษาตามกฎหมายจะถูกลบหลังพ้นระยะเวลาที่กำหนด',
+    privacy_s4_title: '4. การเปิดเผยข้อมูลแก่บุคคลที่สาม',
+    privacy_s4_body: 'เราจะไม่เปิดเผยข้อมูลส่วนบุคคลของท่านแก่บุคคลที่สามโดยไม่ได้รับความยินยอมล่วงหน้าจากท่าน เว้นแต่ในกรณีต่อไปนี้: ① ตามที่กฎหมายที่เกี่ยวข้องกำหนด ② Google LLC — เพื่อดำเนินการชำระเงินผ่าน Google Play ③ Firebase (Google LLC) — เพื่อการวิเคราะห์และปรับปรุงบริการ ④ Supabase Inc. — เพื่อจัดเก็บข้อมูลการจัดอันดับและข้อมูลฝั่งเซิร์ฟเวอร์ ⑤ IPinfo Inc. — เพื่อค้นหาประเทศจากที่อยู่ IP (ข้อมูลที่อยู่ IP สนับสนุนโดย IPinfo, https://ipinfo.io) การเปิดเผยจะจำกัดเพียงเท่าที่จำเป็นอย่างยิ่งต่อการให้บริการ และข้อมูลที่เปิดเผยจะไม่ถูกนำไปใช้เกินกว่าวัตถุประสงค์ที่ระบุไว้',
+    privacy_s5_title: '5. สิทธิของท่าน',
+    privacy_s5_body: 'ผู้ใช้สามารถใช้สิทธิต่อไปนี้ตามกฎหมายคุ้มครองข้อมูลส่วนบุคคลที่เกี่ยวข้อง: ① สิทธิในการเข้าถึงข้อมูล ② สิทธิในการแก้ไขข้อมูลให้ถูกต้อง ③ สิทธิในการลบข้อมูล (ภายใต้ข้อกำหนดการเก็บรักษาตามกฎหมาย) ④ สิทธิในการจำกัดการประมวลผล ⑤ สิทธิในการโอนย้ายข้อมูล ⑥ สิทธิในการคัดค้าน (รวมถึงการตัดสินใจโดยการประมวลผลอัตโนมัติ) หากท่านประสงค์จะใช้สิทธิดังกล่าว กรุณาติดต่อ aqua-privacy@icecatgames.net ทั้งนี้ ท่านมีสิทธิยื่นเรื่องร้องเรียนต่อหน่วยงานกำกับดูแลข้อมูลส่วนบุคคลของประเทศที่ตนพำนัก โดยหน่วยงานของแต่ละประเทศระบุไว้ใน "ภาคผนวกรายประเทศ"',
+    privacy_s6_title: '6. เจ้าหน้าที่คุ้มครองข้อมูลส่วนบุคคล (DPO)',
+    privacy_s6_body: 'สำหรับข้อสอบถามและคำขอใช้สิทธิที่เกี่ยวกับความเป็นส่วนตัว กรุณาติดต่อ:',
+    privacy_s7_title: '7. การรับมือกรณีข้อมูลรั่วไหล',
+    privacy_s7_body: 'ในกรณีที่เกิดเหตุละเมิดข้อมูลส่วนบุคคล (เช่น การเข้าถึงหรือเปิดเผยโดยไม่ได้รับอนุญาต) บริษัทจะแจ้งต่อหน่วยงานกำกับดูแลและผู้ใช้ที่ได้รับผลกระทบภายในกำหนดเวลาและวิธีการที่กฎหมายของแต่ละประเทศกำหนด การแจ้งดังกล่าวจะระบุลักษณะของเหตุการณ์ ประเภทข้อมูลที่ได้รับผลกระทบ มาตรการแก้ไขที่ดำเนินการ และช่องทางติดต่อสำหรับสอบถามเพิ่มเติม กำหนดเวลาและช่องทางเฉพาะของแต่ละประเทศระบุไว้ใน "ภาคผนวกรายประเทศ"',
+    privacy_s8_title: '8. การโอนข้อมูลข้ามพรมแดน',
+    privacy_s8_body: 'เพื่อการให้บริการ ข้อมูลส่วนบุคคลอาจถูกประมวลผลในสาธารณรัฐเกาหลี (สำนักงานใหญ่ของบริษัท) สหรัฐอเมริกา (เซิร์ฟเวอร์ Google Firebase และ Supabase) และเขตอำนาจอื่น ๆ ตามความจำเป็น การโอนข้อมูลข้ามพรมแดนจะใช้มาตรการคุ้มครองที่เหมาะสม (เช่น ข้อสัญญามาตรฐาน) ตามที่กฎหมายของแต่ละประเทศกำหนด โปรดดู "ภาคผนวกรายประเทศ"',
+    privacy_s9_title: '9. ความเป็นส่วนตัวของเด็ก',
+    privacy_s9_body: 'อายุขั้นต่ำเริ่มต้นในการใช้บริการนี้คือ 13 ปี หากประเทศที่ผู้ใช้พำนักกำหนดอายุที่สูงกว่าหรือกำหนดให้ต้องได้รับความยินยอมจากผู้ปกครองโดยเฉพาะ ให้ใช้มาตรฐานนั้นเป็นหลัก (ดู "ภาคผนวกรายประเทศ") บริษัทไม่มีเจตนาจัดเก็บข้อมูลจากเด็กที่อายุต่ำกว่าเกณฑ์ และจะดำเนินการลบทันทีเมื่อพบ',
+    privacy_s10_title: '10. คำขอลบบัญชีและข้อมูล',
+    privacy_s10_body: 'ผู้ใช้สามารถขอลบบัญชีและข้อมูลส่วนบุคคลที่เกี่ยวข้องได้ผ่านเมนู ตั้งค่า > ลบบัญชี ภายในแอป คำขอจะได้รับการดำเนินการภายใน 30 วันทำการ ทั้งนี้ ข้อมูลที่อยู่ภายใต้ข้อกำหนดการเก็บรักษาตามกฎหมายจะไม่รวมอยู่ในการลบ',
+
+    regional_title: 'ภาคผนวกรายประเทศ',
+    regional_subtitle: 'ประกาศทางกฎหมายเพิ่มเติมสำหรับประเทศที่ผู้ใช้พำนัก (ตามภาษาที่เลือก) ใช้บังคับร่วมกับข้อกำหนดและนโยบายความเป็นส่วนตัวส่วนกลาง',
+    regional_country: '🇹🇭 ประเทศไทย · พ.ร.บ. คุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562 (PDPA)',
+    regional_note: 'เนื้อหาของภาคผนวกนี้จะ<b>เปลี่ยนไปตามภูมิภาคของคุณตามภาษาที่เลือก</b> ภาษาที่แสดงกับกฎหมาย/เขตอำนาจที่ใช้บังคับเป็นคนละส่วนกัน โดยกฎหมายภาคบังคับของประเทศที่คุณพำนักจริงจะมีผลเหนือกว่า',
+    regional_law_title: 'กฎหมายที่ใช้บังคับ',
+    regional_law_body: 'พระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562 (PDPA) และพระราชบัญญัติคุ้มครองผู้บริโภค พ.ศ. 2522',
+    regional_regulator_title: 'หน่วยงานกำกับดูแล',
+    regional_regulator_body: 'คณะกรรมการคุ้มครองข้อมูลส่วนบุคคล / สำนักงาน สคส. (PDPC, pdpc.or.th) และสำนักงานคณะกรรมการคุ้มครองผู้บริโภค (สคบ., ocpb.go.th)',
+    regional_basis_title: 'ฐานทางกฎหมายในการประมวลผล',
+    regional_basis_body: 'ความยินยอม การปฏิบัติตามสัญญา ประโยชน์โดยชอบด้วยกฎหมาย และการปฏิบัติตามกฎหมาย ตามที่ PDPA กำหนด',
+    regional_minor_title: 'การคุ้มครองผู้เยาว์',
+    regional_minor_body: 'ผู้เยาว์ที่อายุต่ำกว่า 10 ปีต้องได้รับความยินยอมจากผู้ใช้อำนาจปกครอง ส่วนผู้เยาว์รายอื่นอาจต้องได้รับความยินยอมจากผู้ปกครองเป็นรายกรณี',
+    regional_transfer_title: 'การโอนข้อมูลข้ามพรมแดน',
+    regional_transfer_body: 'ข้อมูลอาจถูกโอนไปยังต่างประเทศ (เกาหลี สหรัฐอเมริกา) โดยเป็นไปตามข้อกำหนดด้านความเพียงพอ/มาตรการคุ้มครองตาม PDPA มาตรา 28–29',
+    regional_breach_title: 'การแจ้งเหตุละเมิด',
+    regional_breach_body: 'จะแจ้งต่อสำนักงาน สคส. (PDPC) ภายใน 72 ชั่วโมงนับแต่ทราบเหตุ และแจ้งเจ้าของข้อมูลหากมีความเสี่ยงสูง (PDPA มาตรา 37(4))',
+    regional_rep_title: 'ตัวแทนในประเทศ / DPO',
+    regional_rep_body: 'บริษัทจัดให้มีเจ้าหน้าที่คุ้มครองข้อมูลส่วนบุคคลสำหรับเรื่องความเป็นส่วนตัว: aqua-privacy@icecatgames.net ผู้ควบคุมข้อมูลที่อยู่นอกราชอาณาจักรต้องแต่งตั้งตัวแทนในประเทศไทยตาม PDPA มาตรา 37(5)',
+    regional_rep_todo: '※ ต้องดำเนินการให้เสร็จ (ฝ่ายกฎหมาย): ชื่อ/ตำแหน่ง DPO และการแต่งตั้งตัวแทนในประเทศไทย',
+    regional_rights_title: 'สิทธิและการเยียวยา',
+    regional_rights_body: 'สิทธิเข้าถึง แก้ไข ลบ ระงับการประมวลผล โอนย้ายข้อมูล คัดค้าน และถอนความยินยอม รวมถึงสิทธิร้องเรียนต่อสำนักงาน สคส. (PDPC)',
+    regional_dispute_title: 'ข้อพิพาทผู้บริโภคและการคืนเงิน',
+    regional_dispute_body: 'ข้อพิพาทจะได้รับการแก้ไขด้วยการเจรจาและฝ่ายบริการลูกค้าเป็นลำดับแรก ผู้ใช้ยังสามารถใช้สิทธิผ่านสำนักงานคณะกรรมการคุ้มครองผู้บริโภค (สคบ.) หรือศาลไทยได้',
   },
 };
 
 /* ─── STATE ─── */
-var currentLang = 'ph';
+var SUPPORTED_LANGS = ['ko', 'en', 'ph', 'th'];
+var FALLBACK_LANG = 'th'; // 최종 폴백 — 인게임은 항상 ?lang= 을 넘기므로 브라우저 직접 방문 시에만 사용됨
+var currentLang = FALLBACK_LANG;
 var currentPage = 'support';
+
+/* ─── 언어 자동 판별 ───
+   우선순위: URL 파라미터(?lang=) → 브라우저/기기 언어 → 태국어(최종 폴백)
+   인게임 웹뷰는 게임에서 설정한 언어를 ?lang= 으로 넘겨줌 */
+function normalizeLang(raw) {
+  if (!raw) return null;
+  var base = String(raw).toLowerCase().replace('_', '-').split('-')[0];
+  if (base === 'ko') return 'ko';
+  if (base === 'th') return 'th';
+  if (base === 'en') return 'en';
+  if (base === 'ph' || base === 'fil' || base === 'tl') return 'ph';
+  return null;
+}
+
+function getInitialLang() {
+  // 1) URL 파라미터 — ?lang=th#notice / #notice?lang=th 둘 다 허용
+  var m = (window.location.search + '&' + window.location.hash).match(/[?&]lang=([A-Za-z_-]+)/);
+  var byParam = m ? normalizeLang(m[1]) : null;
+  if (byParam) return byParam;
+
+  // 2) 브라우저/기기 언어
+  var navLangs = navigator.languages || [navigator.language];
+  for (var i = 0; i < navLangs.length; i++) {
+    var byNav = normalizeLang(navLangs[i]);
+    if (byNav) return byNav;
+  }
+
+  // 3) 최종 폴백
+  return FALLBACK_LANG;
+}
+
+function getHashPage() {
+  return window.location.hash.replace('#', '').split('?')[0];
+}
 
 /* ─── APPLY LANGUAGE ─── */
 function applyLang(lang) {
-  var data = i18n[lang] || i18n['en'];
+  var data = i18n[lang] || i18n[FALLBACK_LANG] || i18n['en'];
   document.querySelectorAll('[data-i18n]').forEach(function(el) {
     var key = el.getAttribute('data-i18n');
     if (data[key] !== undefined) el.textContent = data[key];
@@ -2246,7 +2746,10 @@ function applyLang(lang) {
 
 /* ─── SET LANG ─── */
 function setLang(lang) {
+  if (SUPPORTED_LANGS.indexOf(lang) === -1) lang = FALLBACK_LANG;
   currentLang = lang;
+  // 태국어는 단어 사이 공백이 없어 줄바꿈/폰트 처리에 lang 속성이 필요함
+  document.documentElement.setAttribute('lang', lang === 'ph' ? 'fil' : lang);
   document.querySelectorAll('.lang-item').forEach(function(el) {
     el.classList.remove('active');
   });
@@ -2269,10 +2772,10 @@ function switchPage(page, btn) {
 }
 
 /* ─── HASH → PAGE 매핑 ─── */
-var pageTabIndex = { notice: 1, community: 2, support: 3, terms: 4, privacy: 5 };
+var pageTabIndex = { notice: 1, community: 2, support: 3, terms: 4, privacy: 5, regional: 6 };
 
 function goToPage(page) {
-  var validPages = ['notice', 'community', 'support', 'terms', 'privacy'];
+  var validPages = ['notice', 'community', 'support', 'terms', 'privacy', 'regional'];
   if (validPages.indexOf(page) === -1) page = 'privacy';
   var idx = pageTabIndex[page];
   var btn = document.querySelector('.nav-tab:nth-child(' + idx + ')');
@@ -2292,14 +2795,12 @@ function toggleNotice(item) {
 
 /* ─── INIT ─── */
 window.onload = function() {
-  applyLang('ph');
-  var hash = window.location.hash.replace('#', '');
-  goToPage(hash || 'privacy');
+  setLang(getInitialLang());
+  goToPage(getHashPage() || 'privacy');
 };
 
 window.addEventListener('hashchange', function() {
-  var hash = window.location.hash.replace('#', '');
-  goToPage(hash || 'privacy');
+  goToPage(getHashPage() || 'privacy');
 });
 </script>
 </body>
