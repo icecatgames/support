@@ -694,56 +694,18 @@ body {
           <div style="font-size:13px;">새로운 공지사항이 등록되면 이곳에 표시됩니다</div>
         </div>
 
-        <!-- 공지 21: 1.10.3 업데이트 서버 점검 안내 (10/19) -->
+        <!-- 공지 20: 서버 안정화 긴급 점검 안내 (10/23) -->
         <div class="notice-item">
           <div class="notice-header" onclick="toggleNotice(this.parentElement)">
             <span class="notice-badge badge-maintenance" data-i18n="badge_maintenance"></span>
             <div class="notice-meta">
-              <div class="notice-title" data-i18n="notice21_title"></div>
-              <div class="notice-date">2026.10.19</div>
-            </div>
-            <span class="notice-arrow">▼</span>
-          </div>
-          <div class="notice-body">
-            <p data-i18n="notice21_greeting"></p>
-            <p data-i18n-html="notice21_body1"></p>
-            <ul>
-              <li>
-                <strong data-i18n="notice21_li1"></strong>
-                <ul>
-                  <li data-i18n-html="notice21_li2"></li>
-                  <li data-i18n-html="notice21_li3"></li>
-                </ul>
-              </li>
-              <li>
-                <strong data-i18n="notice21_li4"></strong>
-                <ul>
-                  <li data-i18n="notice21_li5"></li>
-                </ul>
-              </li>
-              <li>
-                <strong data-i18n="notice21_li10"></strong>
-                <ul>
-                  <li data-i18n-html="notice21_li11"></li>
-                  <li data-i18n-html="notice21_li12"></li>
-                </ul>
-              </li>
-            </ul>
-            <p data-i18n="notice21_body2"></p>
-            <p data-i18n="notice21_body3"></p>
-          </div>
-        </div>
-        <!-- 공지 20: 서비스 종료 안내 (10/14) -->
-        <div class="notice-item">
-          <div class="notice-header" onclick="toggleNotice(this.parentElement)">
-            <span class="notice-badge badge-notice" data-i18n="badge_notice"></span>
-            <div class="notice-meta">
               <div class="notice-title" data-i18n="notice20_title"></div>
-              <div class="notice-date">2026.10.14</div>
+              <div class="notice-date">2026.10.23</div>
             </div>
             <span class="notice-arrow">▼</span>
           </div>
           <div class="notice-body">
+            <p data-i18n="notice20_greeting"></p>
             <p data-i18n-html="notice20_body1"></p>
             <ul>
               <li>
@@ -757,50 +719,12 @@ body {
                 <strong data-i18n="notice20_li4"></strong>
                 <ul>
                   <li data-i18n="notice20_li5"></li>
-                  <li data-i18n="notice20_li6"></li>
-                  <li data-i18n="notice20_li7"></li>
-                  <li data-i18n-html="notice20_li8"></li>
-                </ul>
-              </li>
-              <li>
-                <strong data-i18n="notice20_li9"></strong>
-                <ul>
-                  <li data-i18n="notice20_li9n"></li>
-                  <li data-i18n="notice20_li10"></li>
-                  <li>
-                    <span data-i18n="notice20_li11"></span>
-                    <ul>
-                      <li data-i18n="notice20_li12"></li>
-                      <li style="list-style:none;"><img src="data:image/png;base64,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" alt="PID" style="max-width:100%; width:360px; border-radius:8px; margin:4px 0 6px;"></li>
-                      <li data-i18n="notice20_li13"></li>
-                      <li data-i18n="notice20_li14"></li>
-                    </ul>
-                  </li>
-                  <li data-i18n="notice20_li15"></li>
-                </ul>
-              </li>
-              <li>
-                <strong data-i18n="notice20_li16"></strong>
-                <ul>
-                  <li data-i18n="notice20_li17"></li>
-                  <li data-i18n="notice20_li18"></li>
-                </ul>
-              </li>
-              <li>
-                <strong data-i18n="notice20_li19"></strong>
-                <ul>
-                  <li data-i18n-html="notice20_li20"></li>
-                </ul>
-              </li>
-              <li>
-                <strong data-i18n="notice20_li21"></strong>
-                <ul>
-                  <li data-i18n-html="notice20_li22"></li>
-                  <li data-i18n-html="notice20_li23"></li>
                 </ul>
               </li>
             </ul>
+            <p data-i18n="notice20_note"></p>
             <p data-i18n="notice20_body2"></p>
+            <p data-i18n="notice20_body3"></p>
           </div>
         </div>
         <!-- 공지 19: 1.9.4 업데이트 서버 점검 안내 (9/22) -->
@@ -1757,46 +1681,17 @@ const i18n = {
     badge_launch: 'LAUNCH',
     badge_maintenance: '점검',
     badge_policy: '정책',
-    notice21_title: '[점검] 1.10.3 업데이트 서버 점검 안내 (10/19)',
-    notice21_greeting: '안녕하세요, 구원자님! 🎉',
-    notice21_body1: '1.10.3 업데이트 적용을 위해 서버 점검이 진행될 예정입니다.<br>점검 시간 동안에는 게임에 접속하실 수 없습니다. 이용에 불편을 드려 죄송하며, 너른 양해와 성원에 감사드립니다.',
-    notice21_li1: '점검 시간',
-    notice21_li2: 'UTC: 10월 19일 06:00 ~ 07:00 (1시간)',
-    notice21_li3: '필리핀 (PHT, UTC+8): 10월 19일 14:00 ~ 15:00 (1시간)',
-    notice21_li4: '점검 내용',
-    notice21_li5: '인앱 결제 서비스 종료',
-    notice21_li10: '점검 보상',
-    notice21_li11: '보석 ×50,000',
-    notice21_li12: '전설 영웅 기도문 ×10',
-    notice21_body2: '마지막까지 모든 구원자님께 안정적인 게임 환경을 제공해 드릴 수 있도록 최선을 다하겠습니다.',
-    notice21_body3: '그동안 너른 양해와 변함없는 성원을 보내주셔서 감사했습니다. 🌊',
-    notice20_title: '[안내] 아쿠아 서바이벌 서비스 종료 안내',
-    notice20_body1: '안녕하세요. 오늘 이용자 여러분께 슬픈 소식을 전해드려야 할 것 같습니다.<br>저희 게임은 아쉽게도 2026년 11월 26일(목)을 끝으로 서비스를 종료하게 되었습니다.<br>그동안 많이 부족했던 아쿠아 서바이벌을 사랑해 주신 이용자 여러분께 진심으로 감사드립니다.',
-    notice20_li1: '주요 일정',
-    notice20_li2: '2026-10-19(월) 점검 후: 인앱 결제 차단',
-    notice20_li3: '2026-11-26(목) 06:00 UTC (14:00 PHT): 서비스 종료 (게임 이용 불가)',
-    notice20_li4: '환불 안내',
-    notice20_li5: '대상: 2026년 7월 21일 ~ 10월 19일 결제분 (최근 90일 기준)',
-    notice20_li6: '환불액: 대상 기간 결제 금액 100% 환불',
-    notice20_li7: '신청 기간: 2026-10-14(수) ~ 11-26(목)',
-    notice20_li8: '신청 방법: <a href="mailto:aqua-support@icecatgames.net" style="color:var(--gold-light);">aqua-support@icecatgames.net</a> 으로 결제 증빙과 함께 문의',
-    notice20_li9: '환불 신청 이메일 양식',
-    notice20_li9n: '아래 양식을 복사하여 접수해 주시면 더욱 빠른 처리가 가능합니다.',
-    notice20_li10: '이메일 제목: [환불 신청] 회원번호(PID) / 캐릭터명',
-    notice20_li11: '필수 작성 내용',
-    notice20_li12: '회원번호(PID) 또는 계정 정보 (확인 위치: 프로필 ➔ 설정 ➔ 팝업 하단의 PID)',
-    notice20_li13: '캐릭터명',
-    notice20_li14: 'Google Play 계정(이메일)',
-    notice20_li15: '첨부파일: 결제 증빙 스크린샷 첨부',
-    notice20_li16: '결제 증빙 확인 방법',
-    notice20_li17: '이메일 영수증: 결제 시 구글 계정으로 수신된 Google Play 결제 영수증 메일 스크린샷',
-    notice20_li18: 'Google Play 앱 내 내역: Play 스토어 실행 ➔ 우측 상단 프로필 ➔ 결제 및 정기 결제 ➔ 예산 및 주문 내역 화면 스크린샷',
-    notice20_li19: '개인정보 처리',
-    notice20_li20: '서비스 종료 후 개인정보는 즉시 파기됩니다. 단, 법령상 보존 의무가 있는 결제 및 거래 기록은 관계 법령에 따라 일정 기간 안전하게 분리 보관된 후 파기됩니다. (문의: <a href="mailto:aqua-privacy@icecatgames.net" style="color:var(--gold-light);">aqua-privacy@icecatgames.net</a>)',
-    notice20_li21: '문의',
-    notice20_li22: '<a href="mailto:aqua-support@icecatgames.net" style="color:var(--gold-light);">aqua-support@icecatgames.net</a> (서비스 종료 후에도 약 한 달간 추가로 운영될 예정입니다.)',
-    notice20_li23: '공식 디스코드: <a href="https://discord.gg/h3Y4SXKcHM" target="_blank" rel="noopener noreferrer" style="color:var(--gold-light);">https://discord.gg/h3Y4SXKcHM</a> (서비스 종료 후에도 약 한 달간 추가로 운영될 예정입니다.)',
-    notice20_body2: '그동안 아쿠아 서바이벌을 아껴 주셔서 다시 한번 감사드립니다.',
+    notice20_title: '[긴급 점검] 서버 안정화 점검 안내 (10/23)',
+    notice20_greeting: '안녕하세요, 구원자님!',
+    notice20_body1: '보다 안정적인 서비스 제공을 위해 긴급 서버 점검이 진행될 예정입니다.<br>점검 시간 동안에는 게임에 접속하실 수 없습니다. 이용에 불편을 드려 죄송하며, 너른 양해와 성원에 감사드립니다.',
+    notice20_li1: '점검 시간',
+    notice20_li2: 'UTC: 10월 23일 09:30 ~ 10:30 (1시간)',
+    notice20_li3: '필리핀 (PHT, UTC+8): 10월 23일 17:30 ~ 18:30 (1시간)',
+    notice20_li4: '점검 내용',
+    notice20_li5: '서버 안정화 작업',
+    notice20_note: '※ 점검 상황에 따라 종료 시간이 단축되거나 연장될 수 있습니다.',
+    notice20_body2: '앞으로도 모든 구원자님께 더욱 쾌적하고 즐거운 게임 경험을 제공해 드릴 수 있도록 최선을 다하겠습니다.',
+    notice20_body3: '너른 양해와 변함없는 성원에 감사드립니다. 🌊',
     notice19_title: '[점검] 1.9.4 업데이트 서버 점검 안내 (9/22)',
     notice19_greeting: '안녕하세요, 구원자님! 🎉',
     notice19_body1: '1.9.4 업데이트 적용을 위해 서버 점검이 진행될 예정입니다.<br>점검 시간 동안에는 게임에 접속하실 수 없습니다. 이용에 불편을 드려 죄송하며, 너른 양해와 성원에 감사드립니다.',
@@ -2197,46 +2092,17 @@ const i18n = {
     badge_launch: 'LAUNCH',
     badge_maintenance: 'MAINTENANCE',
     badge_policy: 'POLICY',
-    notice21_title: '[Maintenance] v1.10.3 Update Server Maintenance Notice (10/19)',
-    notice21_greeting: 'Hello, Saviors! 🎉',
-    notice21_body1: 'Scheduled server maintenance will be conducted to implement the v1.10.3 update.<br>The game will be unavailable during the maintenance period. We apologize for any inconvenience and appreciate your patience and understanding.',
-    notice21_li1: 'Maintenance Schedule',
-    notice21_li2: 'UTC: October 19, 06:00 ~ 07:00 (1 hour)',
-    notice21_li3: 'Philippines (PHT, UTC+8): October 19, 14:00 ~ 15:00 (1 hour)',
-    notice21_li4: 'Maintenance Details',
-    notice21_li5: 'In-app purchases will be discontinued',
-    notice21_li10: 'Maintenance Rewards',
-    notice21_li11: 'Gems ×50,000',
-    notice21_li12: 'Legendary Hero Prayer Book ×10',
-    notice21_body2: 'We will do our best to provide all Saviors with a stable gameplay experience until the very end.',
-    notice21_body3: 'Thank you for your patience and continued support all this time! 🌊',
-    notice20_title: '[Notice] Aqua Survival Service Closure Notice',
-    notice20_body1: 'Hello. We have sad news to share with you today.<br>We regret to inform you that our game will end its service on Thursday, November 26, 2026.<br>We sincerely thank everyone who has loved Aqua Survival, despite all of its shortcomings, over this time.',
-    notice20_li1: 'Key Schedule',
-    notice20_li2: 'Oct 19, 2026 (Mon), after maintenance: In-app purchases blocked',
-    notice20_li3: 'Nov 26, 2026 (Thu), 06:00 UTC (14:00 PHT): Service ends (game unavailable)',
-    notice20_li4: 'Refund Information',
-    notice20_li5: 'Eligible purchases: Purchases made from July 21 to October 19, 2026 (based on the most recent 90 days)',
-    notice20_li6: 'Refund amount: 100% of the amount paid during the eligible period',
-    notice20_li7: 'Application period: Oct 14 (Wed) – Nov 26 (Thu), 2026',
-    notice20_li8: 'How to apply: Email <a href="mailto:aqua-support@icecatgames.net" style="color:var(--gold-light);">aqua-support@icecatgames.net</a> with proof of payment',
-    notice20_li9: 'Refund Request Email Template',
-    notice20_li9n: 'Copying and submitting the template below will help us process your request faster.',
-    notice20_li10: 'Email subject: [Refund Request] Member ID (PID) / Character name',
-    notice20_li11: 'Required information',
-    notice20_li12: 'Member ID (PID) or account information (where to find it: Profile ➔ Settings ➔ PID at the bottom of the popup)',
-    notice20_li13: 'Character name',
-    notice20_li14: 'Google Play account (email)',
-    notice20_li15: 'Attachment: Screenshot of proof of payment',
-    notice20_li16: 'How to Verify Proof of Payment',
-    notice20_li17: 'Email receipt: Screenshot of the Google Play payment receipt email sent to your Google account at the time of purchase',
-    notice20_li18: 'Google Play app history: Screenshot of Google Play Store ➔ Profile (top right) ➔ Payments & subscriptions ➔ Budget & history',
-    notice20_li19: 'Personal Information',
-    notice20_li20: 'After the service ends, personal information will be destroyed immediately. However, payment and transaction records that must be retained by law will be securely stored separately for the legally required period and then destroyed. (Inquiries: <a href="mailto:aqua-privacy@icecatgames.net" style="color:var(--gold-light);">aqua-privacy@icecatgames.net</a>)',
-    notice20_li21: 'Contact',
-    notice20_li22: '<a href="mailto:aqua-support@icecatgames.net" style="color:var(--gold-light);">aqua-support@icecatgames.net</a> (This channel will remain open for about one month after the service ends.)',
-    notice20_li23: 'Official Discord: <a href="https://discord.gg/h3Y4SXKcHM" target="_blank" rel="noopener noreferrer" style="color:var(--gold-light);">https://discord.gg/h3Y4SXKcHM</a> (This channel will remain open for about one month after the service ends.)',
-    notice20_body2: 'Thank you once again for cherishing Aqua Survival all this time.',
+    notice20_title: '[Maintenance] Emergency Server Stabilization Maintenance (10/23)',
+    notice20_greeting: 'Hello, Saviors!',
+    notice20_body1: 'Emergency server maintenance will be conducted to provide a more stable service.<br>The game will be unavailable during the maintenance period. We apologize for any inconvenience and appreciate your patience and understanding.',
+    notice20_li1: 'Maintenance Schedule',
+    notice20_li2: 'UTC: October 23, 09:30 ~ 10:30 (1 hour)',
+    notice20_li3: 'Philippines (PHT, UTC+8): October 23, 17:30 ~ 18:30 (1 hour)',
+    notice20_li4: 'Maintenance Details',
+    notice20_li5: 'Server stabilization work',
+    notice20_note: '※ The end time may be shortened or extended depending on the maintenance progress.',
+    notice20_body2: 'We will continue working to provide all Saviors with a smoother and more enjoyable gameplay experience.',
+    notice20_body3: 'Thank you for your patience and continued support! 🌊',
     notice19_title: '[Maintenance] v1.9.4 Update Server Maintenance Notice (9/22)',
     notice19_greeting: 'Hello, Saviors! 🎉',
     notice19_body1: 'Scheduled server maintenance will be conducted to implement the v1.9.4 update.<br>The game will be unavailable during the maintenance period. We apologize for any inconvenience and appreciate your patience and understanding.',
@@ -2615,46 +2481,17 @@ const i18n = {
     badge_launch: 'LAUNCH',
     badge_maintenance: 'MAINTENANCE',
     badge_policy: 'POLICY',
-    notice21_title: '[Maintenance] Abiso sa Server Maintenance para sa v1.10.3 Update (10/19)',
-    notice21_greeting: 'Kumusta, mga Tagapagligtas! 🎉',
-    notice21_body1: 'Magsasagawa ng nakatakdang server maintenance upang ipatupad ang v1.10.3 update.<br>Hindi magiging available ang laro sa panahon ng maintenance. Humihingi kami ng paumanhin sa anumang abala at nagpapasalamat sa inyong pasensya at pang-unawa.',
-    notice21_li1: 'Iskedyul ng Maintenance',
-    notice21_li2: 'UTC: Oktubre 19, 06:00 ~ 07:00 (1 oras)',
-    notice21_li3: 'Pilipinas (PHT, UTC+8): Oktubre 19, 14:00 ~ 15:00 (1 oras)',
-    notice21_li4: 'Detalye ng Maintenance',
-    notice21_li5: 'Ihihinto na ang in-app purchases',
-    notice21_li10: 'Mga Reward sa Maintenance',
-    notice21_li11: 'Gems ×50,000',
-    notice21_li12: 'Legendary Hero Prayer Book ×10',
-    notice21_body2: 'Gagawin namin ang aming makakaya upang mabigyan ang lahat ng Tagapagligtas ng matatag na karanasan sa paglalaro hanggang sa huli.',
-    notice21_body3: 'Maraming salamat sa inyong pasensya at patuloy na suporta sa lahat ng panahong ito! 🌊',
-    notice20_title: '[Abiso] Abiso sa Pagtatapos ng Serbisyo ng Aqua Survival',
-    notice20_body1: 'Kumusta. Mayroon kaming malungkot na balitang ibabahagi sa inyo ngayon.<br>Ikinalulungkot naming ipaalam na magtatapos ang serbisyo ng aming laro sa Huwebes, Nobyembre 26, 2026.<br>Taos-puso kaming nagpapasalamat sa lahat ng nagmahal sa Aqua Survival sa kabila ng mga kakulangan nito.',
-    notice20_li1: 'Pangunahing Iskedyul',
-    notice20_li2: 'Oktubre 19, 2026 (Lunes), pagkatapos ng maintenance: Haharangan ang in-app purchases',
-    notice20_li3: 'Nobyembre 26, 2026 (Huwebes), 06:00 UTC (14:00 PHT): Magtatapos ang serbisyo (hindi na magagamit ang laro)',
-    notice20_li4: 'Impormasyon sa Refund',
-    notice20_li5: 'Saklaw: Mga pagbiling ginawa mula Hulyo 21 hanggang Oktubre 19, 2026 (batay sa nakaraang 90 araw)',
-    notice20_li6: 'Halaga ng refund: 100% ng nabayarang halaga sa saklaw na panahon',
-    notice20_li7: 'Panahon ng aplikasyon: Oktubre 14 (Miyerkules) – Nobyembre 26 (Huwebes), 2026',
-    notice20_li8: 'Paano mag-apply: Mag-email sa <a href="mailto:aqua-support@icecatgames.net" style="color:var(--gold-light);">aqua-support@icecatgames.net</a> kalakip ang patunay ng pagbabayad',
-    notice20_li9: 'Template ng Email para sa Refund',
-    notice20_li9n: 'Mas mapapabilis ang pagproseso kung kokopyahin at gagamitin ang template sa ibaba.',
-    notice20_li10: 'Subject ng email: [Refund Request] Member ID (PID) / Pangalan ng karakter',
-    notice20_li11: 'Mga kinakailangang impormasyon',
-    notice20_li12: 'Member ID (PID) o impormasyon ng account (saan makikita: Profile ➔ Settings ➔ PID sa ibaba ng popup)',
-    notice20_li13: 'Pangalan ng karakter',
-    notice20_li14: 'Google Play account (email)',
-    notice20_li15: 'Attachment: Screenshot ng patunay ng pagbabayad',
-    notice20_li16: 'Paano Kumuha ng Patunay ng Pagbabayad',
-    notice20_li17: 'Email receipt: Screenshot ng email na resibo ng Google Play na natanggap sa inyong Google account noong nagbayad',
-    notice20_li18: 'Kasaysayan sa Google Play app: Screenshot ng Google Play Store ➔ Profile (kanang itaas) ➔ Payments & subscriptions ➔ Budget & history',
-    notice20_li19: 'Pagproseso ng Personal na Impormasyon',
-    notice20_li20: 'Pagkatapos ng pagtatapos ng serbisyo, agad na buburahin ang personal na impormasyon. Gayunpaman, ang mga talaan ng pagbabayad at transaksyon na kailangang itago ayon sa batas ay ligtas na itatabi nang hiwalay sa itinakdang panahon bago burahin. (Mga katanungan: <a href="mailto:aqua-privacy@icecatgames.net" style="color:var(--gold-light);">aqua-privacy@icecatgames.net</a>)',
-    notice20_li21: 'Mga Katanungan',
-    notice20_li22: '<a href="mailto:aqua-support@icecatgames.net" style="color:var(--gold-light);">aqua-support@icecatgames.net</a> (Mananatiling bukas ang channel na ito nang mga isang buwan pagkatapos ng pagtatapos ng serbisyo.)',
-    notice20_li23: 'Opisyal na Discord: <a href="https://discord.gg/h3Y4SXKcHM" target="_blank" rel="noopener noreferrer" style="color:var(--gold-light);">https://discord.gg/h3Y4SXKcHM</a> (Mananatiling bukas ang channel na ito nang mga isang buwan pagkatapos ng pagtatapos ng serbisyo.)',
-    notice20_body2: 'Muli, maraming salamat sa pagmamahal ninyo sa Aqua Survival sa lahat ng panahong ito.',
+    notice20_title: '[Maintenance] Emergency na Server Maintenance para sa Stabilization (10/23)',
+    notice20_greeting: 'Kumusta, mga Tagapagligtas!',
+    notice20_body1: 'Magsasagawa ng emergency na server maintenance upang magbigay ng mas matatag na serbisyo.<br>Hindi magiging available ang laro sa panahon ng maintenance. Humihingi kami ng paumanhin sa anumang abala at nagpapasalamat sa inyong pasensya at pang-unawa.',
+    notice20_li1: 'Iskedyul ng Maintenance',
+    notice20_li2: 'UTC: Oktubre 23, 09:30 ~ 10:30 (1 oras)',
+    notice20_li3: 'Pilipinas (PHT, UTC+8): Oktubre 23, 17:30 ~ 18:30 (1 oras)',
+    notice20_li4: 'Detalye ng Maintenance',
+    notice20_li5: 'Gawaing stabilization ng server',
+    notice20_note: '※ Maaaring paikliin o pahabain ang oras ng pagtatapos depende sa progreso ng maintenance.',
+    notice20_body2: 'Patuloy kaming magtatrabaho upang mabigyan ang lahat ng Tagapagligtas ng mas maayos at mas kasiya-siyang karanasan sa paglalaro.',
+    notice20_body3: 'Maraming salamat sa inyong pasensya at patuloy na suporta! 🌊',
     notice19_title: '[Maintenance] Abiso sa Server Maintenance para sa v1.9.4 Update (9/22)',
     notice19_greeting: 'Kumusta, mga Tagapagligtas! 🎉',
     notice19_body1: 'Magsasagawa ng nakatakdang server maintenance upang ipatupad ang v1.9.4 update.<br>Hindi magiging available ang laro sa panahon ng maintenance. Humihingi kami ng paumanhin sa anumang abala at nagpapasalamat sa inyong pasensya at pang-unawa.',
@@ -3033,46 +2870,17 @@ const i18n = {
     badge_launch: 'เปิดตัว',
     badge_maintenance: 'ปิดปรับปรุง',
     badge_policy: 'นโยบาย',
-    notice21_title: '[ปิดปรับปรุง] ประกาศปิดปรับปรุงเซิร์ฟเวอร์เพื่ออัปเดต v1.10.3 (19 ต.ค.)',
-    notice21_greeting: 'สวัสดีผู้กอบกู้ทุกท่าน! 🎉',
-    notice21_body1: 'เราจะทำการปิดปรับปรุงเซิร์ฟเวอร์เพื่อนำอัปเดต v1.10.3 มาใช้<br>ท่านจะไม่สามารถเข้าเล่นเกมได้ในช่วงเวลาดังกล่าว ขออภัยในความไม่สะดวก และขอบคุณสำหรับความเข้าใจ',
-    notice21_li1: 'กำหนดการปิดปรับปรุง',
-    notice21_li2: 'UTC: 19 ตุลาคม 06:00 ~ 07:00 น. (1 ชั่วโมง)',
-    notice21_li3: 'ฟิลิปปินส์ (PHT, UTC+8): 19 ตุลาคม 14:00 ~ 15:00 น. (1 ชั่วโมง)',
-    notice21_li4: 'รายละเอียดการปิดปรับปรุง',
-    notice21_li5: 'ยุติการให้บริการการซื้อในแอป',
-    notice21_li10: 'ของรางวัลจากการปิดปรับปรุง',
-    notice21_li11: 'อัญมณี ×50,000',
-    notice21_li12: 'คำอธิษฐานฮีโร่ระดับตำนาน ×10',
-    notice21_body2: 'เราจะพยายามอย่างเต็มที่เพื่อมอบประสบการณ์การเล่นที่มั่นคงให้แก่ผู้กอบกู้ทุกท่านจนถึงที่สุด',
-    notice21_body3: 'ขอบคุณสำหรับความเข้าใจและการสนับสนุนอย่างต่อเนื่องตลอดมา! 🌊',
-    notice20_title: '[ประกาศ] ประกาศยุติการให้บริการ Aqua Survival',
-    notice20_body1: 'สวัสดี วันนี้เรามีข่าวเศร้ามาแจ้งให้ทุกท่านทราบ<br>เสียใจที่ต้องแจ้งว่าเกมของเราจะยุติการให้บริการในวันพฤหัสบดีที่ 26 พฤศจิกายน 2026<br>ขอขอบคุณจากใจจริงสำหรับทุกท่านที่รัก Aqua Survival มาโดยตลอด แม้เกมจะยังมีข้อบกพร่องอยู่มาก',
-    notice20_li1: 'กำหนดการสำคัญ',
-    notice20_li2: '19 ต.ค. 2026 (จันทร์) หลังปิดปรับปรุง: ระงับการซื้อในแอป',
-    notice20_li3: '26 พ.ย. 2026 (พฤหัสบดี) 06:00 น. UTC (14:00 น. PHT): ยุติการให้บริการ (ไม่สามารถเล่นเกมได้)',
-    notice20_li4: 'ข้อมูลการคืนเงิน',
-    notice20_li5: 'รายการที่เข้าเงื่อนไข: การชำระเงินระหว่าง 21 ก.ค. – 19 ต.ค. 2026 (นับย้อนหลัง 90 วัน)',
-    notice20_li6: 'จำนวนเงินคืน: คืนเงิน 100% ของยอดชำระในช่วงที่เข้าเงื่อนไข',
-    notice20_li7: 'ระยะเวลายื่นคำขอ: 14 ต.ค. (พุธ) – 26 พ.ย. (พฤหัสบดี) 2026',
-    notice20_li8: 'วิธียื่นคำขอ: ส่งอีเมลถึง <a href="mailto:aqua-support@icecatgames.net" style="color:var(--gold-light);">aqua-support@icecatgames.net</a> พร้อมหลักฐานการชำระเงิน',
-    notice20_li9: 'แบบฟอร์มอีเมลขอคืนเงิน',
-    notice20_li9n: 'หากคัดลอกแบบฟอร์มด้านล่างไปใช้ จะช่วยให้ดำเนินการได้รวดเร็วขึ้น',
-    notice20_li10: 'หัวข้ออีเมล: [ขอคืนเงิน] หมายเลขสมาชิก (PID) / ชื่อตัวละคร',
-    notice20_li11: 'ข้อมูลที่ต้องระบุ',
-    notice20_li12: 'หมายเลขสมาชิก (PID) หรือข้อมูลบัญชี (ตำแหน่งที่ดู: โปรไฟล์ ➔ ตั้งค่า ➔ PID ที่ด้านล่างของป๊อปอัป)',
-    notice20_li13: 'ชื่อตัวละคร',
-    notice20_li14: 'บัญชี Google Play (อีเมล)',
-    notice20_li15: 'ไฟล์แนบ: ภาพหน้าจอหลักฐานการชำระเงิน',
-    notice20_li16: 'วิธีตรวจสอบหลักฐานการชำระเงิน',
-    notice20_li17: 'อีเมลใบเสร็จ: ภาพหน้าจออีเมลใบเสร็จการชำระเงินจาก Google Play ที่ส่งไปยังบัญชี Google ของท่านเมื่อชำระเงิน',
-    notice20_li18: 'ประวัติในแอป Google Play: ภาพหน้าจอ Google Play Store ➔ โปรไฟล์ (มุมขวาบน) ➔ การชำระเงินและการสมัครใช้บริการ ➔ งบประมาณและประวัติ',
-    notice20_li19: 'การจัดการข้อมูลส่วนบุคคล',
-    notice20_li20: 'หลังสิ้นสุดการให้บริการ ข้อมูลส่วนบุคคลจะถูกทำลายทันที อย่างไรก็ตาม บันทึกการชำระเงินและธุรกรรมที่กฎหมายกำหนดให้ต้องเก็บรักษา จะถูกเก็บแยกไว้อย่างปลอดภัยตามระยะเวลาที่กฎหมายกำหนด แล้วจึงทำลาย (สอบถาม: <a href="mailto:aqua-privacy@icecatgames.net" style="color:var(--gold-light);">aqua-privacy@icecatgames.net</a>)',
-    notice20_li21: 'ติดต่อสอบถาม',
-    notice20_li22: '<a href="mailto:aqua-support@icecatgames.net" style="color:var(--gold-light);">aqua-support@icecatgames.net</a> (ช่องทางนี้จะเปิดให้บริการต่ออีกประมาณ 1 เดือนหลังสิ้นสุดการให้บริการ)',
-    notice20_li23: 'Discord ทางการ: <a href="https://discord.gg/h3Y4SXKcHM" target="_blank" rel="noopener noreferrer" style="color:var(--gold-light);">https://discord.gg/h3Y4SXKcHM</a> (ช่องทางนี้จะเปิดให้บริการต่ออีกประมาณ 1 เดือนหลังสิ้นสุดการให้บริการ)',
-    notice20_body2: 'ขอบคุณอีกครั้งที่รักและเอ็นดู Aqua Survival มาโดยตลอด',
+    notice20_title: '[ปิดปรับปรุง] ประกาศปิดปรับปรุงเซิร์ฟเวอร์ฉุกเฉินเพื่อเสถียรภาพ (23 ต.ค.)',
+    notice20_greeting: 'สวัสดีผู้กอบกู้ทุกท่าน!',
+    notice20_body1: 'เราจะทำการปิดปรับปรุงเซิร์ฟเวอร์ฉุกเฉินเพื่อให้บริการมีความเสถียรยิ่งขึ้น<br>ท่านจะไม่สามารถเข้าเล่นเกมได้ในช่วงเวลาดังกล่าว ขออภัยในความไม่สะดวก และขอบคุณสำหรับความเข้าใจ',
+    notice20_li1: 'กำหนดการปิดปรับปรุง',
+    notice20_li2: 'UTC: 23 ตุลาคม 09:30 ~ 10:30 น. (1 ชั่วโมง)',
+    notice20_li3: 'ฟิลิปปินส์ (PHT, UTC+8): 23 ตุลาคม 17:30 ~ 18:30 น. (1 ชั่วโมง)',
+    notice20_li4: 'รายละเอียดการปิดปรับปรุง',
+    notice20_li5: 'การปรับปรุงเสถียรภาพของเซิร์ฟเวอร์',
+    notice20_note: '※ เวลาสิ้นสุดอาจสั้นลงหรือขยายออกไปขึ้นอยู่กับความคืบหน้าของการปิดปรับปรุง',
+    notice20_body2: 'เราจะพัฒนาต่อไป เพื่อมอบประสบการณ์การเล่นที่ลื่นไหลและสนุกยิ่งขึ้นให้แก่ผู้กอบกู้ทุกท่าน',
+    notice20_body3: 'ขอบคุณสำหรับการรอคอยและการสนับสนุนอย่างต่อเนื่อง! 🌊',
     notice19_title: '[ปิดปรับปรุง] ประกาศปิดปรับปรุงเซิร์ฟเวอร์เพื่ออัปเดต v1.9.4 (22 ก.ย.)',
     notice19_greeting: 'สวัสดีผู้กอบกู้ทุกท่าน! 🎉',
     notice19_body1: 'เราจะทำการปิดปรับปรุงเซิร์ฟเวอร์เพื่อนำอัปเดต v1.9.4 มาใช้<br>ท่านจะไม่สามารถเข้าเล่นเกมได้ในช่วงเวลาดังกล่าว ขออภัยในความไม่สะดวก และขอบคุณสำหรับความเข้าใจ',
